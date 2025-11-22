@@ -1,0 +1,77 @@
+**Descrição e explicação do diagrama conceitual de banco de dados**
+
+O diagrama mostra como quatro grupos de informações estão conectados: **GRUPO**, **EMPRESA**, **EMPREGADO** e **DEPENDENTE**. Cada grupo é representado por uma caixa com nome e, dentro dela, os dados que guarda. Linhas ligam as caixas e mostram como elas se relacionam. Números entre parênteses ao lado das linhas indicam quantos de um lado podem se conectar com o outro.
+
+---
+
+### **1. As caixas (entidades) e o que guardam (atributos)**
+
+- **Caixa GRUPO**  
+  - Tem dois dados:  
+    - **código** (marcado com um círculo preto cheio – é a chave única que identifica cada grupo)  
+    - **nome**
+
+- **Caixa EMPRESA**  
+  - Tem dois dados:  
+    - **número da empresa** (círculo preto cheio – chave única)  
+    - **nome**
+
+- **Caixa EMPREGADO**  
+  - Tem dois dados:  
+    - **número do empregado** (círculo preto cheio – chave única)  
+    - **nome**
+
+- **Caixa DEPENDENTE**  
+  - Tem dois dados:  
+    - **número de sequência** (círculo preto cheio – chave única dentro do empregado)  
+    - **nome**
+
+---
+
+### **2. As linhas (relacionamentos) e os números que aparecem nelas**
+
+As linhas saem de um lado da caixa, passam por um losango (que só marca a conexão) e chegam na outra caixa. Os números entre parênteses mostram **cardinalidade**, ou seja, quantos registros de um lado podem se ligar a quantos do outro lado.
+
+#### **Linha entre GRUPO e EMPRESA**
+- De **GRUPO** para a linha: **(1,1)**  
+  → Cada empresa pertence a **exatamente um** grupo.
+- De **EMPRESA** para a linha: **(0,n)**  
+  → Um grupo pode ter **zero, uma ou muitas** empresas.
+
+**Resumo:** Um grupo reúne várias empresas, mas cada empresa está em apenas um grupo.
+
+#### **Linha entre EMPRESA e EMPREGADO**
+- De **EMPRESA** para a linha: **(1,1)**  
+  → Cada empregado trabalha em **exatamente uma** empresa.
+- De **EMPREGADO** para a linha: **(0,n)**  
+  → Uma empresa pode ter **zero, um ou muitos** empregados.
+
+**Resumo:** Cada empregado é de uma única empresa, mas uma empresa pode ter vários empregados (ou nenhum).
+
+#### **Linha entre EMPREGADO e DEPENDENTE**
+- De **EMPREGADO** para a linha: **(1,1)**  
+  → Cada dependente está ligado a **exatamente um** empregado.
+- De **DEPENDENTE** para a linha: **(0,n)**  
+  → Um empregado pode ter **zero, um ou muitos** dependentes.
+
+**Resumo:** Cada dependente pertence a um só empregado, mas um empregado pode ter vários dependentes (ou nenhum).
+
+---
+
+### **3. Como tudo se organiza (visão geral)**
+
+1. **GRUPO** → reúne **EMPRESAs**  
+2. Cada **EMPRESA** → contrata **EMPREGADOs**  
+3. Cada **EMPREGADO** → pode registrar **DEPENDENTEs**
+
+Assim, partindo de um grupo, chega-se às empresas dele, depois aos empregados de cada empresa e, por fim, aos dependentes de cada empregado.
+
+---
+
+### **Resumo em texto corrido (para leitores de tela)**
+
+O diagrama tem quatro caixas: GRUPO, EMPRESA, EMPREGADO e DEPENDENTE. Cada caixa guarda dois campos; o campo com círculo preto cheio é a chave única. Linhas conectam as caixas e mostram relações.  
+- Um GRUPO (1,1) tem muitas EMPRESAs (0,n).  
+- Uma EMPRESA (1,1) tem muitos EMPREGADOs (0,n).  
+- Um EMPREGADO (1,1) tem muitos DEPENDENTEs (0,n).  
+Ou seja: grupos contêm empresas, empresas contêm empregados, empregados contêm dependentes.

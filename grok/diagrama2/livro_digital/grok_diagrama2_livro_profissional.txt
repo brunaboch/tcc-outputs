@@ -1,0 +1,11 @@
+O diagrama apresentado representa um modelo conceitual de banco de dados com quatro entidades principais: GRUPO, EMPRESA, EMPREGADO e DEPENDENTE, interligadas por relacionamentos. A descrição segue uma estrutura hierárquica e detalha as cardinalidades e atributos.
+
+- **Entidade GRUPO**: Possui os atributos "código" (chave primária, representada por um círculo preto) e "nome". Relaciona-se com a entidade EMPRESA em um relacionamento de um-para-muitos ((1,n)), indicando que uma instância de GRUPO pode estar associada a várias instâncias de EMPRESA, mas cada EMPRESA está associada a apenas um GRUPO.
+
+- **Entidade EMPRESA**: Possui o atributo "nome" e está conectada a GRUPO pelo relacionamento mencionado. Também se relaciona com a entidade EMPREGADO em um relacionamento de um-para-muitos ((1,n)), significando que uma EMPRESA pode ter vários EMPREGADOS, mas cada EMPREGADO pertence a uma única EMPRESA. O atributo "número da empresa" (círculo preto) é a chave primária.
+
+- **Entidade EMPREGADO**: Possui os atributos "nome" e "número do empregado" (chave primária, círculo preto). Relaciona-se com EMPRESA no relacionamento de muitos-para-um ((0,n) para (1,1)), reforçando que um EMPREGADO é vinculado a uma EMPRESA. Além disso, EMPREGADO participa de um relacionamento de um-para-muitos ((1,1) para (0,n)) com a entidade DEPENDENTE, indicando que um EMPREGADO pode ter zero ou mais DEPENDENTES, e cada DEPENDENTE está associado a exatamente um EMPREGADO.
+
+- **Entidade DEPENDENTE**: Possui os atributos "número de sequência" (chave primária, círculo preto) e "nome". Está conectada a EMPREGADO no relacionamento descrito, onde a cardinalidade (0,n) reflete que um EMPREGADO pode não ter DEPENDENTES ou possuir vários.
+
+A estrutura sugere uma hierarquia organizacional: um GRUPO contém várias EMPRESAS, cada EMPRESA emprega vários EMPREGADOS, e cada EMPREGADO pode ter zero ou mais DEPENDENTES. As chaves primárias ("código", "número da empresa", "número do empregado", "número de sequência") garantem a unicidade das instâncias em cada entidade.
