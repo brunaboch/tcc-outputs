@@ -1,0 +1,63 @@
+**Explicação acessível do diagrama (para leitores de tela)**
+
+O diagrama mostra duas caixas retangulares conectadas por uma linha.  
+Vou descrever da esquerda para a direita.
+
+**1. Caixa da esquerda – Entidade "Produto"**  
+- É um retângulo com o nome **Produto** escrito no centro.  
+- Embaixo do retângulo, há dois pontinhos (bolinhas) pendurados por linhas curtas.  
+  - O pontinho de baixo à esquerda tem a palavra **código** ao lado. É uma bolinha preta (cheia).  
+  - O pontinho de cima à esquerda tem a palavra **descrição** ao lado. É uma bolinha branca (vazia).  
+  - Acima do retângulo, há um círculo branco com a palavra **preço** escrita ao lado.
+
+**O que isso significa (de forma simples):**  
+- **Produto** é como uma "ficha" que guarda informações sobre um produto.  
+- Cada produto tem:  
+  - **código** → um número ou texto único que identifica o produto (a bolinha preta significa que é obrigatório e único).  
+  - **descrição** → o nome ou explicação do produto (a bolinha branca significa que pode existir, mas não é obrigatória).  
+  - **preço** → o valor do produto (o círculo branco acima mostra que é um dado importante, provavelmente obrigatório).
+
+---
+
+**2. Linha de conexão no meio**  
+- Sai do lado direito da caixa **Produto** e vai até um losango (forma de diamante).  
+- No losango, está escrito:  
+  - **n** do lado esquerdo (perto do Produto)  
+  - **1** do lado direito  
+- Isso significa:  
+  - **Muitos produtos (n)** estão ligados a **apenas um tipo de produto (1)**.
+
+---
+
+**3. Caixa da direita – Entidade "Tipo de produto"**  
+- É outro retângulo com o nome **Tipo de produto** no centro.  
+- Embaixo dele, dois pontinhos pendurados:  
+  - O pontinho de baixo à direita tem **código** ao lado. Bolinha preta (cheia).  
+  - O pontinho de cima à direita tem **descrição** ao lado. Bolinha branca (vazia).
+
+**O que isso significa:**  
+- **Tipo de produto** é como uma "categoria" (ex: eletrônicos, roupas, alimentos).  
+- Cada tipo tem:  
+  - **código** → um identificador único (obrigatório).  
+  - **descrição** → o nome do tipo (ex: "Eletrônicos") – pode ter ou não.
+
+---
+
+**Resumo da relação entre as duas caixas:**  
+- Vários produtos podem pertencer ao **mesmo tipo**.  
+  Exemplo:  
+  - Tipo: "Eletrônicos" (código 001)  
+    → Produto 1: TV (código P001, preço 1500)  
+    → Produto 2: Celular (código P002, preço 1200)  
+  - Ambos os produtos têm o **mesmo tipo**, mas códigos e preços diferentes.
+
+---
+
+**Resumo visual para quem ouve:**  
+- Duas caixas: **Produto** (esquerda) e **Tipo de produto** (direita).  
+- Produto tem: código (obrigatório), descrição (opcional), preço.  
+- Tipo de produto tem: código (obrigatório), descrição (opcional).  
+- Uma linha com losango no meio diz: **muitos produtos → um tipo**.  
+- Ou seja: vários itens podem ser do mesmo grupo/categoria.
+
+Fim da descrição.

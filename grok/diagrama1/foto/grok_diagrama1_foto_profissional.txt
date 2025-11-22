@@ -1,0 +1,37 @@
+**Diagrama conceitual – descrição acessível para leitores de tela**
+
+**Entidade 1: Produto**  
+- Retângulo com o rótulo “Produto”.  
+- Atributos:  
+  - “código” – representado por círculo preto (chave primária).  
+  - “descrição” – representado por círculo branco.  
+  - “preço” – representado por círculo branco, conectado à borda superior da entidade.
+
+**Relacionamento:**  
+- Linha conectando a entidade “Produto” a um losango sem rótulo.  
+- Cardinalidade no lado “Produto”: “n” (indicando muitos).  
+- Cardinalidade no lado oposto (próximo ao losango): “1” (indicando um).
+
+**Entidade 2: Tipo de produto**  
+- Retângulo com o rótulo “Tipo de produto”.  
+- Atributos:  
+  - “código” – representado por círculo preto (chave primária).  
+  - “descrição” – representado por círculo branco.
+
+**Conexões completas:**  
+- Produto (n) --- (losango) --- (1) Tipo de produto  
+- Interpretação:  
+  - Cada registro em **Produto** está relacionado a **exatamente um** registro em **Tipo de produto** (lado 1:1).  
+  - Cada registro em **Tipo de produto** pode estar relacionado a **zero, um ou muitos** registros em **Produto** (lado 1:n).  
+  - O losango representa o relacionamento sem nome explícito; a cardinalidade define a restrição 1:n.
+
+**Chaves identificadoras:**  
+- **Produto.código** é chave primária de Produto.  
+- **Tipo de produto.código** é chave primária de Tipo de produto.  
+- A relação 1:n implica que **Tipo de produto.código** será chave estrangeira em **Produto**.
+
+**Resumo estrutural (para navegação por leitor de tela):**  
+1. Entidade “Produto” → atributos: código (PK), descrição, preço.  
+2. Relacionamento 1:n → losango sem rótulo.  
+3. Entidade “Tipo de produto” → atributos: código (PK), descrição.  
+4. Cardinalidades: Produto (n) – losango – Tipo de produto (1).

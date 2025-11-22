@@ -1,0 +1,81 @@
+**Descrição do Diagrama Conceitual de Banco de Dados**
+
+O diagrama mostra duas caixas retangulares conectadas por uma linha com um losango no meio. Vou explicar cada parte de forma clara e simples, como se estivesse lendo em voz alta.
+
+---
+
+**1. Caixa da esquerda – Entidade "Produto"**
+
+- **Forma:** Retângulo.
+- **Nome dentro:** Produto.
+- **Atributos (pendurados abaixo da caixa como bolinhas):**
+  - **Código** – Bolinha preta (círculo preenchido).
+  - **Descrição** – Bolinha branca com borda (círculo vazio).
+  - **Preço** – Bolinha branca com borda (círculo vazio), mas está ligada por uma linha que sobe até o topo da caixa.
+
+**Significado dos atributos:**
+- **Código** (bolinha preta): é a **chave única** do produto. Cada produto tem um código diferente, como um RG. Ninguém pode ter o mesmo código.
+- **Descrição** e **Preço** (bolinhas brancas): são informações normais do produto. Podem se repetir em outros produtos, mas não identificam sozinhos qual é o produto.
+
+---
+
+**2. Caixa da direita – Entidade "Tipo de produto"**
+
+- **Forma:** Retângulo.
+- **Nome dentro:** Tipo de produto.
+- **Atributos (pendurados abaixo da caixa):**
+  - **Código** – Bolinha preta (círculo preenchido).
+  - **Descrição** – Bolinha branca com borda (círculo vazio).
+
+**Significado dos atributos:**
+- **Código** (bolinha preta): é a **chave única** do tipo de produto. Exemplo: 1 para "Eletrônicos", 2 para "Roupas", etc.
+- **Descrição** (bolinha branca): é o nome do tipo, como "Eletrônicos" ou "Móveis".
+
+---
+
+**3. Conexão entre as duas caixas – Relacionamento**
+
+- Há uma **linha** que sai da caixa "Produto", passa por um **losango**, e chega na caixa "Tipo de produto".
+- No losango, está escrito: **n** do lado esquerdo e **1** do lado direito.
+
+**Significado do losango e dos números:**
+- O losango representa um **relacionamento** entre "Produto" e "Tipo de produto".
+- **n** (perto de Produto): significa **vários produtos** (muitos).
+- **1** (perto de Tipo de produto): significa **um só tipo**.
+
+**Interpretação completa:**
+> **Vários produtos (n) pertencem a um único tipo de produto (1).**
+
+**Exemplo real:**
+- Tipo de produto: "Eletrônicos" (código 1).
+- Produtos que pertencem a ele:
+  - Produto 101: TV LED 50" (preço R$ 2.500)
+  - Produto 102: Smartphone X (preço R$ 3.000)
+  - Produto 103: Fone de ouvido (preço R$ 200)
+
+Todos esses produtos têm **o mesmo tipo (Eletrônicos)**, mas cada um tem seu próprio código, descrição e preço.
+
+---
+
+**Resumo em linguagem simples:**
+
+- Existe uma tabela chamada **Produto**, onde cada linha é um produto com:
+  - Um **código único** (não se repete),
+  - Uma **descrição** (nome do produto),
+  - Um **preço**.
+- Existe outra tabela chamada **Tipo de produto**, onde cada linha é um grupo, como "Eletrônicos", "Roupas", etc., com:
+  - Um **código único**,
+  - Uma **descrição**.
+- **Cada produto pertence a apenas um tipo**, mas **um tipo pode ter vários produtos**.
+
+---
+
+**Leitura acessível para leitores de tela (texto contínuo):**
+
+Início da descrição.  
+O diagrama tem duas caixas retangulares conectadas por uma linha com um losango no meio.  
+À esquerda, a caixa chamada Produto. Dela saem três bolinhas: código (bolinha preta, é a chave única), descrição (bolinha branca), preço (bolinha branca).  
+À direita, a caixa chamada Tipo de produto. Dela saem duas bolinhas: código (bolinha preta, chave única), descrição (bolinha branca).  
+Entre as caixas, um losango com a letra n do lado do Produto e o número 1 do lado do Tipo de produto.  
+Isso significa: vários produtos pertencem a um único tipo de produto.  
+Fim da descrição.

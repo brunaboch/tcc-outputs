@@ -1,0 +1,31 @@
+O diagrama representa um modelo conceitual de banco de dados no formato **Chen**, composto por duas entidades retangulares e um losango que indica o relacionamento entre elas.
+
+**Entidade 1 – Produto**  
+- Caixa retangular com o rótulo “Produto”.  
+- Atributo “preço” ligado por uma linha a um círculo aberto acima da caixa.  
+- Atributo “descrição” ligado por uma linha a um círculo aberto abaixo da caixa.  
+- Atributo “código” ligado por uma linha a um círculo preenchido abaixo da caixa, indicando que “código” é a **chave primária** da entidade Produto.
+
+**Relacionamento**  
+- Linha horizontal conectando o lado direito da entidade Produto a um losango.  
+- No losango, a cardinalidade do lado esquerdo (Produto) é marcada com “n”.  
+- No losango, a cardinalidade do lado direito (Tipo de produto) é marcada com “1”.  
+- O relacionamento é **não identificador** (não há círculo preenchido no losango), e **não obrigatório** em ambos os lados (círculos abertos nas extremidades).
+
+**Entidade 2 – Tipo de produto**  
+- Caixa retangular com o rótulo “Tipo de produto”.  
+- Atributo “descrição” ligado por uma linha a um círculo aberto abaixo da caixa.  
+- Atributo “código” ligado por uma linha a um círculo preenchido abaixo da caixa, indicando que “código” é a **chave primária** da entidade Tipo de produto.
+
+**Interpretação da cardinalidade**  
+- “n” no lado de Produto e “1” no lado de Tipo de produto indicam um relacionamento **N:1** (muitos para um).  
+- Cada registro em Produto está associado a **exatamente um** registro em Tipo de produto.  
+- Cada registro em Tipo de produto pode estar associado a **zero, um ou muitos** registros em Produto.
+
+**Resumo estrutural**  
+- **Entidade Produto**: PK código (único), atributos preço e descrição.  
+- **Entidade Tipo de produto**: PK código (único), atributo descrição.  
+y  
+- **Relacionamento**: Produto **pertence a** Tipo de produto (N:1, não obrigatório, não identificador).  
+
+Este modelo representa uma classificação hierárquica onde produtos são categorizados por um tipo único, permitindo que vários produtos compartilhem o mesmo tipo.
