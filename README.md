@@ -30,7 +30,7 @@ O propósito é **tornar transparente e reprodutível** o processo experimental 
 |--------|----------------|
 | **Grok** | xAI |
 | **Gemini** |  Google DeepMind |
-| **GPT** | GPT-5 | OpenAI |
+| **GPT** | OpenAI |
 | **DeepSeek** | DeepSeek AI |
 | **Claude** | Anthropic |
 
