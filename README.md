@@ -116,15 +116,6 @@ claude_digital_est.txt
 
 ---
 
-## 🔗 Referência no TCC
-
-Os outputs completos são citados no **Apêndice D** do TCC, disponível no documento principal:
-
-> **Apêndice D – Textos descritivos completos dos LLMs**  
-> Repositório: [https://github.com/brunaboch/TCC-Outputs](https://github.com/brunaboch/TCC-Outputs)
-
----
-
 ## 📊 Organização experimental
 
 Cada arquivo representa uma resposta textual gerada automaticamente por um LLM em um contexto experimental definido por:
