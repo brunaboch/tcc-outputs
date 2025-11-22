@@ -1,0 +1,32 @@
+# Descrição do Diagrama Conceitual
+
+O diagrama apresenta um modelo entidade-relacionamento com as seguintes características:
+
+## Entidades
+
+**Entidade Produto:**
+- Possui dois atributos:
+  - Atributo simples "preço"
+  - Atributo multivalorado "descrição" (representado pelo círculo duplo)
+  - Atributo obrigatório "código" (representado pelo círculo preenchido, indicando chave primária)
+
+**Entidade Tipo de produto:**
+- Possui dois atributos:
+  - Atributo multivalorado "descrição" (círculo duplo)
+  - Atributo obrigatório "código" (círculo preenchido, indicando chave primária)
+
+## Relacionamento
+
+As entidades estão conectadas por um relacionamento com as seguintes características:
+
+- **Cardinalidade:** Relacionamento N para 1 (N:1)
+  - Do lado da entidade Produto: cardinalidade N (muitos)
+  - Do lado da entidade Tipo de produto: cardinalidade 1 (um)
+
+- **Interpretação:** Múltiplos produtos podem estar associados a um único tipo de produto, enquanto cada tipo de produto pode classificar vários produtos. Isso representa uma relação onde produtos são categorizados por tipos.
+
+## Observações Técnicas
+
+- As chaves primárias (atributo código) em ambas as entidades garantem a identificação única de cada registro
+- O atributo multivalorado "descrição" em ambas as entidades permite armazenar múltiplos valores descritivos
+- A cardinalidade N:1 sugere que a chave estrangeira será implementada na entidade Produto durante a transformação para o modelo lógico

@@ -1,0 +1,86 @@
+# Explicação do Diagrama de Banco de Dados de Funcionários
+
+## Visão Geral
+Este diagrama mostra como as informações sobre funcionários de uma empresa estão organizadas e conectadas entre si. Vou descrever cada parte do diagrama de forma detalhada.
+
+## Entidades Principais (Representadas por Retângulos)
+
+O diagrama possui 7 entidades principais, que são como "caixas de informação":
+
+### 1. EMPREGADO (localizado na parte superior esquerda)
+Esta é a entidade central do diagrama. Cada empregado possui:
+- **nome** (atributo simples, representado por círculo vazio)
+- **código** (atributo identificador único, representado por círculo preenchido)
+- **tipo de empregado** (atributo com múltiplos valores possíveis, representado por círculo duplo)
+
+### 2. DEPARTAMENTO (localizado na parte superior direita)
+Representa os setores da empresa. Possui:
+- **código** (identificador único, círculo preenchido)
+- **nome** (círculo vazio)
+- **atributo CREA** (localizado abaixo, círculo vazio)
+
+### 3. SECRETÁRIA (parte inferior esquerda)
+Tipo específico de funcionário.
+
+### 4. MOTORISTA (parte inferior central-esquerda)
+Outro tipo específico de funcionário. Possui:
+- **carteira de habilitação** (atributo próprio, círculo vazio)
+
+### 5. ENGENHEIRO (parte inferior direita)
+Tipo específico de funcionário.
+
+### 6. PROCESSADOR DE TEXTOS (abaixo de SECRETÁRIA)
+Especialização de secretária. Possui:
+- **código** (círculo preenchido)
+- **nome** (círculo vazio)
+
+### 7. PROJETO (parte inferior extrema direita)
+Representa os projetos da empresa. Possui:
+- **código** (círculo preenchido)
+- **nome** (círculo vazio)
+
+## Relacionamentos (Representados por Losangos)
+
+Os losangos conectam as entidades e mostram como elas se relacionam:
+
+### 1. LOTAÇÃO (entre EMPREGADO e DEPARTAMENTO)
+- Conecta empregados aos seus departamentos
+- Cardinalidade: zero ou n empregados para 1 ou 1 departamento
+- Significa: um empregado pode estar lotado em um departamento, e um departamento pode ter vários empregados
+
+### 2. P (abaixo de EMPREGADO)
+- Este é um relacionamento de especialização (representado pela letra P)
+- Mostra que EMPREGADO pode ser especializado em: SECRETÁRIA, MOTORISTA ou ENGENHEIRO
+- É como dizer: "um empregado pode ser de diferentes tipos"
+
+### 3. DOMÍNIO (abaixo de SECRETÁRIA)
+- Conecta SECRETÁRIA a PROCESSADOR DE TEXTOS
+- Cardinalidade: 1 para n ou zero para n
+- Indica especialização: uma secretária pode dominar processamento de textos
+
+### 4. RAMO DA ENGENHARIA (abaixo de ENGENHEIRO)
+- Cardinalidade: 1 para 1
+- Indica a especialização do engenheiro
+
+### 5. PARTICIPAÇÃO (à direita de ENGENHEIRO)
+- Conecta ENGENHEIRO a PROJETO
+- Cardinalidade: zero ou n para zero ou n
+- Significa: um engenheiro pode participar de vários projetos, e um projeto pode ter vários engenheiros
+
+## Estrutura Hierárquica
+
+O diagrama mostra uma hierarquia onde:
+- **EMPREGADO** é a entidade principal no topo
+- Dela derivam três especializações: SECRETÁRIA, MOTORISTA e ENGENHEIRO
+- SECRETÁRIA tem uma sub-especialização: PROCESSADOR DE TEXTOS
+- EMPREGADO se relaciona com DEPARTAMENTO através da lotação
+- ENGENHEIRO se relaciona com PROJETO através da participação
+
+## Símbolos Importantes de Cardinalidade
+
+As notações (0,n), (1,1), (1,n) indicam quantos elementos podem participar do relacionamento:
+- **(0,n)** significa "zero ou muitos"
+- **(1,1)** significa "exatamente um"
+- **(1,n)** significa "um ou muitos"
+
+Esta estrutura permite organizar todas as informações sobre funcionários, suas especializações, departamentos e projetos de forma conectada e organizada.

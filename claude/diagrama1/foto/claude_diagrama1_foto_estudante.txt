@@ -1,0 +1,34 @@
+# Descrição do Diagrama de Banco de Dados
+
+## Visão Geral
+Este diagrama mostra a relação entre produtos e seus tipos. Ele possui duas caixas principais (entidades) conectadas por um losango (relacionamento).
+
+## Entidades e Atributos
+
+### Entidade 1: Produto
+Localizada no lado esquerdo do diagrama, representada por um retângulo com o texto "Produto".
+
+**Atributos de Produto:**
+- **código**: marcado com um círculo preenchido (preto), indicando que é a chave primária, ou seja, o identificador único de cada produto
+- **descrição**: marcado com um círculo vazio, representando um atributo comum
+- **preço**: também marcado com um círculo vazio, outro atributo comum
+
+### Entidade 2: Tipo de produto
+Localizada no lado direito do diagrama, representada por um retângulo com o texto "Tipo de produto".
+
+**Atributos de Tipo de produto:**
+- **código**: marcado com um círculo preenchido (preto), sendo a chave primária desta entidade
+- **descrição**: marcado com um círculo vazio, um atributo comum
+
+## Relacionamento
+
+As duas entidades estão conectadas por um **losango** (forma de diamante) no centro do diagrama.
+
+**Cardinalidade do relacionamento:**
+- Do lado do Produto: aparece a letra "n", indicando que podem existir muitos produtos
+- Do lado do Tipo de produto: aparece o número "1", indicando um único tipo
+
+**Interpretação:** Este é um relacionamento de "muitos para um". Isso significa que **vários produtos podem pertencer a um mesmo tipo de produto**, mas **cada produto pertence a apenas um tipo**. Por exemplo: vários produtos (cadeira, mesa, estante) podem ser do tipo "móveis".
+
+## Resumo
+O diagrama mostra que a base de dados armazena informações sobre produtos (com código, descrição e preço) e os classifica em tipos (que também têm código e descrição). Cada produto está associado a exatamente um tipo, mas um tipo pode agrupar vários produtos diferentes.

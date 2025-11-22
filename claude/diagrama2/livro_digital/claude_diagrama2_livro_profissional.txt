@@ -1,0 +1,47 @@
+# Descrição do Diagrama Conceitual
+
+## Estrutura Geral
+
+O diagrama apresenta um modelo conceitual composto por quatro entidades relacionadas hierarquicamente: GRUPO, EMPRESA, EMPREGADO e DEPENDENTE.
+
+## Entidades e Atributos
+
+### Entidade GRUPO
+A entidade GRUPO possui dois atributos:
+- código (atributo identificador, representado com marcação de chave)
+- nome (atributo simples)
+
+### Entidade EMPRESA
+A entidade EMPRESA contém dois atributos:
+- número da empresa (atributo identificador)
+- nome (atributo simples)
+
+### Entidade EMPREGADO
+A entidade EMPREGADO possui dois atributos:
+- número do empregado (atributo identificador)
+- nome (atributo simples)
+
+### Entidade DEPENDENTE
+A entidade DEPENDENTE apresenta dois atributos:
+- número de segurança (atributo identificador)
+- nome (atributo simples)
+
+## Relacionamentos
+
+### Relacionamento entre GRUPO e EMPRESA
+Existe um relacionamento binário entre GRUPO e EMPRESA com cardinalidade um para muitos (1:N). A leitura é: um grupo pode estar associado a zero ou muitas empresas (cardinalidade 0,n no lado da EMPRESA), enquanto cada empresa está obrigatoriamente associada a exatamente um grupo (cardinalidade 1,1 no lado do GRUPO).
+
+### Relacionamento entre EMPRESA e EMPREGADO
+Há um relacionamento binário entre EMPRESA e EMPREGADO com cardinalidade um para muitos (1:N). Interpretação: uma empresa pode ter zero ou muitos empregados (cardinalidade 0,n no lado do EMPREGADO), e cada empregado está obrigatoriamente vinculado a exatamente uma empresa (cardinalidade 1,1 no lado da EMPRESA).
+
+### Relacionamento entre EMPREGADO e DEPENDENTE
+Existe um relacionamento binário entre EMPREGADO e DEPENDENTE com cardinalidade um para muitos (1:N). A leitura é: um empregado pode ter zero ou muitos dependentes (cardinalidade 0,m no lado do DEPENDENTE), enquanto cada dependente está obrigatoriamente associado a exatamente um empregado (cardinalidade 1,1 no lado do EMPREGADO).
+
+## Interpretação Semântica
+
+O modelo representa uma estrutura organizacional onde:
+- Grupos corporativos agregam múltiplas empresas
+- Empresas empregam múltiplos funcionários
+- Empregados podem registrar múltiplos dependentes
+
+A hierarquia estabelece dependência existencial em cascata: empresas dependem de grupos, empregados dependem de empresas, e dependentes dependem de empregados. As cardinalidades mínimas (1,1) indicam participação total das entidades do lado muitos nos relacionamentos.

@@ -1,0 +1,52 @@
+# Descrição do Diagrama de Banco de Dados
+
+## Visão Geral
+Este diagrama mostra como três tipos de informação se relacionam entre si: informações sobre grupos, empresas e empregados. Vou explicar cada parte detalhadamente.
+
+## As Três Entidades Principais
+
+### 1. GRUPO (no topo do diagrama)
+O grupo é representado por um retângulo e possui dois atributos:
+- **código**: identificado por uma bolinha preta, indicando que é o identificador único do grupo
+- **nome**: identificado por uma bolinha branca, representando o nome do grupo
+
+### 2. EMPRESA (no meio do diagrama)
+A empresa também é representada por um retângulo e possui dois atributos:
+- **número da empresa**: identificado por uma bolinha preta, sendo o identificador único da empresa
+- **nome**: identificado por uma bolinha branca, representando o nome da empresa
+
+### 3. EMPREGADO (na parte inferior do diagrama)
+O empregado é representado por um retângulo e possui dois atributos:
+- **número do empregado**: identificado por uma bolinha preta, sendo o identificador único do empregado
+- **nome**: identificado por uma bolinha branca, representando o nome do empregado
+
+### 4. DEPENDENTE (à direita, na parte inferior)
+O dependente é representado por um retângulo e possui dois atributos:
+- **número de dependente**: identificado por uma bolinha preta, sendo o identificador único
+- **nome**: identificado por uma bolinha branca, representando o nome do dependente
+
+## Os Relacionamentos
+
+### Relacionamento entre GRUPO e EMPRESA
+Há uma conexão entre grupo e empresa representada por um losango. As anotações mostram:
+- **(1,1)** do lado do grupo: significa que cada grupo está relacionado com pelo menos uma e no máximo uma empresa
+- **(0,n)** do lado da empresa: significa que cada empresa pode estar relacionada com nenhum grupo (zero) ou com vários grupos (n representa "muitos")
+
+**Em linguagem simples**: Um grupo específico tem exatamente uma empresa, mas uma empresa pode não pertencer a nenhum grupo ou pode estar associada a vários grupos.
+
+### Relacionamento entre EMPRESA e EMPREGADO
+Há uma conexão entre empresa e empregado representada por um losango. As anotações mostram:
+- **(1,1)** do lado da empresa: significa que cada empresa está relacionada com pelo menos um e no máximo um empregado
+- **(0,n)** do lado do empregado: significa que cada empregado pode estar relacionado com nenhuma empresa (zero) ou com várias empresas (n)
+
+**Em linguagem simples**: Uma empresa específica tem exatamente um empregado (possivelmente o proprietário ou representante principal), mas um empregado pode não trabalhar para nenhuma empresa ou pode trabalhar para várias empresas.
+
+### Relacionamento entre EMPREGADO e DEPENDENTE
+Há uma conexão entre empregado e dependente representada por um losango. As anotações mostram:
+- **(1,1)** do lado do empregado: significa que cada empregado está relacionado com pelo menos um e no máximo um dependente
+- **(0,n)** do lado do dependente: significa que cada dependente pode estar relacionado com nenhum empregado (zero) ou com vários empregados (n)
+
+**Em linguagem simples**: Um empregado específico tem exatamente um dependente, mas um dependente pode não estar vinculado a nenhum empregado ou pode estar vinculado a vários empregados.
+
+## Resumo da Estrutura
+O diagrama mostra uma hierarquia que flui de cima para baixo: grupos se relacionam com empresas, empresas se relacionam com empregados, e empregados se relacionam com dependentes. Cada relacionamento possui regras específicas sobre quantas conexões são permitidas em cada direção.

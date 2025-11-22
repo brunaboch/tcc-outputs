@@ -1,0 +1,35 @@
+# Descrição do Diagrama Conceitual de Banco de Dados
+
+## Visão Geral
+Este diagrama mostra como as informações sobre produtos estão organizadas. Ele possui duas caixas principais (chamadas entidades) conectadas por um losango no meio (que representa o relacionamento entre elas).
+
+## Entidades e seus Atributos
+
+### Entidade 1: Produto
+Esta é uma caixa retangular localizada no lado esquerdo do diagrama com o texto "Produto" dentro.
+
+**Atributos do Produto:**
+- **Preço**: representado por um círculo vazio conectado ao topo da caixa Produto. Este é um atributo simples que armazena o valor monetário do produto.
+- **Código**: representado por um círculo preenchido (sólido) de cor preta, conectado à parte inferior da caixa Produto. Este círculo preenchido indica que o código é um atributo especial chamado "chave primária", ou seja, é o identificador único de cada produto - cada produto tem um código diferente que o identifica.
+- **Descrição**: representado por um círculo vazio conectado ao lado do círculo do código, também na parte inferior. Este atributo armazena informações descritivas sobre o produto.
+
+### Entidade 2: Tipo de Produto
+Esta é uma caixa retangular localizada no lado direito do diagrama com o texto "Tipo de produto" dentro.
+
+**Atributos do Tipo de Produto:**
+- **Código**: representado por um círculo preenchido (sólido) de cor preta, conectado à parte inferior da caixa. Assim como no Produto, este é o identificador único de cada tipo de produto.
+- **Descrição**: representado por um círculo vazio ao lado do código, que armazena a descrição do tipo de produto.
+
+## Relacionamento entre as Entidades
+
+No centro do diagrama há um **losango** (forma de diamante) que conecta as duas entidades. Este losango representa o relacionamento entre Produto e Tipo de Produto.
+
+**Características do Relacionamento:**
+- Do lado esquerdo do losango (próximo a Produto) há a letra **"n"**, indicando que podem existir muitos produtos.
+- Do lado direito do losango (próximo a Tipo de Produto) há o número **"1"**, indicando que cada produto pertence a apenas um tipo.
+
+**O que isso significa na prática:**
+Cada produto individual está associado a um único tipo de produto, mas um mesmo tipo de produto pode ter vários produtos diferentes. Por exemplo: se "Eletrônico" é um tipo de produto, vários produtos como "Celular", "Tablet" e "Notebook" podem todos pertencer a este mesmo tipo.
+
+## Resumo
+Este diagrama mostra um sistema onde produtos são categorizados por tipos. Cada produto tem seu código único, preço e descrição, e está sempre vinculado a um tipo específico. Cada tipo de produto também tem seu código único e descrição, e pode agrupar múltiplos produtos diferentes.

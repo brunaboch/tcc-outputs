@@ -1,0 +1,48 @@
+# Descrição do Diagrama Entidade-Relacionamento
+
+## Estrutura Geral
+
+O diagrama apresenta um modelo conceitual composto por quatro entidades principais: GRUPO, EMPRESA, EMPREGADO e DEPENDENTE, organizadas em uma hierarquia com relacionamentos de especialização e associação.
+
+## Entidades e Atributos
+
+### Entidade GRUPO
+Localizada no topo da hierarquia, possui dois atributos:
+- código: atributo identificador, representado como chave primária
+- nome: atributo descritivo
+
+### Entidade EMPRESA
+Posicionada no segundo nível, contém dois atributos:
+- número da empresa: atributo identificador, chave primária
+- nome: atributo descritivo
+
+### Entidade EMPREGADO
+Situada no terceiro nível, apresenta dois atributos:
+- número do empregado: atributo identificador, chave primária
+- nome: atributo descritivo
+
+### Entidade DEPENDENTE
+Localizada à direita, no mesmo nível de EMPREGADO, possui dois atributos:
+- número de sequência: atributo identificador
+- nome: atributo descritivo
+
+## Relacionamentos
+
+### Relacionamento GRUPO-EMPRESA
+Tipo: Especialização ou generalização hierárquica
+Cardinalidade: um para muitos (1,1) no lado do GRUPO e (0,n) no lado da EMPRESA
+Interpretação: Um grupo possui obrigatoriamente uma identificação única e pode conter zero ou várias empresas. Cada empresa pertence obrigatoriamente a um único grupo.
+
+### Relacionamento EMPRESA-EMPREGADO
+Tipo: Especialização ou generalização hierárquica
+Cardinalidade: um para muitos (1,1) no lado da EMPRESA e (0,n) no lado do EMPREGADO
+Interpretação: Uma empresa possui obrigatoriamente uma identificação única e pode ter zero ou vários empregados. Cada empregado está vinculado obrigatoriamente a uma única empresa.
+
+### Relacionamento EMPREGADO-DEPENDENTE
+Tipo: Associação binária
+Cardinalidade: um para muitos (1,1) no lado do EMPREGADO e (0,n) no lado do DEPENDENTE
+Interpretação: Um empregado pode ter zero ou vários dependentes. Cada dependente está obrigatoriamente associado a um único empregado. Este é um relacionamento identificador, onde o número de sequência do dependente depende da existência do empregado, caracterizando DEPENDENTE como entidade fraca.
+
+## Observações Técnicas
+
+A estrutura apresenta uma hierarquia de containment, onde grupos agregam empresas, e empresas agregam empregados. O relacionamento entre EMPREGADO e DEPENDENTE é de dependência existencial, típico de entidades fracas, onde o dependente não possui existência independente do empregado.

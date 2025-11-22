@@ -1,0 +1,26 @@
+# Descrição do Diagrama Conceitual
+
+O diagrama apresenta um relacionamento entre duas entidades: Produto e Tipo de produto.
+
+## Entidade Produto
+
+A entidade Produto possui três atributos:
+- código: atributo identificador, representado por um círculo preenchido, indicando que é a chave primária da entidade
+- descrição: atributo simples
+- preço: atributo simples
+
+## Entidade Tipo de produto
+
+A entidade Tipo de produto possui dois atributos:
+- código: atributo identificador, representado por um círculo preenchido, indicando que é a chave primária da entidade
+- descrição: atributo simples
+
+## Relacionamento
+
+As entidades estão conectadas por um relacionamento de cardinalidade n para 1 (muitos para um), onde:
+- A entidade Produto participa com cardinalidade n (lado esquerdo do relacionamento), indicando que múltiplos produtos podem estar associados
+- A entidade Tipo de produto participa com cardinalidade 1 (lado direito do relacionamento), indicando que cada produto está associado a exatamente um tipo de produto
+
+## Interpretação do Modelo
+
+Este modelo representa que cada produto deve obrigatoriamente estar classificado em um único tipo de produto, enquanto um tipo de produto pode categorizar diversos produtos. Trata-se de um relacionamento clássico de classificação ou categorização, onde Tipo de produto funciona como uma entidade de domínio que estabelece uma taxonomia para os produtos do sistema.

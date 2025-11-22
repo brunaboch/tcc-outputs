@@ -1,0 +1,33 @@
+# Análise do Diagrama Entidade-Relacionamento
+
+## Entidades Identificadas
+
+O diagrama apresenta 7 entidades:
+
+**EMPREGADO** - Entidade forte com atributos: código (chave primária), nome, CPF e tipo de empregado (atributo multivalorado).
+
+**DEPARTAMENTO** - Entidade forte com atributos: código (chave primária) e nome.
+
+**SECRETÁRIA** - Entidade fraca com atributo nome. Possui relacionamento de dependência com a entidade de domínio (especialização).
+
+**MOTORISTA** - Entidade fraca com atributos: carteira de habilitação e nome. Também especialização da entidade de domínio.
+
+**PROCESSADOR DE TEXTOS** - Entidade fraca com atributos: código (chave primária) e nome. Especialização da entidade de domínio.
+
+**ENGENHEIRO** - Entidade forte com atributo CREA.
+
+**PROJETO** - Entidade forte com atributos: código (chave primária) e nome.
+
+## Relacionamentos e Cardinalidades
+
+**LOTAÇÃO** - Relacionamento binário entre EMPREGADO e DEPARTAMENTO. Cardinalidade muitos para um (N:1), indicando que vários empregados podem estar lotados em um único departamento, mas cada empregado está lotado em apenas um departamento. O atributo "código" participa deste relacionamento.
+
+**Especialização P** - Relacionamento ternário de especialização total e disjunta (participação obrigatória) conectando EMPREGADO às entidades: SECRETÁRIA, MOTORISTA e PROCESSADOR DE TEXTOS, formando uma hierarquia de generalização-especialização com cardinalidade zero para n (0:N) do lado das especializações. Este é um relacionamento de domínio que representa a classificação dos empregados.
+
+**PARTICIPA-DE** - Relacionamento binário entre ENGENHEIRO e PROJETO. Cardinalidade muitos para muitos (N:M), permitindo que um engenheiro participe de múltiplos projetos e um projeto tenha múltiplos engenheiros. Cardinalidade específica: zero para n (0:N) de ambos os lados.
+
+**RAMO DA ENGENHARIA** - Relacionamento unário (autorrelacionamento) na entidade ENGENHEIRO com cardinalidade um para um (1:1), sugerindo uma classificação ou especialização dentro da própria categoria de engenheiros.
+
+## Observações Estruturais
+
+O diagrama utiliza notação com losangos para relacionamentos, retângulos para entidades fortes, retângulos duplos para entidades fracas, círculos para atributos e círculos preenchidos para chaves primárias. A estrutura apresenta uma hierarquia de especialização clara no domínio de empregados e demonstra diferentes graus de relacionamento entre as entidades do modelo.

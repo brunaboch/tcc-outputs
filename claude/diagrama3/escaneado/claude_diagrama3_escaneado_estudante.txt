@@ -1,0 +1,57 @@
+# Explicação do Diagrama de Banco de Dados
+
+Este diagrama mostra como as informações de uma empresa estão organizadas e conectadas. Vou descrever cada parte de forma simples:
+
+## Entidades Principais (as "caixas" do diagrama)
+
+**EMPREGADO** - É a entidade central, representada por um retângulo no topo esquerdo. Guarda informações sobre os funcionários da empresa.
+
+**DEPARTAMENTO** - Retângulo no topo direito. Representa os setores da empresa.
+
+**SECRETÁRIA** - Retângulo à esquerda. Representa funcionários que trabalham como secretárias.
+
+**MOTORISTA** - Retângulo no centro-esquerdo. Representa funcionários que trabalham como motoristas.
+
+**ENGENHEIRO** - Retângulo à direita. Representa funcionários engenheiros.
+
+**DOMÍNIO** - Retângulo abaixo de secretária. Representa áreas de conhecimento específicas.
+
+**PROCESSADOR DE TEXTOS** - Retângulo na parte inferior esquerda. Representa softwares usados.
+
+**RAMO DA ENGENHARIA** - Retângulo no centro inferior. Representa especialidades de engenharia.
+
+**PROJETO** - Retângulo na parte inferior direita. Representa projetos da empresa.
+
+## Atributos (informações guardadas)
+
+Cada entidade tem círculos conectados a ela, que são seus atributos:
+
+- **EMPREGADO** possui: código (identificador único, com círculo preenchido indicando chave), CPF, nome e tipo de empregado
+- **DEPARTAMENTO** possui: código (chave) e nome
+- **SECRETÁRIA** possui: domínio e número de identificação
+- **MOTORISTA** possui: carteira de habilitação
+- **ENGENHEIRO** possui: CREA (registro profissional)
+- **DOMÍNIO** possui: código (chave) e nome
+- **PROCESSADOR DE TEXTOS** possui: código (chave) e nome
+- **RAMO DA ENGENHARIA** possui: código (chave) e nome
+- **PROJETO** possui: código (chave) e nome
+
+## Relacionamentos (como as entidades se conectam)
+
+Os losangos representam as conexões entre entidades:
+
+**LOTAÇÃO** - Conecta EMPREGADO com DEPARTAMENTO. As marcações (zero, n) e (1, 1) indicam que um empregado pode estar ou não lotado em um departamento, mas se estiver, será em apenas um. Um departamento pode ter vários empregados.
+
+**P** - Conecta EMPREGADO com SECRETÁRIA, MOTORISTA e ENGENHEIRO. Mostra que um empregado pode ser uma secretária, motorista ou engenheiro (é uma especialização).
+
+**DOMÍNIO** - Conecta SECRETÁRIA com DOMÍNIO. (zero, n) indica que uma secretária pode ter vários domínios ou nenhum.
+
+**PROCESSADOR DE TEXTOS** - Conecta DOMÍNIO com PROCESSADOR DE TEXTOS. (zero, n) indica que um domínio pode estar associado a vários processadores ou nenhum.
+
+**RAMO DA ENGENHARIA** - Conecta MOTORISTA (na verdade, parece conectar à hierarquia geral) com RAMO DA ENGENHARIA. (zero, n) indica múltiplas associações possíveis.
+
+**PARTICIPA-DE** - Conecta ENGENHEIRO com PROJETO. (zero, n) indica que um engenheiro pode participar de vários projetos ou nenhum, e um projeto pode ter vários engenheiros.
+
+## Resumo da Estrutura
+
+O diagrama mostra uma empresa onde empregados trabalham em departamentos e podem ter funções especializadas: secretária, motorista ou engenheiro. Cada função tem suas características próprias. Secretárias têm domínios de conhecimento e usam processadores de texto. Engenheiros têm registro profissional e trabalham em projetos. Motoristas têm carteira de habilitação. Todos estão conectados através de relacionamentos que mostram como trabalham juntos.

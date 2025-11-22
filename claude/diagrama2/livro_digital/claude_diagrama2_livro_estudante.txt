@@ -1,0 +1,58 @@
+# Explicação do Diagrama de Banco de Dados
+
+Este diagrama mostra como as informações sobre grupos empresariais, empresas, empregados e dependentes estão organizadas e conectadas.
+
+## Estrutura do Diagrama
+
+O diagrama apresenta quatro caixas retangulares principais, conectadas por linhas e símbolos em forma de losango. Vou explicar cada parte de cima para baixo:
+
+### 1. GRUPO (primeira caixa, no topo)
+
+Esta caixa representa grupos empresariais. Ela possui dois atributos:
+- **código**: identificado por um círculo preenchido, o que indica ser o identificador único obrigatório do grupo
+- **nome**: identificado por um círculo vazio, representando uma informação adicional do grupo
+
+### 2. Relacionamento entre GRUPO e EMPRESA
+
+Uma linha conecta GRUPO à próxima caixa, passando por um losango (símbolo de relacionamento). Esta conexão indica que:
+- Um grupo pode ter uma ou mais empresas (marcado como "1,1" saindo de GRUPO e "0,n" chegando em EMPRESA)
+- Isso significa que cada grupo deve ter pelo menos uma empresa, mas pode ter várias
+
+### 3. EMPRESA (segunda caixa)
+
+Esta caixa representa as empresas que pertencem aos grupos. Ela possui dois atributos:
+- **número da empresa**: círculo preenchido, identificador único obrigatório
+- **nome**: círculo vazio, informação adicional da empresa
+
+### 4. Relacionamento entre EMPRESA e EMPREGADO
+
+Outra linha com losango conecta EMPRESA a EMPREGADO, indicando que:
+- Uma empresa pode ter zero ou mais empregados (marcado como "1,1" saindo de EMPRESA e "0,n" chegando em EMPREGADO)
+- Cada empresa deve existir, mas pode não ter empregados ou ter vários
+
+### 5. EMPREGADO (terceira caixa)
+
+Esta caixa representa os funcionários das empresas. Ela possui dois atributos:
+- **número do empregado**: círculo preenchido, identificador único obrigatório
+- **nome**: círculo vazio, informação adicional do empregado
+
+### 6. Relacionamento entre EMPREGADO e DEPENDENTE
+
+A última conexão mostra que:
+- Um empregado pode ter zero ou mais dependentes (marcado como "1,1" saindo de EMPREGADO e "0,m" chegando em DEPENDENTE)
+- Isso significa que um empregado pode existir sem dependentes ou ter vários dependentes cadastrados
+
+### 7. DEPENDENTE (quarta caixa, à direita)
+
+Esta caixa representa os dependentes dos empregados. Ela possui dois atributos:
+- **número de sequência**: círculo preenchido, parte do identificador único
+- **nome**: círculo vazio, informação adicional do dependente
+
+## Resumo da Hierarquia
+
+A estrutura segue uma ordem hierárquica em cascata:
+1. Um **GRUPO** agrupa várias **EMPRESAS**
+2. Cada **EMPRESA** emprega vários **EMPREGADOS**
+3. Cada **EMPREGADO** pode ter vários **DEPENDENTES**
+
+Todos os relacionamentos são obrigatórios da esquerda para a direita (o elemento "pai" deve existir), mas opcionais da direita para a esquerda (pode não haver elementos "filhos").

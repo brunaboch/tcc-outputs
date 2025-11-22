@@ -1,0 +1,39 @@
+# Descrição do Diagrama Conceitual
+
+O diagrama apresenta um modelo entidade-relacionamento com três entidades principais: GRUPO, EMPRESA e EMPREGADO, além de uma entidade DEPENDENTE. A estrutura segue uma hierarquia organizacional.
+
+## Entidades e Atributos
+
+**Entidade GRUPO:**
+- Atributo identificador: código
+- Atributo descritivo: nome
+
+**Entidade EMPRESA:**
+- Atributo identificador: número da empresa
+- Atributo descritivo: nome
+
+**Entidade EMPREGADO:**
+- Atributo identificador: número do empregado
+- Atributo descritivo: nome
+
+**Entidade DEPENDENTE:**
+- Atributo identificador: número de dependente
+- Atributo descritivo: nome
+
+## Relacionamentos
+
+**Relacionamento entre GRUPO e EMPRESA:**
+- Cardinalidade um para muitos (1,1) para (0,n)
+- Interpretação: cada EMPRESA pertence obrigatoriamente a exatamente um GRUPO, enquanto cada GRUPO pode ter zero ou várias EMPRESAS associadas.
+
+**Relacionamento entre EMPRESA e EMPREGADO:**
+- Cardinalidade um para muitos (1,1) para (0,n)
+- Interpretação: cada EMPREGADO trabalha obrigatoriamente em exatamente uma EMPRESA, enquanto cada EMPRESA pode ter zero ou vários EMPREGADOS.
+
+**Relacionamento entre EMPREGADO e DEPENDENTE:**
+- Cardinalidade um para muitos (1,1) para (0,n)
+- Interpretação: cada DEPENDENTE está vinculado obrigatoriamente a exatamente um EMPREGADO, enquanto cada EMPREGADO pode ter zero ou vários DEPENDENTES.
+
+## Análise da Estrutura
+
+O modelo representa uma hierarquia corporativa onde grupos empresariais controlam empresas, empresas empregam funcionários e funcionários podem ter dependentes cadastrados. Todas as cardinalidades mínimas do lado "muitos" são zero, indicando que é possível ter grupos sem empresas, empresas sem empregados e empregados sem dependentes. As cardinalidades (1,1) indicam participação total e exclusiva nas entidades do lado "muitos".

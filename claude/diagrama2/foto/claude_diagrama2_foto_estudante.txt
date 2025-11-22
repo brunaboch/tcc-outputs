@@ -1,0 +1,68 @@
+# Descrição do Diagrama de Banco de Dados
+
+Este diagrama mostra como diferentes informações estão organizadas e conectadas em um sistema de banco de dados. Vou descrever cada parte de cima para baixo.
+
+## Primeira Entidade: GRUPO
+
+No topo do diagrama está um retângulo com a palavra "GRUPO". Este retângulo representa um conjunto de informações sobre grupos.
+
+O GRUPO possui dois atributos, que são as informações guardadas sobre ele:
+- À esquerda, há um círculo preenchido conectado ao retângulo, indicando o atributo "código". O círculo preenchido significa que este é um identificador único obrigatório.
+- À direita, há um círculo vazio conectado ao retângulo, indicando o atributo "nome".
+
+## Relacionamento entre GRUPO e EMPRESA
+
+Abaixo do GRUPO, há um losango (forma de diamante) que conecta GRUPO com a próxima entidade. Este losango representa um relacionamento entre as duas entidades.
+
+Na conexão entre GRUPO e o losango está escrito "1,1", o que significa que cada grupo está relacionado com exatamente uma empresa.
+
+Na conexão entre o losango e EMPRESA está escrito "0,n", o que significa que uma empresa pode estar relacionada com zero ou vários grupos.
+
+## Segunda Entidade: EMPRESA
+
+Abaixo está outro retângulo com a palavra "EMPRESA", representando informações sobre empresas.
+
+A EMPRESA possui dois atributos:
+- À esquerda, um círculo preenchido com "número da empresa", que é seu identificador único obrigatório.
+- À direita, um círculo vazio com "nome".
+
+## Relacionamento entre EMPRESA e EMPREGADO
+
+Novamente há um losango conectando EMPRESA com a próxima entidade.
+
+A cardinalidade "1,1" aparece na conexão com EMPRESA, indicando que cada empresa tem exatamente um relacionamento.
+
+A cardinalidade "0,n" aparece na conexão com EMPREGADO, indicando que podem existir zero ou vários empregados relacionados.
+
+## Terceira Entidade: EMPREGADO
+
+Outro retângulo com a palavra "EMPREGADO" representa as informações sobre funcionários.
+
+O EMPREGADO possui três atributos:
+- À esquerda, um círculo preenchido com "número do empregado", seu identificador único obrigatório.
+- Abaixo, um círculo vazio com "nome".
+
+## Relacionamento entre EMPREGADO e DEPENDENTE
+
+Do lado direito do EMPREGADO, há um losango que o conecta com a última entidade.
+
+A cardinalidade "1,1" está na conexão com EMPREGADO, significando que cada empregado tem exatamente um relacionamento.
+
+A cardinalidade "0,n" está na conexão com DEPENDENTE, indicando que um empregado pode ter zero ou vários dependentes.
+
+## Quarta Entidade: DEPENDENTE
+
+No canto direito do diagrama está o último retângulo com a palavra "DEPENDENTE".
+
+O DEPENDENTE possui dois atributos:
+- Um círculo preenchido com "número de sequência", que é seu identificador único obrigatório.
+- Um círculo vazio com "nome".
+
+## Resumo da Estrutura
+
+Em resumo, este diagrama mostra uma hierarquia de informações:
+- Grupos contêm empresas
+- Empresas contêm empregados
+- Empregados podem ter dependentes
+
+Cada relacionamento indica quantas entidades podem estar conectadas: algumas conexões são obrigatórias (1,1) enquanto outras permitem múltiplas conexões ou nenhuma (0,n).

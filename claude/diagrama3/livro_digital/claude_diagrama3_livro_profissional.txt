@@ -1,0 +1,53 @@
+# Descrição do Diagrama Entidade-Relacionamento
+
+## Entidades Principais
+
+O diagrama apresenta seis entidades:
+
+1. **EMPREGADO** com atributos: código (chave primária, indicado por círculo preenchido), nome e tipo de empregado.
+
+2. **DEPARTAMENTO** com atributos: código (chave primária) e nome.
+
+3. **SECRETÁRIA** sem atributos específicos visíveis além da herança.
+
+4. **MOTORISTA** com atributo carteira de habilitação.
+
+5. **ENGENHEIRO** sem atributos específicos além da herança.
+
+6. **PROCESSADOR DE TEXTOS** com atributos: código (chave primária) e nome.
+
+7. **PROJETO** com atributos: código (chave primária) e nome.
+
+## Relacionamentos
+
+### Relacionamento LOTAÇÃO
+- Conecta EMPREGADO e DEPARTAMENTO
+- Cardinalidade: zero ou n no lado de EMPREGADO, representando que um empregado pode estar lotado em nenhum ou vários departamentos
+- Cardinalidade: um para um no lado de DEPARTAMENTO, indicando que um departamento possui exatamente um empregado como responsável ou referência
+
+### Relacionamento DOMÍNIO
+- Conecta SECRETÁRIA e PROCESSADOR DE TEXTOS
+- Cardinalidade: um para n no lado de SECRETÁRIA, indicando que uma secretária domina um ou mais processadores de textos
+- Cardinalidade: zero ou n no lado de PROCESSADOR DE TEXTOS, mostrando que um processador de textos pode ser dominado por nenhuma ou várias secretárias
+
+### Relacionamento PARTICIPAÇÃO
+- Conecta ENGENHEIRO e PROJETO
+- Cardinalidade: zero para n no lado de ENGENHEIRO, indicando que um engenheiro pode participar de nenhum ou vários projetos
+- Cardinalidade: zero para n no lado de PROJETO, mostrando que um projeto pode ter nenhum ou vários engenheiros participando
+
+### Relacionamento RAMO DA ENGENHARIA
+- Conecta ENGENHEIRO (implicitamente através da especialização) com cardinalidade um para um, representando provavelmente uma classificação ou categoria de especialização do engenheiro
+
+## Hierarquia de Generalização-Especialização
+
+A entidade EMPREGADO possui uma generalização representada pelo símbolo "P", que indica participação parcial. Dela derivam três especializações:
+
+- **SECRETÁRIA**: subclasse de EMPREGADO
+- **MOTORISTA**: subclasse de EMPREGADO  
+- **ENGENHEIRO**: subclasse de ENGENHEIRO
+
+A participação parcial indica que nem todo empregado precisa ser classificado como secretária, motorista ou engenheiro, podendo existir empregados que não se enquadram nessas especializações.
+
+## Observações de Modelagem
+
+A hierarquia utiliza especialização com participação parcial, permitindo flexibilidade na classificação dos empregados. Os atributos específicos de cada subclasse (como carteira de habilitação para MOTORISTA) demonstram características próprias de cada tipo de empregado especializado.

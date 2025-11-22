@@ -1,0 +1,78 @@
+# Descrição do Diagrama de Banco de Dados
+
+Este diagrama mostra a estrutura de um sistema que organiza informações sobre empregados de uma empresa e seus departamentos. Vou explicar cada parte do diagrama de forma clara e sequencial.
+
+## Entidade Principal: EMPREGADO
+
+No centro superior do diagrama, temos a entidade EMPREGADO, representada por um retângulo. Esta entidade possui os seguintes atributos:
+
+- **nome**: um círculo conectado à entidade, representando o nome do empregado
+- **CPF**: outro círculo, representando o CPF do empregado (destacado como atributo chave ou identificador único)
+- **código**: um círculo preenchido (destacado em preto), indicando que este é outro identificador importante
+- **tipo de empregado**: um círculo especial que se divide, mostrando que um empregado pode ser de diferentes tipos
+
+## Relacionamento LOTAÇÃO
+
+EMPREGADO se conecta à entidade DEPARTAMENTO através de um relacionamento chamado LOTAÇÃO, representado por um losango. Este relacionamento indica:
+
+- Cardinalidade (0,n) do lado do empregado: significa que zero ou vários empregados podem estar lotados em um departamento
+- Cardinalidade (1,1) do lado do departamento: significa que cada lotação está vinculada a exatamente um departamento
+
+## Entidade DEPARTAMENTO
+
+À direita superior, temos DEPARTAMENTO, também um retângulo, com os atributos:
+
+- **código**: círculo preenchido (identificador único)
+- **nome**: círculo simples com o nome do departamento
+
+## Especialização de EMPREGADO
+
+A partir de EMPREGADO, há uma estrutura triangular marcada com a letra "p" (indicando especialização parcial), que divide os empregados em três tipos especializados:
+
+### 1. SECRETÁRIA (lado esquerdo)
+
+Retângulo com cardinalidade (1,n), conectado a:
+
+- **Relacionamento DOMÍNIO** (losango) com cardinalidade (0,n)
+- **PROCESSADOR DE TEXTOS** (retângulo abaixo) com atributos:
+  - código (círculo preenchido)
+  - nome (círculo simples)
+
+Isso significa que uma secretária pode dominar zero ou vários processadores de textos.
+
+### 2. MOTORISTA (centro)
+
+Retângulo simples com um atributo:
+
+- **carteira de habilitação**: círculo conectado diretamente
+
+### 3. ENGENHEIRO (lado direito)
+
+Retângulo com cardinalidade (0,n), que se conecta a:
+
+- Um círculo marcado como **CREA** (registro profissional)
+- **Relacionamento PARTICIPAÇÃO** (losango) com cardinalidade (0,n)
+- **PROJETO** (retângulo abaixo) com atributos:
+  - código (círculo preenchido)
+  - nome (círculo simples)
+
+Paralelamente, existe:
+
+- **Relacionamento sem nome** com cardinalidade (1,1) conectando a:
+- **RAMO DA ENGENHARIA** (retângulo) com atributos:
+  - código (círculo preenchido)
+  - nome (círculo simples)
+
+Isso indica que um engenheiro deve estar vinculado a exatamente um ramo da engenharia e pode participar de zero ou vários projetos.
+
+## Resumo da Estrutura
+
+O diagrama mostra que:
+
+- Todos os empregados têm informações básicas (nome, CPF, código)
+- Cada empregado está lotado em um departamento
+- Empregados podem ser de tipos específicos: secretárias, motoristas ou engenheiros
+- Cada tipo especializado possui características e relacionamentos próprios
+- Secretárias se relacionam com processadores de textos
+- Motoristas têm carteira de habilitação
+- Engenheiros pertencem a um ramo da engenharia e podem participar de projetos

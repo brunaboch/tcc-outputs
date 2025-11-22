@@ -1,0 +1,26 @@
+# Descrição do Diagrama Conceitual
+
+O diagrama apresenta um relacionamento entre duas entidades: Produto e Tipo de produto.
+
+## Entidades
+
+**Entidade Produto:**
+Localizada à esquerda do diagrama, possui os seguintes atributos:
+- preço (atributo simples)
+- descrição (atributo simples)
+- código (atributo identificador, representado com notação de chave primária)
+
+**Entidade Tipo de produto:**
+Localizada à direita do diagrama, possui os seguintes atributos:
+- descrição (atributo simples)
+- código (atributo identificador, representado com notação de chave primária)
+
+## Relacionamento
+
+As entidades estão conectadas por um relacionamento com cardinalidade n:1 (muitos para um), onde:
+- Um produto está associado a exatamente um tipo de produto (cardinalidade 1 no lado de Tipo de produto)
+- Um tipo de produto pode estar associado a vários produtos (cardinalidade n no lado de Produto)
+
+## Interpretação
+
+Este modelo representa uma hierarquia de classificação onde múltiplos produtos podem pertencer a uma mesma categoria ou tipo. A cardinalidade n:1 indica que cada produto deve obrigatoriamente estar vinculado a um tipo, enquanto cada tipo pode agrupar zero ou mais produtos. Na implementação física, a chave primária de Tipo de produto seria propagada como chave estrangeira na tabela Produto.

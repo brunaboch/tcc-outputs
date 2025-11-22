@@ -1,0 +1,78 @@
+# Descrição do Diagrama Entidade-Relacionamento
+
+## Entidades e Atributos
+
+### EMPREGADO
+Entidade principal do diagrama contendo os seguintes atributos:
+- nome (atributo simples)
+- CPF (atributo simples)
+- código (atributo identificador, representado com marcador preenchido)
+- tipo de empregado (atributo simples)
+
+### DEPARTAMENTO
+Entidade relacionada à estrutura organizacional com atributos:
+- código (atributo identificador)
+- nome (atributo simples)
+
+### SECRETÁRIA
+Especialização de EMPREGADO contendo atributos específicos:
+- código (atributo identificador)
+- nome (atributo simples)
+
+### MOTORISTA
+Especialização de EMPREGADO com atributos:
+- carteira de habilitação (atributo simples)
+
+### ENGENHEIRO
+Especialização de EMPREGADO contendo atributos:
+- código (atributo identificador)
+- nome (atributo simples)
+- CREA (atributo simples)
+
+### DOMÍNIO
+Entidade fraca dependente de SECRETÁRIA
+
+### PROCESSADOR DE TEXTOS
+Entidade relacionada a DOMÍNIO com atributos:
+- código (atributo identificador)
+- nome (atributo simples)
+
+### RAMO DA ENGENHARIA
+Entidade com atributos:
+- código (atributo identificador)
+- nome (atributo simples)
+
+### PARTICIPAÇÃO
+Entidade associativa (relacionamento transformado em entidade)
+
+### PROJETO
+Entidade com atributos:
+- código (atributo identificador)
+- nome (atributo simples)
+
+## Relacionamentos
+
+### LOTAÇÃO
+Relacionamento entre EMPREGADO e DEPARTAMENTO com cardinalidades:
+- EMPREGADO para LOTAÇÃO: (0,n) - um empregado pode estar lotado em zero ou vários departamentos
+- LOTAÇÃO para DEPARTAMENTO: (1,1) - cada lotação está associada a exatamente um departamento
+
+### Especialização/Generalização ρ (rho)
+Relacionamento de especialização conectando EMPREGADO às suas subclasses SECRETÁRIA, MOTORISTA e ENGENHEIRO. Trata-se de uma hierarquia de generalização-especialização.
+
+### DOMÍNIO
+Relacionamento identificador entre SECRETÁRIA e DOMÍNIO com cardinalidades:
+- SECRETÁRIA para DOMÍNIO: (1,n) - uma secretária domina um ou mais processadores
+- DOMÍNIO para PROCESSADOR DE TEXTOS: (0,n) - caracteriza relacionamento de entidade fraca
+
+### Relacionamento entre ENGENHEIRO e RAMO DA ENGENHARIA
+Cardinalidade (1,1) indicando que cada engenheiro está associado a exatamente um ramo da engenharia.
+
+### PARTICIPAÇÃO
+Relacionamento entre ENGENHEIRO e PROJETO com cardinalidades:
+- ENGENHEIRO para PARTICIPAÇÃO: (0,n) - um engenheiro pode participar de zero ou vários projetos
+- PARTICIPAÇÃO para PROJETO: (0,n) - um projeto pode ter zero ou vários engenheiros participantes
+
+## Observações sobre a Modelagem
+
+A estrutura apresenta uma hierarquia de especialização onde EMPREGADO é a superclasse com três subclasses disjuntas: SECRETÁRIA, MOTORISTA e ENGENHEIRO. Cada especialização possui atributos e relacionamentos específicos ao seu domínio funcional. O diagrama utiliza notação de Peter Chen com cardinalidades mínimas e máximas explicitadas.
