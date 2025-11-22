@@ -1,0 +1,81 @@
+O diagrama conceitual representa a estrutura de um sistema organizacional composto por **grupos**, **empresas**, **empregados** e seus **dependentes**, mostrando as entidades, atributos e relacionamentos, além das cardinalidades entre elas.
+
+---
+
+### Entidades e atributos
+
+1. **GRUPO**
+
+   * **Atributos**:
+
+     * `código` (chave primária, representado pelo círculo preenchido)
+     * `nome` (atributo simples)
+   * Cada grupo é identificado de forma única por seu código.
+
+2. **EMPRESA**
+
+   * **Atributos**:
+
+     * `número da empresa` (chave primária)
+     * `nome`
+   * Representa uma empresa vinculada a um grupo.
+
+3. **EMPREGADO**
+
+   * **Atributos**:
+
+     * `número do empregado` (chave primária)
+     * `nome`
+   * Cada empregado está associado a uma empresa e pode possuir dependentes.
+
+4. **DEPENDENTE**
+
+   * **Atributos**:
+
+     * `número de sequência` (chave primária)
+     * `nome`
+   * Representa as pessoas dependentes de um empregado.
+
+---
+
+### Relacionamentos e cardinalidades
+
+1. **GRUPO – EMPRESA**
+
+   * **Cardinalidade**: um grupo possui **zero ou muitas** empresas (0,n), enquanto cada empresa pertence a **um e somente um** grupo (1,1).
+   * Interpretação: uma empresa não pode existir sem estar associada a um grupo, mas um grupo pode não ter empresas vinculadas.
+
+2. **EMPRESA – EMPREGADO**
+
+   * **Cardinalidade**: uma empresa possui **zero ou muitos** empregados (0,n), e cada empregado trabalha em **uma única** empresa (1,1).
+   * Interpretação: um empregado deve estar vinculado a uma empresa específica, mas uma empresa pode ainda não ter funcionários registrados.
+
+3. **EMPREGADO – DEPENDENTE**
+
+   * **Cardinalidade**: um empregado pode ter **zero ou muitos** dependentes (0,n), enquanto cada dependente está associado a **um e somente um** empregado (1,1).
+   * Interpretação: o relacionamento é obrigatório do lado do dependente, indicando que o dependente não existe no modelo sem um empregado relacionado.
+
+---
+
+### Estrutura hierárquica
+
+O diagrama mostra uma hierarquia de dependência entre entidades:
+
+* **GRUPO** → contém **EMPRESA**
+* **EMPRESA** → contém **EMPREGADO**
+* **EMPREGADO** → contém **DEPENDENTE**
+
+Essa estrutura reflete uma relação de subordinação e pertencimento entre as entidades, onde cada nível depende logicamente do anterior.
+
+---
+
+### Observações técnicas
+
+* As chaves primárias são indicadas pelos **círculos preenchidos** conectados aos atributos identificadores.
+* As cardinalidades (por exemplo, (1,1), (0,n)) estão explicitadas junto aos losangos dos relacionamentos.
+* O modelo apresenta relacionamentos binários e não inclui relacionamentos ternários ou atributos compostos.
+* O diagrama enfatiza integridade referencial: entidades em níveis inferiores (como EMPREGADO e DEPENDENTE) dependem da existência das entidades superiores (EMPRESA e GRUPO).
+
+---
+
+Deseja que eu gere uma **descrição alternativa no formato NVDA/Leitor de Tela**, com foco em navegação sequencial (por exemplo, “iniciando pela entidade Grupo...”), para uso direto em acessibilidade?

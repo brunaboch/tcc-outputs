@@ -1,0 +1,149 @@
+A seguir está uma **descrição técnica, detalhada e acessível para leitores de tela**, baseada exclusivamente no conteúdo visível no diagrama conceitual fornecido.
+
+---
+
+# **Descrição e explicação técnica do diagrama conceitual**
+
+O diagrama apresenta um modelo conceitual envolvendo **empregados**, **departamentos**, suas **lotações**, além de uma **especialização** que distingue três tipos de empregados: **Secretária**, **Motorista** e **Engenheiro**. A seguir, descrevo cada componente, seus atributos e relacionamentos, seguindo a ordem estrutural do diagrama.
+
+---
+
+## **1. Entidade EMPREGADO**
+
+Representada por um retângulo com o nome *EMPREGADO*.
+
+### **Atributos de EMPREGADO**
+
+* **código**: atributo chave (identificado por preenchimento em preto).
+* **nome**: atributo simples.
+* **CPF**: atributo simples.
+* **tipo de empregado**: atributo que parece associar-se à especialização que surge abaixo.
+
+### **Relacionamento com DEPARTAMENTO**
+
+EMPREGADO participa do relacionamento **LOTAÇÃO**, do lado com cardinalidade **(0,n)**, indicando que:
+
+* um empregado pode estar lotado em **zero ou muitos departamentos**.
+
+---
+
+## **2. Entidade DEPARTAMENTO**
+
+Representada por um retângulo com os atributos:
+
+* **código**: chave da entidade.
+* **nome**: atributo simples.
+
+### **Participação no relacionamento LOTAÇÃO**
+
+Cardinalidade do lado de DEPARTAMENTO é **(1,1)**, indicando:
+
+* cada departamento possui **ao menos e no máximo um empregado responsável por sua lotação**.
+
+---
+
+## **3. Relacionamento LOTAÇÃO**
+
+Representado por um losango entre EMPREGADO e DEPARTAMENTO.
+
+* Cardinalidade do lado de EMPREGADO: **(0,n)**
+* Cardinalidade do lado de DEPARTAMENTO: **(1,1)**
+
+Interpretação:
+
+* Um departamento deve ter **exatamente um** empregado lotado.
+* Um empregado pode estar associado a **diversos departamentos**, ou a nenhum.
+
+---
+
+## **4. Especialização de EMPREGADO (P – particionamento)**
+
+Abaixo de EMPREGADO há um triângulo rotulado com a letra **p**, indicando **partição** dos empregados em subclasses mutuamente exclusivas.
+
+As subclasses são:
+
+1. **SECRETÁRIA**
+2. **MOTORISTA**
+3. **ENGENHEIRO**
+
+Cada empregado pertence **exatamente a uma** dessas três subclasses.
+
+---
+
+# **5. Subclasse SECRETÁRIA**
+
+Entidade derivada de EMPREGADO.
+
+### **Relacionamento DOMÍNIO**
+
+* Uma secretária participa de **DOMÍNIO** com cardinalidade **(1,n)** em direção a SECRETÁRIA, e **(0,n)** em direção à entidade associada.
+* O relacionamento liga SECRETÁRIA à entidade **PROCESSADOR DE TEXTOS**.
+
+### **Entidade PROCESSADOR DE TEXTOS**
+
+Atributos:
+
+* **código** (chave)
+* **nome**
+
+### Interpretação
+
+Uma secretária pode dominar **um ou vários processadores de texto**, enquanto cada processador pode ser dominado por **nenhuma ou várias secretárias**.
+
+---
+
+# **6. Subclasse MOTORISTA**
+
+Possui o atributo adicional:
+
+* **carteira de habilitação**.
+
+Não há relacionamentos adicionais associados no diagrama.
+
+---
+
+# **7. Subclasse ENGENHEIRO**
+
+Possui o atributo adicional:
+
+* **CREA** (registro profissional).
+
+### **Relacionamento PARTICIPAÇÃO**
+
+O engenheiro participa do relacionamento **PARTICIPAÇÃO** com cardinalidade **(0,n)**, conectando-o à entidade **PROJETO**.
+
+### **Entidade PROJETO**
+
+Atributos:
+
+* **código** (chave)
+* **nome**
+
+### **Relação com RAMO DA ENGENHARIA**
+
+O relacionamento PARTICIPAÇÃO se conecta também à entidade **RAMO DA ENGENHARIA**, com cardinalidade **(1,1)** do lado de RAMO.
+
+### **Entidade RAMO DA ENGENHARIA**
+
+Atributos:
+
+* **código** (chave)
+* **nome**
+
+### Interpretação geral do relacionamento PARTICIPAÇÃO
+
+* Um engenheiro pode participar de **zero ou vários projetos**.
+* Cada participação associa obrigatoriamente um **ramo da engenharia** específico ao projeto.
+* Um ramo da engenharia deve estar presente na participação com cardinalidade **(1,1)**.
+
+---
+
+# **Resumo estrutural**
+
+* EMPREGADO é a entidade central, especializada em SECRETÁRIA, MOTORISTA e ENGENHEIRO.
+* EMPREGADO se relaciona com DEPARTAMENTO via LOTAÇÃO.
+* SECRETÁRIA domina PROCESSADORES DE TEXTOS.
+* MOTORISTA possui apenas um atributo adicional.
+* ENGENHEIRO participa de PROJETOS e cada participação está vinculada a um RAMO DA ENGENHARIA.
+
+---

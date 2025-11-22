@@ -1,0 +1,89 @@
+O diagrama representa um modelo conceitual de banco de dados que descreve informações sobre empregados e sua relação com departamentos, funções específicas e projetos. A seguir, está a explicação detalhada e acessível do conteúdo visual do diagrama:
+
+---
+
+### **Entidades principais**
+
+1. **EMPREGADO**
+   Representa cada funcionário da organização.
+
+   * **Atributos:** nome, CPF e código (chave identificadora).
+   * Um empregado está relacionado a um **departamento** por meio do relacionamento “LOTAÇÃO”.
+
+2. **DEPARTAMENTO**
+   Representa as divisões internas da empresa.
+
+   * **Atributos:** código e nome.
+   * Cada departamento pode ter vários empregados lotados nele.
+   * A cardinalidade do relacionamento mostra que um departamento pode ter **zero ou muitos empregados (0,n)**, enquanto cada empregado deve estar lotado em **um e apenas um departamento (1,1)**.
+
+3. **SECRETÁRIA**, **MOTORISTA** e **ENGENHEIRO**
+   São **especializações** do tipo **EMPREGADO**, indicando que um empregado pode ser um desses três tipos.
+
+   * Essa relação é representada por um triângulo rotulado com a letra “P”, indicando uma **generalização ou especialização**.
+
+---
+
+### **Detalhes das especializações**
+
+* **SECRETÁRIA**
+
+  * Está ligada ao relacionamento **DOMÍNIO**, que conecta **SECRETÁRIA** com **PROCESSADOR DE TEXTOS**.
+  * O relacionamento **DOMÍNIO** indica que uma secretária domina **um ou mais processadores de textos (1,n)**, e cada processador pode ser dominado por **nenhuma ou várias secretárias (0,n)**.
+
+* **MOTORISTA**
+
+  * Possui um atributo adicional: **carteira de habilitação**.
+  * Este atributo identifica a permissão para dirigir, específica de cada motorista.
+
+* **ENGENHEIRO**
+
+  * Possui o atributo **CREA** (registro profissional).
+  * Está ligado a dois relacionamentos:
+
+    * **RAMO DA ENGENHARIA**, que indica a área em que o engenheiro atua.
+
+      * Cada engenheiro está associado a **um e apenas um ramo (1,1)**, enquanto um ramo pode ter **zero ou vários engenheiros (0,n)**.
+    * **PARTICIPAÇÃO**, que relaciona engenheiros e **PROJETOS**.
+
+      * Um engenheiro pode participar de **zero ou vários projetos (0,n)**, e cada projeto pode ter **um ou mais engenheiros (1,n)** envolvidos.
+
+---
+
+### **Outras entidades complementares**
+
+* **PROCESSADOR DE TEXTOS**
+
+  * Representa os programas de edição de texto que as secretárias dominam.
+  * Atributos: código e nome.
+
+* **RAMO DA ENGENHARIA**
+
+  * Representa a área específica da engenharia em que o engenheiro atua.
+  * Atributos: código e nome.
+
+* **PROJETO**
+
+  * Representa um trabalho ou empreendimento em que os engenheiros estão envolvidos.
+  * Atributos: código e nome.
+
+---
+
+### **Resumo das relações**
+
+* **Empregado** pertence a **um departamento** por meio da **LOTAÇÃO**.
+* **Empregado** pode ser **Secretária, Motorista ou Engenheiro** (especialização).
+* **Secretária** domina um ou mais **Processadores de textos**.
+* **Motorista** possui **carteira de habilitação**.
+* **Engenheiro** possui **CREA**, atua em um **Ramo da engenharia** e pode participar de **Projetos**.
+
+---
+
+### **Interpretação visual (descrição acessível)**
+
+O diagrama é composto por retângulos (representando entidades como Empregado, Departamento, Projeto), losangos (representando relacionamentos como Lotação, Domínio, Participação) e linhas que conectam essas formas, com pequenos números entre parênteses indicando as quantidades mínimas e máximas de relacionamentos (por exemplo, “(0,n)” significa zero ou muitos).
+Há também um triângulo no centro ligando a entidade **EMPREGADO** às três especializações (**Secretária**, **Motorista** e **Engenheiro**), representando que cada empregado é de apenas um desses tipos.
+
+---
+
+Deseja que eu gere uma **versão em texto estruturado**, pronta para leitura automática (por exemplo, em formato JSON acessível para leitores de tela)? Isso pode facilitar a navegação por softwares de acessibilidade.

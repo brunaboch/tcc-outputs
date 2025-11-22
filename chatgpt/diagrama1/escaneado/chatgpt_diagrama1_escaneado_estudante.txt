@@ -1,0 +1,50 @@
+Segue uma descrição detalhada e acessível do diagrama apresentado na imagem:
+
+---
+
+**Descrição do diagrama e explicação acessível**
+
+O diagrama mostra duas **entidades** (ou conjuntos de informações principais): **Produto** e **Tipo de produto**.
+Essas duas entidades estão **ligadas por um relacionamento**, que indica como elas se conectam entre si.
+
+### 1. Entidade “Produto”
+
+A entidade **Produto** representa os itens que são vendidos ou fabricados.
+Ela possui três **atributos** (ou informações que descrevem o produto):
+
+* **Código**: é o identificador único de cada produto, ou seja, um número ou código que diferencia um produto de outro. No diagrama, esse atributo aparece com um **círculo preenchido**, o que indica que ele é a **chave primária** (a principal forma de identificar o produto).
+* **Descrição**: é um texto que explica o que é o produto.
+* **Preço**: mostra quanto custa o produto.
+
+### 2. Entidade “Tipo de produto”
+
+A entidade **Tipo de produto** serve para classificar os produtos. Por exemplo, tipos de produto podem ser “alimentos”, “bebidas”, “eletrônicos”, etc.
+Ela também tem dois **atributos**:
+
+* **Código**: é o identificador único de cada tipo de produto (também mostrado com um **círculo preenchido**, indicando que é a **chave primária**).
+* **Descrição**: um texto que explica o tipo de produto.
+
+### 3. Relacionamento entre as entidades
+
+Entre **Produto** e **Tipo de produto** há um **losango**, que representa o **relacionamento** entre elas.
+Ao lado de **Produto**, está indicado o número **n**, e ao lado de **Tipo de produto**, o número **1**.
+
+Isso significa que:
+
+* **Um tipo de produto** pode estar relacionado com **vários produtos**.
+* Mas **cada produto** pertence a **apenas um tipo de produto**.
+
+Em outras palavras, é um relacionamento de **um para muitos** (1:N): um tipo de produto tem muitos produtos, mas cada produto tem apenas um tipo.
+
+---
+
+**Resumo em linguagem simples:**
+
+* O diagrama mostra que os produtos são organizados por tipo.
+* Cada produto tem um código, uma descrição e um preço.
+* Cada tipo de produto tem um código e uma descrição.
+* Um tipo pode ter vários produtos, mas um produto só pode pertencer a um tipo.
+
+---
+
+Deseja que eu gere essa explicação em formato **.txt** acessível para leitores de tela (por exemplo, para incluir no seu TCC ou em material didático)?

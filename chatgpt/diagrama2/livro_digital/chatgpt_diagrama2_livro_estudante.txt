@@ -1,0 +1,105 @@
+Aqui vai uma explicação completa e acessível sobre o diagrama mostrado na imagem:
+
+---
+
+### Explicação do diagrama conceitual
+
+O diagrama apresenta quatro **entidades principais**: **GRUPO**, **EMPRESA**, **EMPREGADO** e **DEPENDENTE**.
+Cada uma delas possui **atributos** (características) e se relaciona com outras entidades.
+A seguir, a explicação detalhada de cada parte.
+
+---
+
+#### 1. Entidade **GRUPO**
+
+* Representada por um retângulo com o nome “GRUPO”.
+* Possui dois **atributos**:
+
+  * **código** (representado por um círculo preto), que é o **identificador único** do grupo.
+  * **nome**, mostrado com um círculo branco, que indica que **não é identificador** (apenas uma informação adicional).
+* Um grupo pode estar associado a **várias empresas**, mas cada empresa pertence a **um único grupo**.
+
+  * Essa ligação é indicada pela **ligação (1,1)** do lado do grupo e **(0,n)** do lado da empresa.
+
+Em resumo:
+
+> Um grupo pode ter muitas empresas, mas uma empresa pertence a apenas um grupo.
+
+---
+
+#### 2. Entidade **EMPRESA**
+
+* Representada por um retângulo com o nome “EMPRESA”.
+* Atributos:
+
+  * **número da empresa** (círculo preto): identificador único da empresa.
+  * **nome** (círculo branco): nome da empresa.
+* Cada empresa pode ter **vários empregados**, mas cada empregado trabalha em **apenas uma empresa**.
+
+  * Isso é mostrado pela ligação **(1,1)** do lado da empresa e **(0,n)** do lado do empregado.
+
+Em resumo:
+
+> Uma empresa pode ter muitos empregados, mas cada empregado pertence a uma única empresa.
+
+---
+
+#### 3. Entidade **EMPREGADO**
+
+* Representada por um retângulo com o nome “EMPREGADO”.
+* Atributos:
+
+  * **número do empregado** (círculo preto): identificador único do empregado.
+  * **nome** (círculo branco): nome do empregado.
+* O empregado está relacionado à entidade **DEPENDENTE**, indicando que um empregado pode ter dependentes.
+
+A relação entre **EMPREGADO** e **DEPENDENTE** é:
+
+* Um empregado pode ter **nenhum ou vários dependentes**.
+* Cada dependente está associado a **um único empregado**.
+
+  * Essa regra é mostrada pelos números **(1,1)** do lado do empregado e **(0,n)** do lado do dependente.
+
+Em resumo:
+
+> Um empregado pode ter vários dependentes, mas cada dependente pertence a um único empregado.
+
+---
+
+#### 4. Entidade **DEPENDENTE**
+
+* Representada por um retângulo com o nome “DEPENDENTE”.
+* Atributos:
+
+  * **número de sequência** (círculo preto): é o identificador único do dependente, provavelmente usado junto com o número do empregado para distinguir cada dependente.
+  * **nome** (círculo branco): nome do dependente.
+
+---
+
+### Resumo geral das relações
+
+* **GRUPO → EMPRESA:**
+  Um grupo pode ter várias empresas.
+  Cada empresa pertence a um único grupo.
+
+* **EMPRESA → EMPREGADO:**
+  Uma empresa pode ter vários empregados.
+  Cada empregado trabalha em uma única empresa.
+
+* **EMPREGADO → DEPENDENTE:**
+  Um empregado pode ter vários dependentes.
+  Cada dependente pertence a um único empregado.
+
+---
+
+### Descrição textual simples da estrutura completa
+
+O diagrama mostra uma organização composta por grupos.
+Cada grupo possui um código e um nome, e pode ter várias empresas associadas.
+Cada empresa tem um número e um nome, e pode empregar muitas pessoas.
+Cada empregado tem um número e um nome, e pode ter dependentes (como filhos, cônjuges etc.).
+Os dependentes também têm um número de sequência e um nome, e estão sempre ligados a um único empregado.
+
+---
+
+Quer que eu converta essa explicação em um formato mais estruturado, como texto alternativo (alt-text) descritivo para usar junto com a imagem em um documento acessível?

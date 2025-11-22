@@ -1,0 +1,80 @@
+A seguir está uma **descrição técnica e acessível** do diagrama conceitual apresentado na imagem. O texto foi elaborado para leitura por leitores de tela e para um público que já possui conhecimento na área de banco de dados.
+
+---
+
+## **Descrição e interpretação técnica do diagrama**
+
+O diagrama representa quatro entidades principais — **GRUPO**, **EMPRESA**, **EMPREGADO** e **DEPENDENTE** — organizadas de forma hierárquica, com relacionamentos de cardinalidade bem definidos entre elas.
+
+### **1. Entidade GRUPO**
+
+* A entidade **GRUPO** aparece no topo da hierarquia.
+* Possui pelo menos um atributo mostrado:
+
+  * **código** (indicado por um ponto preenchido, sugerindo chave primária).
+  * **nome** (representado por um círculo vazio, atributo simples não identificador).
+* O relacionamento abaixo dela indica uma cardinalidade **(1,1)** do lado do GRUPO e **(0,n)** do lado da EMPRESA.
+
+  * Isso significa que **cada GRUPO está associado obrigatoriamente a uma ou mais EMPRESAS**.
+  * Por outro lado, **cada EMPRESA pertence a exatamente um GRUPO**.
+
+### **2. Entidade EMPRESA**
+
+* Logo abaixo do GRUPO está a entidade **EMPRESA**.
+* Atributos apresentados:
+
+  * **número da empresa** (ponto preenchido — chave primária).
+  * **nome** (círculo vazio — atributo simples).
+* A EMPRESA participa de dois relacionamentos:
+
+  1. Com GRUPO (descrito acima).
+  2. Com EMPREGADO:
+
+     * Cardinalidade da EMPRESA para EMPREGADO: **(1,1)**.
+     * Cardinalidade do EMPREGADO para EMPRESA: **(0,n)**.
+     * Interpretação:
+
+       * **Cada EMPRESA possui de zero a muitos EMPREGADOS.**
+       * **Cada EMPREGADO deve estar associado a exatamente uma EMPRESA.**
+
+### **3. Entidade EMPREGADO**
+
+* Localizada abaixo da EMPRESA.
+* Atributos identificáveis:
+
+  * **número do empregado** (ponto preenchido — chave primária).
+  * **nome** (círculo vazio — atributo simples).
+* A entidade EMPREGADO se relaciona com:
+
+  * A EMPRESA (relação já explicada).
+  * A entidade DEPENDENTE:
+
+    * Cardinalidade:
+
+      * Do EMPREGADO para DEPENDENTE: **(1,1)**.
+      * Do DEPENDENTE para EMPREGADO: **(0,n)**.
+    * Interpretação:
+
+      * **Cada DEPENDENTE está associado obrigatoriamente a um único EMPREGADO.**
+      * **Cada EMPREGADO pode ter zero ou vários DEPENDENTES.**
+
+### **4. Entidade DEPENDENTE**
+
+* Localizada na extremidade direita do diagrama.
+* Atributos apresentados:
+
+  * **número de sequência** (ponto preenchido — chave primária, provavelmente identificador composto junto ao número do empregado).
+  * **nome** (círculo vazio — atributo simples).
+* Não possui outros relacionamentos além daquele com EMPREGADO.
+
+---
+
+## **Resumo estrutural**
+
+* A hierarquia segue a ordem: **GRUPO → EMPRESA → EMPREGADO → DEPENDENTE**.
+* Todos os relacionamentos são binários e representam dependência hierárquica forte.
+* As cardinalidades reforçam que:
+
+  * Um **GRUPO** consolida várias **EMPRESAS**.
+  * Cada **EMPRESA** emprega múltiplos **EMPREGADOS**.
+  * Cada **EMPREGADO** pode ter múltiplos **DEPENDENTES**.

@@ -1,0 +1,42 @@
+O diagrama conceitual representa duas entidades principais e um relacionamento entre elas.
+A seguir está a descrição detalhada e técnica, em formato acessível para leitores de tela:
+
+---
+
+**Entidades e atributos:**
+
+1. **Entidade: Produto**
+
+   * Representada por um retângulo à esquerda.
+   * Possui três atributos:
+
+     * **código** (chave primária): indicado por um círculo preenchido em preto.
+     * **descrição**: indicado por um círculo vazio, representando um atributo simples.
+     * **preço**: também indicado por um círculo vazio.
+   * Essa entidade armazena informações específicas de cada produto comercializado.
+
+2. **Entidade: Tipo de produto**
+
+   * Representada por um retângulo à direita.
+   * Possui dois atributos:
+
+     * **código** (chave primária): representado por um círculo preenchido em preto.
+     * **descrição**: representado por um círculo vazio.
+   * Essa entidade descreve a categoria ou o tipo ao qual um produto pertence (por exemplo, eletrônico, vestuário, alimento, etc.).
+
+---
+
+**Relacionamento:**
+
+* Entre as entidades **Produto** e **Tipo de produto**, há um **relacionamento** representado por um losango central, sem nome explícito na imagem.
+* A **cardinalidade** do relacionamento é **n:1**, indicando que:
+
+  * Cada **Produto** está associado a **um único Tipo de produto**.
+  * Cada **Tipo de produto** pode estar relacionado a **vários Produtos**.
+
+---
+
+**Interpretação geral:**
+
+O modelo conceitual define que um produto pertence obrigatoriamente a um tipo de produto, e que um mesmo tipo de produto pode classificar diversos produtos.
+Essa relação expressa uma dependência semântica entre os produtos e suas categorias, garantindo que todo produto seja descrito dentro de um tipo previamente cadastrado.

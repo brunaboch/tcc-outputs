@@ -1,0 +1,67 @@
+O diagrama mostra quatro entidades principais: **GRUPO**, **EMPRESA**, **EMPREGADO** e **DEPENDENTE**, além dos relacionamentos entre elas.
+A seguir, a explicação detalhada em linguagem simples e acessível:
+
+---
+
+### Entidade **GRUPO**
+
+* Representada por um retângulo com o nome “GRUPO”.
+* Possui dois atributos:
+
+  * **código**, indicado por um pequeno círculo preenchido, que representa a chave identificadora (ou seja, o atributo principal que identifica cada grupo).
+  * **nome**, indicado por um pequeno círculo vazio, que é um atributo descritivo do grupo.
+* O relacionamento entre **GRUPO** e **EMPRESA** é mostrado por um losango com cardinalidade **(1,1)** do lado de GRUPO e **(0,n)** do lado de EMPRESA.
+  Isso significa que **cada grupo possui uma ou mais empresas**, mas **cada empresa pertence exatamente a um grupo**.
+
+---
+
+### Entidade **EMPRESA**
+
+* Representada por um retângulo com o nome “EMPRESA”.
+* Possui dois atributos:
+
+  * **número da empresa**, que é o identificador único da empresa (mostrado com o círculo preenchido).
+  * **nome**, que é um atributo descritivo (círculo vazio).
+* Está conectada ao **GRUPO** e ao **EMPREGADO**.
+* O relacionamento com **EMPREGADO** tem cardinalidade **(1,1)** do lado da empresa e **(0,n)** do lado do empregado.
+  Isso quer dizer que **cada empresa emprega um ou mais empregados**, e **cada empregado trabalha em apenas uma empresa**.
+
+---
+
+### Entidade **EMPREGADO**
+
+* Representada por um retângulo com o nome “EMPREGADO”.
+* Possui dois atributos:
+
+  * **número do empregado**, indicado por um círculo preenchido, é o identificador único.
+  * **nome**, indicado por um círculo vazio, é o atributo descritivo.
+* Está relacionada tanto à **EMPRESA** quanto à **DEPENDENTE**.
+* No relacionamento com **DEPENDENTE**, a cardinalidade é **(1,1)** do lado de EMPREGADO e **(0,n)** do lado de DEPENDENTE.
+  Isso significa que **um empregado pode ter nenhum, um ou vários dependentes**, e **cada dependente está associado a exatamente um empregado**.
+
+---
+
+### Entidade **DEPENDENTE**
+
+* Representada por um retângulo com o nome “DEPENDENTE”.
+* Possui dois atributos:
+
+  * **número de sequência**, que é o identificador (círculo preenchido).
+  * **nome**, atributo descritivo (círculo vazio).
+* Está ligada apenas à entidade **EMPREGADO**, conforme explicado acima.
+
+---
+
+### Resumo das ligações
+
+1. **GRUPO** → **EMPRESA** → **EMPREGADO** → **DEPENDENTE** formam uma cadeia hierárquica.
+   O grupo contém empresas; as empresas possuem empregados; e os empregados podem ter dependentes.
+2. As cardinalidades indicam quantas ocorrências de uma entidade se relacionam com outra:
+
+   * Um grupo tem várias empresas.
+   * Uma empresa tem vários empregados.
+   * Um empregado pode ter vários dependentes.
+
+---
+
+Essa descrição segue a estrutura do diagrama, traduzindo os símbolos e conexões de forma textual e compreensível, para permitir que a pessoa entenda a organização das informações e os vínculos entre os elementos mesmo sem visualizar o diagrama.

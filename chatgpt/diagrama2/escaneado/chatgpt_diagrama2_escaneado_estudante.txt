@@ -1,0 +1,79 @@
+O diagrama conceitual mostra quatro entidades principais: **GRUPO**, **EMPRESA**, **EMPREGADO** e **DEPENDENTE**, conectadas por relacionamentos que indicam como elas se associam entre si.
+A seguir está uma descrição detalhada e acessível de cada parte do diagrama:
+
+---
+
+### 🧩 Entidade: GRUPO
+
+* **Atributos:**
+
+  * *código* (representado por um círculo preenchido, indicando que é o identificador único do grupo)
+  * *nome* (representado por um círculo vazio, indicando que é um atributo comum)
+* **Relacionamento:**
+
+  * Um **GRUPO** pode estar associado a **várias EMPRESAS**.
+  * Cada **EMPRESA** deve obrigatoriamente pertencer a **um GRUPO**.
+  * Essa relação está representada pela linha que liga GRUPO e EMPRESA, com a notação *(1,1)* junto a GRUPO e *(0,n)* junto a EMPRESA.
+
+    * *(1,1)* significa que cada empresa precisa estar em exatamente um grupo.
+    * *(0,n)* significa que um grupo pode ter nenhuma ou várias empresas.
+
+---
+
+### 🏢 Entidade: EMPRESA
+
+* **Atributos:**
+
+  * *número da empresa* (círculo preenchido — identificador da empresa)
+  * *nome* (círculo vazio — atributo comum)
+* **Relacionamento:**
+
+  * Uma **EMPRESA** pode ter **vários EMPREGADOS**, mas um **EMPREGADO** precisa estar vinculado a **uma única EMPRESA**.
+  * Essa relação é mostrada pela linha entre EMPRESA e EMPREGADO, com *(1,1)* do lado do empregado e *(0,n)* do lado da empresa.
+
+    * Isso significa que uma empresa pode ter nenhum ou vários empregados, mas cada empregado obrigatoriamente pertence a uma única empresa.
+
+---
+
+### 👤 Entidade: EMPREGADO
+
+* **Atributos:**
+
+  * *número do empregado* (círculo preenchido — identificador)
+  * *nome* (círculo vazio — atributo comum)
+* **Relacionamento:**
+
+  * Um **EMPREGADO** pode ter **nenhum ou vários DEPENDENTES**.
+  * Um **DEPENDENTE** está obrigatoriamente ligado a um **EMPREGADO**.
+  * Essa relação é representada pela linha entre EMPREGADO e DEPENDENTE, com *(1,1)* do lado do empregado e *(0,n)* do lado do dependente.
+
+    * *(1,1)* indica que o dependente precisa estar associado a um único empregado.
+    * *(0,n)* indica que um empregado pode não ter dependentes ou ter vários.
+
+---
+
+### 👶 Entidade: DEPENDENTE
+
+* **Atributos:**
+
+  * *número de sequência* (círculo preenchido — identificador)
+  * *nome* (círculo vazio — atributo comum)
+
+---
+
+### 🔗 Símbolos visuais
+
+* **Retângulos:** representam as *entidades* (como GRUPO, EMPRESA, EMPREGADO, DEPENDENTE).
+* **Losangos:** representam os *relacionamentos* entre as entidades.
+* **Círculos preenchidos:** indicam *atributos identificadores* (ou chaves primárias).
+* **Círculos vazios:** indicam *atributos comuns* (não identificadores).
+* **Notação (1,1), (0,n):** representa a *cardinalidade*, isto é, quantas ocorrências de uma entidade podem se associar à outra.
+
+---
+
+Em resumo, o diagrama mostra uma hierarquia de ligação:
+um **GRUPO** possui **EMPRESAS**,
+cada **EMPRESA** emprega **EMPREGADOS**,
+e cada **EMPREGADO** pode ter **DEPENDENTES**.
+
+O modelo reflete uma estrutura organizacional típica, em que grupos controlam empresas, empresas contratam funcionários e funcionários podem ter pessoas dependentes vinculadas a eles.

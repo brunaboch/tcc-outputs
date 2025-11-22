@@ -1,0 +1,46 @@
+O diagrama conceitual apresentado representa duas entidades — **Produto** e **Tipo de Produto** — e o relacionamento entre elas.
+A seguir, a descrição detalhada e técnica em formato acessível:
+
+---
+
+### Entidades e Atributos
+
+1. **Entidade: Produto**
+
+   * **Atributos:**
+
+     * **código** (representado com preenchimento sólido): indica que é o **identificador único (chave primária)** da entidade Produto.
+     * **descrição**: atributo descritivo do produto.
+     * **preço**: atributo que armazena o valor monetário do produto.
+
+2. **Entidade: Tipo de Produto**
+
+   * **Atributos:**
+
+     * **código** (também com preenchimento sólido): é o **identificador único (chave primária)** da entidade Tipo de Produto.
+     * **descrição**: atributo textual que descreve o tipo de produto (por exemplo, “eletrônico”, “alimento”, “vestuário”).
+
+---
+
+### Relacionamento entre as Entidades
+
+* **Relacionamento:** entre **Produto** e **Tipo de Produto** (representado por um losango entre as duas entidades).
+* **Cardinalidade:**
+
+  * Do lado de **Tipo de Produto**, o valor é **1**, indicando que **cada produto pertence a exatamente um tipo de produto**.
+  * Do lado de **Produto**, o valor é **n**, significando que **um tipo de produto pode estar associado a vários produtos**.
+
+---
+
+### Interpretação Resumida
+
+O diagrama indica que:
+
+* Cada registro de **Produto** deve estar vinculado a um **Tipo de Produto** específico.
+* Um mesmo **Tipo de Produto** pode ser relacionado a muitos **Produtos**.
+* Essa relação é do tipo **1 para n (um para muitos)** entre Tipo de Produto e Produto.
+* Em um modelo lógico relacional, a chave primária de **Tipo de Produto (código)** seria usada como **chave estrangeira** na tabela **Produto**, garantindo a integridade referencial entre as duas entidades.
+
+---
+
+Deseja que eu converta essa explicação para o formato textual descritivo no padrão **DAISY** (usado em acessibilidade para leitura de diagramas por leitores de tela)? Isso pode ajudar a incluir no seu TCC como anexo acessível.

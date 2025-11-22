@@ -1,0 +1,16 @@
+O diagrama conceitual apresenta duas entidades principais: **Produto** e **Tipo de produto**, conectadas por um relacionamento do tipo **n:1**.
+
+A entidade **Produto** possui os seguintes atributos:
+
+* **código** (identificado pelo preenchimento do círculo, indicando que é o identificador da entidade),
+* **descrição**,
+* **preço**.
+
+A entidade **Tipo de produto** possui:
+
+* **código** (também marcado como identificador da entidade),
+* **descrição**.
+
+O relacionamento entre as duas entidades indica que **cada produto pertence a exatamente um tipo de produto**, enquanto **um tipo de produto pode estar associado a vários produtos**. Isso caracteriza uma cardinalidade de **muitos para um** (n:1) do lado de Produto para Tipo de produto.
+
+Em termos técnicos, o código de **Tipo de produto** funcionaria como uma **chave estrangeira** na entidade **Produto**, estabelecendo a dependência entre elas. Assim, o modelo representa uma estrutura hierárquica simples, onde os tipos de produto classificam os produtos individuais.

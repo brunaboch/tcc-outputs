@@ -1,0 +1,115 @@
+Claro! Aqui está uma **descrição acessível e detalhada** do diagrama conceitual de banco de dados mostrado na imagem, explicada de forma simples e voltada à compreensão por leitores de tela:
+
+---
+
+### 🧩 Descrição geral do diagrama
+
+O diagrama representa um **sistema de gerenciamento de empregados** de uma empresa, mostrando **tipos diferentes de empregados**, os **departamentos** onde eles trabalham, e os **projetos e áreas** com os quais podem se relacionar.
+
+As figuras **retangulares** representam **entidades** (ou seja, conjuntos de coisas ou pessoas com características próprias).
+Os **losangos** representam **relacionamentos** entre essas entidades.
+Os **círculos** conectados aos retângulos indicam **atributos**, ou seja, informações que descrevem cada entidade.
+Quando há **círculos preenchidos** (pretos), significa que aquele atributo é a **chave principal**, um identificador único de cada registro.
+
+---
+
+### 👥 Entidades principais
+
+1. **EMPREGADO**
+
+   * Representa cada funcionário da empresa.
+   * Atributos:
+
+     * **código** (círculo preto) → é o identificador único do empregado.
+     * **nome** → nome do funcionário.
+     * **CIC** → número de identificação do empregado (como um CPF).
+     * **tipo de empregado** → indica se é secretário, motorista ou engenheiro.
+
+2. **DEPARTAMENTO**
+
+   * Representa os setores da empresa.
+   * Atributos:
+
+     * **código** (círculo preto) → identificador único do departamento.
+     * **nome** → nome do departamento.
+
+3. **SECRETÁRIA**, **MOTORISTA** e **ENGENHEIRO**
+
+   * São **subtipos de EMPREGADO** (indicados pela linha em forma de triângulo com a letra "p").
+
+   * Isso significa que cada secretário, motorista ou engenheiro **também é um empregado**, mas com informações específicas.
+
+   * Atributos específicos:
+
+     * **MOTORISTA**: possui **carteira de habilitação**.
+     * **ENGENHEIRO**: possui **CREA**, o registro profissional.
+     * **SECRETÁRIA**: não possui atributo próprio no diagrama.
+
+4. **PROCESSADOR DE TEXTOS**
+
+   * Entidade relacionada às secretárias.
+   * Atributos:
+
+     * **código** (círculo preto) → identificador único do processador.
+     * **nome** → nome do software ou equipamento utilizado.
+
+5. **RAMO DA ENGENHARIA**
+
+   * Representa as especialidades da engenharia (como civil, elétrica, mecânica etc.).
+   * Atributos:
+
+     * **código** (círculo preto).
+     * **nome** → nome do ramo.
+
+6. **PROJETO**
+
+   * Representa os projetos desenvolvidos pela empresa.
+   * Atributos:
+
+     * **código** (círculo preto).
+     * **nome** → nome do projeto.
+
+---
+
+### 🔗 Relacionamentos entre entidades
+
+1. **LOTAÇÃO**
+
+   * Relaciona **EMPREGADO** com **DEPARTAMENTO**.
+   * Indica **onde o empregado trabalha**.
+   * A notação (0,n) e (1,1) significa que:
+
+     * Um departamento pode ter **vários empregados** (0 ou mais).
+     * Cada empregado **trabalha em exatamente um departamento**.
+
+2. **DOMÍNIO**
+
+   * Relaciona **SECRETÁRIA** com **PROCESSADOR DE TEXTOS**.
+   * Significa que uma secretária pode **dominar vários processadores de texto**, e um mesmo processador pode ser usado por várias secretárias.
+   * Relação **muitos para muitos** (0,n) ↔ (1,n).
+
+3. **PARTICIPAÇÃO**
+
+   * Relaciona **ENGENHEIRO** com **PROJETO**.
+   * Mostra em quais projetos cada engenheiro participa.
+   * Relação **muitos para muitos** (0,n) ↔ (0,n).
+
+4. **RAMO DA ENGENHARIA** (relacionamento com ENGENHEIRO)
+
+   * Cada engenheiro pertence a **um ramo da engenharia**.
+   * Um ramo pode ter **vários engenheiros**.
+   * Relação **um para muitos** (1,1) ↔ (0,n).
+
+---
+
+### 🧠 Resumo acessível
+
+O sistema identifica **empregados de diferentes tipos** (secretário, motorista e engenheiro), **onde trabalham** (departamento), e **suas especializações**:
+
+* Secretárias dominam processadores de texto.
+* Motoristas possuem carteira de habilitação.
+* Engenheiros têm registro no CREA, pertencem a um ramo da engenharia e participam de projetos.
+
+A estrutura permite organizar todas essas informações de forma que cada funcionário esteja corretamente associado ao seu departamento e às suas funções específicas dentro da empresa.
+
+---

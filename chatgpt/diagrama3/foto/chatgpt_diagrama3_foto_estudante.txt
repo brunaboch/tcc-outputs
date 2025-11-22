@@ -1,0 +1,159 @@
+A seguir está uma **descrição completa, clara e acessível** do diagrama conceitual apresentado na imagem. O objetivo é facilitar a compreensão visual e estrutural para quem não enxerga o diagrama, usando linguagem simples e direta.
+
+---
+
+# 📘 **Descrição Acessível do Diagrama Conceitual**
+
+O diagrama representa a estrutura de informações de um sistema que gerencia **empregados**, **departamentos**, **projetos** e suas **especialidades**. Ele mostra entidades (retângulos), atributos (pequenos círculos) e relacionamentos (losangos), além de especializações (triângulos).
+
+A seguir, explico cada parte **da esquerda para a direita e de cima para baixo**.
+
+---
+
+## 🟦 **Entidade EMPREGADO**
+
+* Representada por um retângulo com o nome **EMPREGADO**.
+* Atributos ligados por círculos:
+
+  * **código** (círculo preto → chave identificadora)
+  * **nome**
+  * **CPF**
+  * **tipo de empregado**
+
+Cada atributo aparece como um círculo conectado ao retângulo da entidade.
+
+---
+
+## 🔷 **Relacionamento LOTAÇÃO**
+
+Entre as entidades:
+
+* **EMPREGADO**
+* **DEPARTAMENTO**
+
+Indica onde o empregado está lotado.
+
+### Cardinalidades:
+
+* Do lado de **EMPREGADO**: *(0,n)* → um empregado pode estar em nenhum ou vários departamentos.
+* Do lado de **DEPARTAMENTO**: *(1,1)* → cada departamento deve ter ao menos um empregado lotado.
+
+---
+
+## 🟦 **Entidade DEPARTAMENTO**
+
+Atributos:
+
+* **código** (círculo preto → chave)
+* **nome**
+
+---
+
+# 📚 **Especialização de EMPREGADO**
+
+Abaixo de **EMPREGADO** há um **triângulo rotulado com a letra “p”**, indicando **especialização parcial**:
+
+O empregado pode ser:
+
+* **SECRETÁRIA**
+* **MOTORISTA**
+* **ENGENHEIRO**
+
+Cada subentidade é representada por um retângulo separado.
+
+---
+
+# 🟩 **Subentidade SECRETÁRIA**
+
+Relacionamento:
+
+### 🔷 **DOMÍNIO**
+
+Mostra que uma secretária domina determinados sistemas.
+
+Cardinalidade:
+
+* Secretária (1,n): a secretária deve dominar pelo menos um sistema.
+* PROCESSADOR DE TEXTOS (0,n): cada sistema pode ser dominado por nenhuma ou várias secretárias.
+
+### 🟦 PROCESSADOR DE TEXTOS
+
+Atributos:
+
+* **código**
+* **nome**
+
+---
+
+# 🟩 **Subentidade MOTORISTA**
+
+Atributo:
+
+* **carteira de habilitação**
+
+Indica que motoristas têm um registro de habilitação associado.
+
+---
+
+# 🟩 **Subentidade ENGENHEIRO**
+
+Atributo:
+
+* **CREA** (registro profissional)
+
+---
+
+## 🔷 **Relacionamento PARTICIPAÇÃO**
+
+Entre:
+
+* **ENGENHEIRO**
+* **PROJETO**
+
+Cardinalidade:
+
+* Engenheiro (0,n): um engenheiro pode participar de nenhum ou vários projetos.
+* Projeto (1,1): cada projeto deve ter ao menos um engenheiro.
+
+---
+
+## 🟦 **Entidade PROJETO**
+
+Atributos:
+
+* **código** (círculo preto)
+* **nome**
+
+---
+
+## 🔷 **Relacionamento (ENGENHEIRO – RAMO DA ENGENHARIA)**
+
+Indica a área de atuação do engenheiro.
+
+Cardinalidade:
+
+* Engenheiro (1,1): cada engenheiro deve pertencer a um único ramo.
+* Ramo da engenharia (0,n): um ramo pode não ter engenheiros ou ter vários.
+
+### 🟦 RAMO DA ENGENHARIA
+
+Atributos:
+
+* **código**
+* **nome**
+
+---
+
+# 🔚 **Resumo da Estrutura**
+
+* EMPREGADOS têm atributos básicos (código, nome, CPF, tipo).
+* Todo empregado está em **algum departamento** (lotação).
+* Empregados podem ser de **três tipos**:
+  **Secretária**, **Motorista**, **Engenheiro**.
+* Secretárias têm domínio em ferramentas.
+* Motoristas têm carteira de habilitação.
+* Engenheiros têm CREA, atuam em ramos específicos da engenharia e participam de projetos.
+
+---
+
+Se quiser, posso gerar uma **versão alternativa mais técnica**, uma **tradução para modelo lógico**, ou ainda um **resumo para estudo**.

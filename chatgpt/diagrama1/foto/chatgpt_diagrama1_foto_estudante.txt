@@ -1,0 +1,41 @@
+O diagrama mostra duas entidades principais: **Produto** e **Tipo de produto**, que estão relacionadas entre si.
+A seguir, a explicação detalhada e acessível:
+
+---
+
+### Entidade: Produto
+
+Representada por um retângulo à esquerda, indica que o banco de dados armazenará informações sobre produtos.
+Essa entidade possui três **atributos**:
+
+* **Código**: marcado com um ponto preenchido, indicando que é a **chave primária** — ou seja, identifica de forma única cada produto.
+* **Descrição**: atributo que guarda o nome ou uma explicação do produto.
+* **Preço**: atributo que armazena o valor do produto.
+
+---
+
+### Entidade: Tipo de produto
+
+Representada por outro retângulo, à direita do diagrama, indica as categorias ou tipos a que os produtos pertencem.
+Essa entidade tem dois **atributos**:
+
+* **Código**: também marcado com um ponto preenchido, sendo a **chave primária** do tipo de produto.
+* **Descrição**: atributo que guarda o nome ou a descrição do tipo de produto (por exemplo, “bebida”, “higiene”, “limpeza”).
+
+---
+
+### Relacionamento entre as entidades
+
+Entre as duas entidades há um **losango**, que simboliza o **relacionamento** entre “Produto” e “Tipo de produto”.
+Esse relacionamento tem **cardinalidades**:
+
+* Do lado de **Produto**, o valor é **n**, o que significa que um mesmo tipo de produto pode estar associado a **muitos produtos**.
+* Do lado de **Tipo de produto**, o valor é **1**, indicando que **cada produto pertence a um único tipo de produto**.
+
+Em resumo, o diagrama mostra que:
+
+> Um **tipo de produto** pode estar associado a **vários produtos**, mas **cada produto** pertence a **apenas um tipo de produto**.
+
+---
+
+Essa explicação descreve de forma textual todos os elementos visuais do diagrama e suas relações, possibilitando a compreensão completa por pessoas que utilizam leitores de tela.

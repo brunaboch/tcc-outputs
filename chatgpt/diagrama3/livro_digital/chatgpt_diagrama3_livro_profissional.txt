@@ -1,0 +1,44 @@
+O diagrama conceitual apresentado modela um sistema de gerenciamento de empregados, departamentos e projetos, detalhando a especialização dos empregados e os relacionamentos entre suas funções e atividades técnicas.
+
+A seguir, a descrição técnica das entidades, relacionamentos e especializações:
+
+1. **Entidade EMPREGADO**
+
+   * **Atributos:** código (chave primária), nome e CIC.
+   * Possui um atributo adicional chamado *tipo de empregado*, utilizado para distinguir subclasses.
+   * A entidade é **generalizada**, originando três subclasses: **SECRETÁRIA**, **MOTORISTA** e **ENGENHEIRO**, conectadas pela generalização do tipo **parcial** (indicada pela letra “p”), ou seja, nem todo empregado precisa pertencer a uma das subclasses.
+
+2. **Relacionamento LOTAÇÃO**
+
+   * Conecta **EMPREGADO** a **DEPARTAMENTO**.
+   * Um empregado pode estar lotado em zero ou um departamento, enquanto um departamento pode ter zero ou muitos empregados.
+   * **Cardinalidades:** (0,1) para EMPREGADO e (0,n) para DEPARTAMENTO.
+   * A entidade **DEPARTAMENTO** possui atributos **código** (chave primária) e **nome**.
+
+3. **Subclasse SECRETÁRIA**
+
+   * Participa do relacionamento **DOMÍNIO** com **PROCESSADOR DE TEXTOS**.
+   * Um processador de textos pode ser dominado por zero ou muitas secretárias, e cada secretária pode dominar um ou mais processadores.
+   * **Cardinalidades:** (1,n) para SECRETÁRIA e (0,n) para PROCESSADOR DE TEXTOS.
+   * **PROCESSADOR DE TEXTOS** possui atributos **código** e **nome**.
+
+4. **Subclasse MOTORISTA**
+
+   * Possui o atributo adicional **carteira de habilitação**.
+   * Não apresenta relacionamentos adicionais no diagrama.
+
+5. **Subclasse ENGENHEIRO**
+
+   * Possui o atributo **CREA**.
+   * Participa de dois relacionamentos:
+
+     * **DOMÍNIO** com **RAMO DA ENGENHARIA**, onde um engenheiro deve dominar ao menos um ramo (cardinalidade (1,1) para ENGENHEIRO e (0,n) para RAMO DA ENGENHARIA).
+     * **PARTICIPAÇÃO** com **PROJETO**, representando a atuação dos engenheiros em projetos.
+
+       * Um engenheiro pode participar de zero ou vários projetos, e cada projeto pode envolver zero ou muitos engenheiros.
+       * **Cardinalidades:** (0,n) em ambas as direções.
+   * **RAMO DA ENGENHARIA** e **PROJETO** possuem os atributos **código** e **nome**.
+
+Em resumo, o modelo organiza uma estrutura onde **EMPREGADOS** podem ser **SECRETÁRIAS**, **MOTORISTAS** ou **ENGENHEIROS**, cada qual com atributos e relacionamentos específicos. O diagrama também representa as interações entre **departamentos**, **projetos** e áreas de atuação técnica (como ramos da engenharia e processadores de texto).
+
+A modelagem evidencia o uso de **generalização parcial**, **relacionamentos binários com cardinalidades variadas** e **entidades associativas** que permitem descrever de forma detalhada a distribuição e especialização dos empregados dentro da organização.

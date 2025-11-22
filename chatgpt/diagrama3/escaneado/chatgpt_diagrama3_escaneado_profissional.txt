@@ -1,0 +1,18 @@
+O diagrama conceitual apresenta a modelagem de um sistema que gerencia informações sobre empregados, seus tipos e suas relações com departamentos e áreas específicas de atuação.
+
+A entidade **EMPREGADO** possui os atributos *nome*, *CPF* e *código* (este último sendo a chave primária). Ela participa de um relacionamento denominado **LOTAÇÃO** com a entidade **DEPARTAMENTO**. Esse relacionamento é do tipo *(0,n)* para EMPREGADO e *(1,1)* para DEPARTAMENTO, indicando que cada empregado está lotado obrigatoriamente em um único departamento, enquanto um departamento pode ter vários empregados ou nenhum. A entidade **DEPARTAMENTO** tem os atributos *código* (chave primária) e *nome*.
+
+A entidade **EMPREGADO** é generalizada em três especializações: **SECRETÁRIA**, **MOTORISTA** e **ENGENHEIRO**. O triângulo identificado pela letra “P” indica uma **generalização total e disjunta**, significando que todo empregado deve pertencer a exatamente um desses tipos, e não pode pertencer a mais de um simultaneamente.
+
+* A entidade **SECRETÁRIA** participa do relacionamento **DOMÍNIO** com a entidade **PROCESSADOR DE TEXTOS**. A cardinalidade *(1,n)* no lado da secretária e *(0,n)* no lado do processador indica que uma secretária deve dominar pelo menos um processador de textos, e um processador pode ser dominado por nenhuma ou várias secretárias. **PROCESSADOR DE TEXTOS** possui *código* e *nome*.
+
+* A entidade **MOTORISTA** possui o atributo adicional *carteira de habilitação*, além de herdar o *código* de EMPREGADO.
+
+* A entidade **ENGENHEIRO** possui o atributo *CREA* e participa de dois relacionamentos:
+
+  * **DOMÍNIO**, que liga ENGENHEIRO a **RAMO DA ENGENHARIA**. A cardinalidade *(1,1)* no lado do ramo e *(0,n)* no lado do engenheiro indica que cada engenheiro deve dominar exatamente um ramo da engenharia, enquanto um ramo pode ser dominado por vários engenheiros.
+  * **PARTICIPAÇÃO**, que liga ENGENHEIRO a **PROJETO**, com cardinalidades *(0,n)* em ambos os lados, permitindo que engenheiros possam participar de vários projetos e que projetos possam envolver vários engenheiros.
+
+As entidades **RAMO DA ENGENHARIA** e **PROJETO** possuem os atributos *código* e *nome*.
+
+Em resumo, o modelo conceitual estrutura a hierarquia de empregados (com suas especializações), define suas relações com departamentos e estabelece como engenheiros, motoristas e secretárias se conectam a domínios específicos de suas funções e a projetos de engenharia.

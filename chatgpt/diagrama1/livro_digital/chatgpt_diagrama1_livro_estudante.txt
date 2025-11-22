@@ -1,0 +1,50 @@
+Aqui está uma explicação detalhada e acessível sobre o diagrama mostrado na imagem:
+
+---
+
+**Descrição do diagrama:**
+
+O diagrama representa duas **entidades**, chamadas **Produto** e **Tipo de produto**, e o **relacionamento** entre elas.
+
+### 1. Entidade “Produto”
+
+* Representada por um **retângulo** com o nome “Produto”.
+* Dentro dessa entidade, há três **atributos** (ou informações sobre o produto):
+
+  * **Código:** é o identificador principal, mostrado com um **círculo preenchido**. Isso significa que ele é a **chave primária**, ou seja, o que identifica cada produto de forma única.
+  * **Descrição:** é um **círculo vazio**, o que indica que é apenas um atributo comum, usado para descrever o produto.
+  * **Preço:** também é um **círculo vazio**, representando outro atributo comum, que indica o valor do produto.
+
+### 2. Entidade “Tipo de produto”
+
+* Também representada por um **retângulo**, com o nome “Tipo de produto”.
+* Possui dois **atributos**:
+
+  * **Código:** indicado com um **círculo preenchido**, o que mostra que ele é a **chave primária** dessa entidade.
+  * **Descrição:** indicado com um **círculo vazio**, representando uma informação complementar sobre o tipo de produto (por exemplo, “bebida”, “alimento”, “eletrônico” etc.).
+
+### 3. Relacionamento entre as entidades
+
+* No centro do diagrama há um **losango**, que representa o **relacionamento** entre “Produto” e “Tipo de produto”.
+* O relacionamento é **do tipo “n para 1”**, o que significa:
+
+  * Cada **tipo de produto** pode estar relacionado a **muitos produtos**.
+  * Cada **produto** pertence a **um único tipo de produto**.
+
+Em outras palavras:
+
+> Um tipo de produto, como “bebida”, pode ter vários produtos, como “refrigerante”, “água mineral” e “suco”.
+> Já cada produto está ligado apenas a um tipo — por exemplo, “refrigerante” pertence ao tipo “bebida”.
+
+---
+
+**Resumo acessível (para leitores de tela):**
+
+O diagrama mostra duas entidades: “Produto” e “Tipo de produto”.
+A entidade Produto tem os atributos: código (chave primária), descrição e preço.
+A entidade Tipo de produto tem os atributos: código (chave primária) e descrição.
+Há um relacionamento entre elas, no qual um tipo de produto pode estar ligado a muitos produtos, e cada produto pertence a apenas um tipo de produto.
+
+---
+
+Deseja que eu formate essa explicação em texto alternativo (alt text) para ser usado em um documento acessível, como em um arquivo PDF ou LaTeX?

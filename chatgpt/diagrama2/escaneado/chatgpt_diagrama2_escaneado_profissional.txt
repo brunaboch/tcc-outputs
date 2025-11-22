@@ -1,0 +1,91 @@
+O diagrama conceitual apresentado representa um modelo de entidades e relacionamentos que envolve **grupos, empresas, empregados e dependentes**. A seguir está a descrição detalhada, em formato acessível e técnico:
+
+---
+
+### Entidades e Atributos
+
+1. **Entidade GRUPO**
+
+   * Atributos:
+
+     * **código** (atributo identificador, representado por um círculo preenchido).
+     * **nome** (atributo descritivo).
+
+2. **Entidade EMPRESA**
+
+   * Atributos:
+
+     * **número da empresa** (atributo identificador, indicado por círculo preenchido).
+     * **nome** (atributo descritivo).
+
+3. **Entidade EMPREGADO**
+
+   * Atributos:
+
+     * **número do empregado** (atributo identificador, com círculo preenchido).
+     * **nome** (atributo descritivo).
+
+4. **Entidade DEPENDENTE**
+
+   * Atributos:
+
+     * **número de sequência** (atributo identificador, com círculo preenchido).
+     * **nome** (atributo descritivo).
+
+---
+
+### Relacionamentos e Cardinalidades
+
+1. **Relacionamento entre GRUPO e EMPRESA**
+
+   * Cada **GRUPO** está associado a **uma ou mais EMPRESAS**.
+   * Cada **EMPRESA** pertence **exatamente a um GRUPO**.
+   * Representação da cardinalidade:
+
+     * GRUPO (1,1)
+     * EMPRESA (0,n)
+   * Interpretação: um grupo pode ter várias empresas, mas toda empresa obrigatoriamente pertence a um único grupo.
+
+2. **Relacionamento entre EMPRESA e EMPREGADO**
+
+   * Cada **EMPRESA** possui **zero ou mais EMPREGADOS**.
+   * Cada **EMPREGADO** trabalha **em uma única EMPRESA**.
+   * Cardinalidades:
+
+     * EMPRESA (1,1)
+     * EMPREGADO (0,n)
+   * Interpretação: o vínculo é obrigatório do lado da empresa e opcional do lado do empregado (ou seja, pode haver empresa sem empregado, mas não empregado sem empresa).
+
+3. **Relacionamento entre EMPREGADO e DEPENDENTE**
+
+   * Cada **EMPREGADO** pode ter **zero ou mais DEPENDENTES**.
+   * Cada **DEPENDENTE** está associado **exclusivamente a um EMPREGADO**.
+   * Cardinalidades:
+
+     * EMPREGADO (1,1)
+     * DEPENDENTE (0,n)
+   * Interpretação: um empregado pode não ter dependentes, mas cada dependente obrigatoriamente pertence a um único empregado.
+
+---
+
+### Estrutura Hierárquica
+
+O diagrama apresenta uma estrutura hierárquica composta da seguinte cadeia de relacionamentos:
+
+**GRUPO → EMPRESA → EMPREGADO → DEPENDENTE**
+
+Essa hierarquia indica que:
+
+* Os **grupos** são unidades superiores que organizam empresas.
+* Cada **empresa** é composta por empregados.
+* Cada **empregado** pode ter dependentes associados.
+
+---
+
+### Resumo Técnico
+
+O modelo representa uma hierarquia de relacionamento de **um para muitos** entre todas as entidades. Os identificadores principais de cada entidade estão claramente definidos e os relacionamentos mantêm integridade referencial, com dependência obrigatória entre entidades subordinadas (por exemplo, um dependente não existe sem um empregado, e um empregado não existe sem uma empresa).
+
+---
+
+Deseja que eu reescreva essa explicação no formato de texto alternativo (alt-text) resumido, ideal para ser incluído em uma página da web acessível?
