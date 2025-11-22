@@ -1,0 +1,105 @@
+**Explicação do Diagrama Conceitual de Banco de Dados (Formato Acessível para Leitores de Tela)**
+
+**Início da descrição.**
+
+O diagrama é um modelo Entidade-Relacionamento (ER) com entidades, atributos e relacionamentos representados por retângulos, ovais e losangos, respectivamente. Linhas conectam os elementos, com cardinalidades indicadas por notações como (1,1), (0,n), (1,n).
+
+**Entidades e Atributos:**
+
+1. **Entidade EMPREGADO**  
+   - Retângulo com borda dupla (entidade forte).  
+   - Atributos:  
+     - *nome* (oval simples, ligado por linha).  
+     - *CPF* (oval simples, ligado por linha).  
+     - *código* (oval com círculo duplo, chave primária, ligado por linha).  
+
+2. **Entidade LOTAÇÃO**  
+   - Retângulo simples.  
+   - Relacionamento com cardinalidade (0,n) para EMPREGADO e (1,1) para DEPARTAMENTO.  
+   - Atributos: nenhum explícito.
+
+3. **Entidade DEPARTAMENTO**  
+   - Retângulo simples.  
+   - Atributos:  
+     - *código* (chave primária, oval com círculo duplo).  
+     - *nome* (oval simples).
+
+4. **Entidade SECRETÁRIA**  
+   - Retângulo simples (entidade fraca de EMPREGADO).  
+   - Relacionamento DOMÍNIO com cardinalidade (1,n) para PROCESSADOR_TEXTO.  
+   - Atributo: nenhum explícito.
+
+5. **Entidade MOTORISTA**  
+   - Retângulo simples (entidade fraca de EMPREGADO).  
+   - Relacionamento com cardinalidade (1,1) para RAMO_DA_ENGENHARIA.  
+   - Atributo:  
+     - *carteira de habilitação* (oval simples).
+
+6. **Entidade CREA_ENGENHEIRO**  
+   - Retângulo simples (entidade fraca de EMPREGADO).  
+   - Relacionamento PARTICIPAÇÃO com cardinalidade (0,n) para PROJETO.  
+   - Atributo: nenhum explícito.
+
+7. **Entidade PROCESSADOR_TEXTO**  
+   - Retângulo simples.  
+   - Atributos:  
+     - *código* (chave primária).  
+     - *nome*.
+
+8. **Entidade RAMO_DA_ENGENHARIA**  
+   - Retângulo simples.  
+   - Atributos:  
+     - *código* (chave primária).  
+     - *nome*.
+
+9. **Entidade PROJETO**  
+   - Retângulo simples.  
+   - Atributos:  
+     - *código* (chave primária).  
+     - *nome*.
+
+**Relacionamentos:**
+
+- **LOTAÇÃO**  
+  - Losango entre EMPREGADO e DEPARTAMENTO.  
+  - Cardinalidade:  
+    - EMPREGADO (0,n) — um empregado pode estar em zero ou muitas lotações.  
+    - DEPARTAMENTO (1,1) — cada lotação pertence a exatamente um departamento.
+
+- **DOMÍNIO**  
+  - Losango entre SECRETÁRIA e PROCESSADOR_TEXTO.  
+  - Cardinalidade:  
+    - SECRETÁRIA (1,n) — uma secretária domina um ou mais processadores de texto.  
+    - PROCESSADOR_TEXTO (0,n) — um processador pode ser dominado por zero ou mais secretárias.
+
+- **(relacionamento sem nome explícito)**  
+  - Losango entre MOTORISTA e RAMO_DA_ENGENHARIA.  
+  - Cardinalidade:  
+    - MOTORISTA (1,1) — cada motorista está associado a exatamente um ramo.  
+    - RAMO_DA_ENGENHARIA (1,1) — cada ramo tem exatamente um motorista (restritivo, possivelmente modelagem de especialização).
+
+- **PARTICIPAÇÃO**  
+  - Losango entre CREA_ENGENHEIRO e PROJETO.  
+  - Cardinalidade:  
+    - CREA_ENGENHEIRO (0,n) — um engenheiro com CREA pode participar de zero ou mais projetos.  
+    - PROJETO (0,n) — um projeto pode ter zero ou mais engenheiros com CREA.
+
+**Herança / Especialização:**
+
+- Três entidades fracas derivam de EMPREGADO via linha com triângulo:  
+  - SECRETÁRIA  
+  - MOTORISTA  
+  - CREA_ENGENHEIRO  
+- Indica especialização total ou parcial (não especificada), com dependência identificadora (chave de EMPREGADO compõe a chave das entidades filhas).
+
+**Resumo da Estrutura Hierárquica:**
+
+- EMPREGADO é entidade central forte.  
+- DEPARTAMENTO é independente.  
+- LOTAÇÃO associa empregados a departamentos (muitos para um).  
+- Três papéis especializados de empregado:  
+  - SECRETÁRIA domina processadores de texto.  
+  - MOTORISTA possui carteira e está vinculado a um ramo da engenharia.  
+  - CREA_ENGENHEIRO participa de projetos.
+
+**Fim da descrição.**

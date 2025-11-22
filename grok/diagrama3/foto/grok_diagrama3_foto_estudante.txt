@@ -1,0 +1,165 @@
+# Diagrama Conceitual de Banco de Dados – Explicação Acessível
+
+## Introdução
+Este é um diagrama que mostra como organizar informações sobre **empregados**, **departamentos**, **projetos** e **cargos** em um banco de dados.  
+Ele usa **caixas**, **linhas** e **símbolos** para representar:
+
+- **Caixas** = Tabelas (onde guardamos os dados)  
+- **Círculos** = Colunas (campos dentro das tabelas)  
+- **Linhas** = Relacionamentos (como as tabelas se conectam)  
+- **Símbolos como (0,n), (1,1), P** = Quantas vezes um registro pode aparecer no relacionamento  
+
+Vou descrever **cada caixa (tabela)**, seus **campos (círculos)** e **como elas se conectam**, de forma clara e em ordem.
+
+---
+
+## 1. Tabela: EMPREGADO
+- **Forma**: Retângulo com borda arredondada  
+- **Campos (círculos conectados por linhas):**
+  - **código** (ponto preto – chave primária, número único de cada empregado)
+  - **nome**
+  - **CPF**
+  - **tipo de empregado**
+
+> **Chave primária**: código (identifica unicamente cada empregado)
+
+---
+
+## 2. Tabela: LOTAÇÃO
+- **Forma**: Losango (diamante) – representa um **relacionamento**
+- **Conecta**:  
+  - **EMPREGADO** ←→ **DEPARTAMENTO**
+- **Cardinalidades (quantos podem participar):**
+  - Do lado do **EMPREGADO**: `(0,n)` → um empregado pode estar em **zero ou muitas** lotações
+  - Do lado do **DEPARTAMENTO**: `(1,1)` → um departamento pode ter **um e apenas um** empregado em cada lotação (mas vários empregados ao todo)
+
+> Em resumo: **Um empregado pode trabalhar em vários departamentos ao longo do tempo, mas em cada registro de lotação, ele está em exatamente um departamento.**
+
+---
+
+## 3. Tabela: DEPARTAMENTO
+- **Forma**: Retângulo com borda arredondada
+- **Campos:**
+  - **código** (ponto preto – chave primária)
+  - **nome**
+
+---
+
+## 4. Tabela: SECRETÁRIA
+- **Forma**: Retângulo com borda arredondada
+- **Herda de**: **DOMÍNIO** (seta apontando para baixo)
+- **Campos:**
+  - **PROCESSADOR DE TEXTOS** (tabela filha)
+    - **código** (ponto preto)
+    - **nome**
+
+> **Herança**: Secretária é um tipo especial de **DOMÍNIO**
+
+---
+
+## 5. Tabela: DOMÍNIO
+- **Forma**: Retângulo com borda arredondada
+- **Cardinalidade com SECRETÁRIA**: `(1,n)` → um domínio pode ter **uma ou muitas** secretárias
+- **Cardinalidade com PROCESSADOR DE TEXTOS**: `(0,n)` → um domínio pode ter **zero ou muitos** processadores de texto
+
+---
+
+## 6. Tabela: MOTORISTA
+- **Forma**: Retângulo com borda arredondada
+- **Campo especial:**
+  - **carteira de habilitação**
+- **Cardinalidade com CREA**: `(0,n)` → um motorista pode ter **zero ou muitas** registros em CREA
+
+---
+
+## 7. Tabela: CREA
+- **Forma**: Retângulo com borda arredondada
+- **Conecta com:**
+  - **MOTORISTA** `(0,n)`
+  - **ENGENHEIRO** `(0,n)`
+
+> Um registro no CREA pode estar ligado a **um motorista ou um engenheiro** (ou nenhum)
+
+---
+
+## 8. Tabela: ENGENHEIRO
+- **Forma**: Retângulo com borda arredondada
+- **Relacionamentos:**
+  - Com **PARTICIPAÇÃO**: `(0,n)` → um engenheiro pode participar de **zero ou muitos** projetos
+  - Com **RAMO DA ENGENHARIA**: `(1,1)` → um engenheiro tem **exatamente um** ramo
+  - Com **CREA**: `(0,n)`
+
+---
+
+## 9. Tabela: PARTICIPAÇÃO
+- **Forma**: Losango (relacionamento)
+- **Conecta:**
+  - **ENGENHEIRO** `(0,n)`
+  - **PROJETO** `(0,n)`
+
+> Um engenheiro pode participar de **vários projetos**, e um projeto pode ter **vários engenheiros**
+
+---
+
+## 10. Tabela: PROJETO
+- **Forma**: Retângulo com borda arredondada
+- **Campos:**
+  - **código** (ponto preto – chave primária)
+  - **nome**
+
+---
+
+## 11. Tabela: RAMO DA ENGENHARIA
+- **Forma**: Retângulo com borda arredondada
+- **Campos:**
+  - **código** (ponto preto)
+  - **nome**
+
+---
+
+## Símbolos Importantes (Cardinalidades)
+
+| Símbolo | Significado |
+|--------|-------------|
+| `(0,n)` | **Zero ou muitos** |
+| `(1,n)` | **Um ou muitos** |
+| `(0,1)` | **Zero ou um** |
+| `(1,1)` | **Exatamente um** |
+| **P** (na linha entre EMPREGADO e LOTAÇÃO) | **Participação parcial** – nem todo empregado precisa estar lotado |
+
+---
+
+## Resumo das Conexões Principais
+
+1. **EMPREGADO** → pode ter várias **LOTAÇÃO** → em vários **DEPARTAMENTO**
+2. **SECRETÁRIA** é um tipo de **DOMÍNIO** → usa **PROCESSADOR DE TEXTOS**
+3. **MOTORISTA** → pode ter registro no **CREA**
+4. **ENGENHEIRO** → tem um **RAMO DA ENGENHARIA**, pode ter **CREA**, e participa de **PROJETO** via **PARTICIPAÇÃO**
+
+---
+
+## Leitura para Tela (Screen Reader)
+
+> Início da descrição.  
+> Tabela EMPREGADO tem campos: código (chave), nome, CPF, tipo de empregado.  
+> Conecta com LOTAÇÃO (losango).  
+> LOTAÇÃO conecta com DEPARTAMENTO (código e nome).  
+> Um empregado pode ter zero ou muitas lotações.  
+> Um departamento aparece em uma lotação por vez.  
+>  
+> Tabela DOMÍNIO tem secretárias (uma ou muitas).  
+> Secretária tem PROCESSADOR DE TEXTOS (código e nome).  
+>  
+> MOTORISTA tem carteira de habilitação e pode ter zero ou muitos CREA.  
+> ENGENHEIRO tem um ramo da engenharia, pode ter CREA, e participa de zero ou muitos projetos.  
+>  
+> PARTICIPAÇÃO conecta ENGENHEIRO e PROJETO (muitos para muitos).  
+> PROJETO tem código e nome.  
+> RAMO DA ENGENHARIA tem código e nome.  
+>  
+> Fim da descrição.
+
+--- 
+
+**Pronto!**  
+Essa explicação permite que qualquer pessoa, mesmo sem ver a imagem ou com pouco conhecimento de banco de dados, entenda como as informações estão organizadas.

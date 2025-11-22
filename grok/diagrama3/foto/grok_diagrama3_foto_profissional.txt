@@ -1,0 +1,105 @@
+### Diagrama Conceitual de Banco de Dados – Descrição Estruturada
+
+#### Entidades Fortes (retângulos com cantos retos)
+
+1. **EMPREGADO**  
+   - Atributos:  
+     - código (chave primária, identificador único)  
+     - nome  
+     - CPF  
+   - Relacionamentos:  
+     - Participa de **LOTAÇÃO** (cardinalidade 0,N para EMPREGADO)  
+     - Possui **DOMÍNIO** (cardinalidade 1,N para EMPREGADO)  
+     - Pode ser especializado em **SECRETÁRIA**, **MOTORISTA** ou **ENGENHEIRO** (herança exclusiva, indicada por círculo com ponto preto)
+
+2. **DEPARTAMENTO**  
+   - Atributos:  
+     - código (chave primária)  
+     - nome  
+   - Relacionamentos:  
+     - Participa de **LOTAÇÃO** (cardinalidade 1,1 para DEPARTAMENTO)
+
+3. **PROCESSADOR DE TEXTOS**  
+   - Atributos:  
+     - código (chave primária)  
+     - nome  
+   - Relacionamentos:  
+     - Relacionado a **DOMÍNIO** (cardinalidade 0,N para PROCESSADOR DE TEXTOS)
+
+4. **RAMO DA ENGENHARIA**  
+   - Atributos:  
+     - código (chave primária)  
+     - nome  
+   - Relacionamentos:  
+     - Relacionado a **PARTICIPAÇÃO** (cardinalidade 1,1 para RAMO DA ENGENHARIA)
+
+5. **PROJETO**  
+   - Atributos:  
+     - código (chave primária)  
+     - nome  
+   - Relacionamentos:  
+     - Relacionado a **PARTICIPAÇÃO** (cardinalidade 0,N para PROJETO)
+
+#### Entidades Fracas (retângulos com cantos arredondados ou losangos – aqui representadas como especializações)
+
+6. **SECRETÁRIA**  
+   - Especialização de **EMPREGADO**  
+   - Relacionamento:  
+     - Usa **DOMÍNIO** com **PROCESSADOR DE TEXTOS** (cardinalidade 1,N)
+
+7. **MOTORISTA**  
+   - Especialização de **EMPREGADO**  
+   - Atributo adicional:  
+     - carteira de habilitação  
+   - Relacionamento:  
+     - Possui **CREA** (cardinalidade 0,N) – entidade fraca identificada por MOTORISTA
+
+8. **ENGENHEIRO**  
+   - Especialização de **EMPREGADO**  
+   - Relacionamento:  
+     - Participa de **PARTICIPAÇÃO** com **PROJETO** e **RAMO DA ENGENHARIA** (cardinalidade 0,N)
+
+#### Relacionamentos (losangos)
+
+1. **LOTAÇÃO**  
+   - Conecta **EMPREGADO** (0,N) a **DEPARTAMENTO** (1,1)  
+   - Indica que um empregado pode estar lotado em zero ou muitos departamentos, mas um departamento tem exatamente um empregado lotado (possivelmente interpretado como lotação atual única por empregado em um dado momento)
+
+2. **DOMÍNIO**  
+   - Conecta **SECRETÁRIA** (1,N) a **PROCESSADOR DE TEXTOS** (0,N)  
+   - Uma secretária domina um ou mais processadores de texto; um processador pode ser dominado por zero ou mais secretárias
+
+3. **CREA**  
+   - Entidade fraca dependente de **MOTORISTA**  
+   - Cardinalidade: MOTORISTA (0,N) → CREA  
+   - Cada motorista pode ter zero ou mais registros CREA (provavelmente número de registro profissional)
+
+4. **PARTICIPAÇÃO**  
+   - Relacionamento ternário entre **ENGENHEIRO** (0,N), **PROJETO** (0,N) e **RAMO DA ENGENHARIA** (1,1)  
+   - Um engenheiro pode participar de zero ou mais projetos em um ramo específico da engenharia  
+   - Um projeto pode envolver zero ou mais engenheiros  
+   - Cada participação está associada a exatamente um ramo da engenharia
+
+#### Herança (círculo com ponto preto conectado a EMPREGADO)
+
+- **Tipo de empregado**: atributo discriminador (provavelmente com valores como "SECRETÁRIA", "MOTORISTA", "ENGENHEIRO")  
+- Herança **exclusiva e total** (todo empregado é de exatamente um dos três tipos)  
+- Especializações disjuntas e cobrem toda a entidade pai
+
+#### Chaves Primárias (identificadores únicos)
+
+- EMPREGADO: código  
+- DEPARTAMENTO: código  
+- PROCESSADOR DE TEXTOS: código  
+- RAMO DA ENGENHARIA: código  
+- PROJETO: código  
+- CREA: identificada por combinação com chave de MOTORISTA (entidade fraca)
+
+#### Observações de Integridade
+
+- **LOTAÇÃO**: sugere que a lotação atual de um empregado é única (1,1 no lado do departamento), mas historicamente pode haver múltiplas (0,N no empregado)  
+- **CREA** como entidade fraca indica que o registro profissional só existe no contexto de um motorista  
+- **PARTICIPAÇÃO** modela corretamente a relação N:N:M com atributo implícito no ramo  
+- **DOMÍNIO** restringe o uso de processadores de texto apenas a secretárias
+
+Fim da descrição.

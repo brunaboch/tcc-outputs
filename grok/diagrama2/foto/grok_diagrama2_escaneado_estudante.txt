@@ -1,0 +1,77 @@
+**Leitura acessível do diagrama conceitual de banco de dados**  
+*(Texto estruturado para leitores de tela, com linguagem simples e clara)*  
+
+---
+
+### **Título do diagrama:**  
+Esquema relacional conceitual.
+
+---
+
+### **Entidades (caixas) e seus atributos (pontos com nomes)**  
+
+1. **Entidade: GRUPO**  
+   - É uma caixa retangular no topo do diagrama.  
+   - Tem dois atributos (bolinhas com nomes):  
+     - **código** (bolinha preta à esquerda, é a chave primária).  
+     - **nome** (bolinha branca à direita).  
+
+2. **Entidade: EMPRESA**  
+   - Caixa abaixo do GRUPO.  
+   - Atributos:  
+     - **número da empresa** (bolinha preta à esquerda, chave primária).  
+     - **nome** (bolinha branca à direita).  
+
+3. **Entidade: EMPREGADO**  
+   - Caixa mais abaixo, à esquerda.  
+   - Atributos:  
+     - **número do empregado** (bolinha preta à esquerda, chave primária).  
+     - **nome** (bolinha branca à direita).  
+
+4. **Entidade: DEPENDENTE**  
+   - Caixa à direita, na mesma linha do EMPREGADO.  
+   - Atributos:  
+     - **número de sequência** (bolinha preta embaixo, parte da chave).  
+     - **nome** (bolinha branca à direita).  
+
+---
+
+### **Relacionamentos (linhas e losangos)**  
+
+Os losangos indicam **relacionamentos entre as entidades**.  
+As marcações como **(1,1)** ou **(0,n)** mostram **quantas vezes uma entidade pode se relacionar com a outra**.
+
+#### 1. **Relacionamento entre GRUPO e EMPRESA**  
+   - Linha com losango no meio.  
+   - Do GRUPO para o losango: **(1,1)** → Um grupo tem **exatamente uma** empresa.  
+   - Da EMPRESA para o losango: **(0,n)** → Uma empresa pode estar em **zero ou muitos** grupos.  
+   *(Na prática, isso pode significar que empresas são organizadas em grupos, mas nem toda empresa precisa estar em um grupo.)*
+
+#### 2. **Relacionamento entre EMPRESA e EMPREGADO**  
+   - Linha com losango.  
+   - Da EMPRESA para o losango: **(1,1)** → Cada empregado pertence a **exatamente uma** empresa.  
+   - Do EMPREGADO para o losango: **(0,n)** → Uma empresa pode ter **zero ou muitos** empregados.  
+   *(Todo empregado trabalha em uma empresa, mas uma empresa pode não ter empregados ainda.)*
+
+#### 3. **Relacionamento entre EMPREGADO e DEPENDENTE**  
+   - Linha com losango.  
+   - Do EMPREGADO para o losango: **(1,1)** → Cada dependente está ligado a **exatamente um** empregado.  
+   - Do DEPENDENTE para o losango: **(0,n)** → Um empregado pode ter **zero ou muitos** dependentes.  
+   *(Exemplo: filhos, cônjuge. Um empregado pode não ter dependentes, ou ter vários.)*
+
+---
+
+### **Resumo em palavras simples**  
+
+- Um **GRUPO** tem um **código** e um **nome**.  
+- Cada **EMPRESA** tem um **número** e um **nome**.  
+- Uma empresa pode estar em **um ou nenhum grupo**.  
+- Um **EMPREGADO** tem um **número** e um **nome**, e trabalha em **apenas uma empresa**.  
+- Uma empresa pode ter **muitos empregados** (ou nenhum).  
+- Um **DEPENDENTE** tem um **número de sequência** (para diferenciar irmãos, por exemplo) e um **nome**.  
+- Cada dependente pertence a **apenas um empregado**, mas um empregado pode ter **vários dependentes** (ou nenhum).
+
+---
+
+**Fim da descrição.**  
+*(Todo o diagrama foi lido apenas com base na imagem, sem adicionar conceitos externos.)*

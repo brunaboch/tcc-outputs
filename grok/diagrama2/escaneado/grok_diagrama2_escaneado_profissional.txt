@@ -1,0 +1,112 @@
+### Descrição Estrutural e Semântica do Diagrama Conceitual (Leitura Acessível para Tela)
+
+#### Visão Geral do Diagrama
+O diagrama apresenta um modelo conceitual entidade-relacionamento (ER) com **quatro entidades** e **três relacionamentos**, organizados em uma estrutura hierárquica vertical. As entidades são representadas por retângulos com atributos e chaves primárias destacadas. Os relacionamentos são representados por losangos com cardinalidades indicadas entre parênteses nas arestas.
+
+---
+
+#### Entidades e Atributos
+
+1. **Entidade: GRUPO**  
+   - **Atributos:**  
+     - `código` → chave primária (indicada por círculo preto cheio à esquerda)  
+     - `nome` → atributo simples (círculo branco à direita)  
+   - Posição: topo do diagrama.
+
+2. **Entidade: EMPRESA**  
+   - **Atributos:**  
+     - `número da empresa` → chave primária (círculo preto cheio à esquerda)  
+     - `nome` → atributo simples (círculo branco à direita)  
+   - Posição: segundo nível.
+
+3. **Entidade: EMPREGADO**  
+   - **Atributos:**  
+     - `número do empregado` → chave primária (círculo preto cheio à esquerda)  
+     - `nome` → atributo simples (círculo branco à direita)  
+   - Posição: terceiro nível.
+
+4. **Entidade: DEPENDENTE**  
+   - **Atributos:**  
+     - `número de sequência` → parte da chave primária composta (círculo preto cheio à esquerda)  
+     - `nome` → atributo simples (círculo branco à direita)  
+   - Posição: quarto nível, à direita.
+
+---
+
+#### Relacionamentos e Cardinalidades
+
+1. **Relacionamento entre GRUPO e EMPRESA**  
+   - Losango rotulado implicitamente (sem nome explícito, mas inferido como "possui" ou "contém")  
+   - **Cardinalidade:**  
+     - GRUPO (1,1) — EMPRESA (0,n)  
+     - **Interpretação:**  
+       - Cada **GRUPO** possui **obrigatoriamente uma ou mais EMPRESAs** (mínimo 1, máximo n).  
+       - Cada **EMPRESA** pertence a **zero ou um GRUPO** (pode existir sem grupo ou estar em exatamente um).
+
+2. **Relacionamento entre EMPRESA e EMPREGADO**  
+   - Losango rotulado implicitamente ("emprega" ou "possui")  
+   - **Cardinalidade:**  
+     - EMPRESA (1,1) — EMPREGADO (0,n)  
+     - **Interpretação:**  
+       - Cada **EMPRESA** possui **obrigatoriamente zero ou mais EMPREGADOs**.  
+       - Cada **EMPREGADO** pertence a **obrigatoriamente uma EMPRESA** (mínimo 1, máximo 1).
+
+3. **Relacionamento entre EMPREGADO e DEPENDENTE**  
+   - Losango rotulado implicitamente ("tem" ou "possui")  
+   - **Cardinalidade:**  
+     - EMPREGADO (1,1) — DEPENDENTE (0,n)  
+     - **Interpretação:**  
+       - Cada **EMPREGADO** possui **obrigatoriamente zero ou mais DEPENDENTEs**.  
+       - Cada **DEPENDENTE** está associado a **obrigatoriamente um EMPREGADO** (mínimo 1, máximo 1).  
+   - **Observação sobre chave:**  
+     - O atributo `número de sequência` em DEPENDENTE forma, junto com a chave estrangeira implícita de EMPREGADO (`número do empregado`), uma **chave primária composta** para DEPENDENTE.
+
+---
+
+#### Fluxo Hierárquico e Dependências de Chave
+
+- **Hierarquia de agregação:**  
+  GRUPO → EMPRESA → EMPREGADO → DEPENDENTE
+
+- **Propagação de chaves (implícita):**  
+  - `código` (GRUPO) → não se propaga diretamente.  
+  - `número da empresa` (EMPRESA) → torna-se **chave estrangeira** em EMPREGADO.  
+  - `número do empregado` (EMPREGADO) → torna-se **chave estrangeira** em DEPENDENTE, compondo a PK com `número de sequência`.
+
+---
+
+#### Resumo Semântico
+
+- Um **GRUPO** agrupa **uma ou mais EMPRESAs**.  
+- Cada **EMPRESA** emprega **zero ou mais EMPREGADOs**.  
+- Cada **EMPREGADO** pode ter **zero ou mais DEPENDENTEs**, identificados unicamente por um número de sequência dentro do escopo do empregado.
+
+---
+
+#### Representação Textual Compacta (para leitores de tela)
+
+```
+[GRUPO]
+PK: código
+   nome
+   ↓ (1,1)
+[possui]
+   ↓ (0,n)
+[EMPRESA]
+PK: número da empresa
+   nome
+   ↓ (1,1)
+[emprega]
+   ↓ (0,n)
+[EMPREGADO]
+PK: número do empregado
+   nome
+   ↓ (1,1)
+[tem]
+   → (0,n)
+[DEPENDENTE]
+PK: (número do empregado, número de sequência)
+   nome
+```
+
+Este diagrama modela uma estrutura organizacional com **agregação forte** de cima para baixo e **relacionamento pai-filho** com dependentes, adequado para sistemas de folha de pagamento ou RH corporativo.

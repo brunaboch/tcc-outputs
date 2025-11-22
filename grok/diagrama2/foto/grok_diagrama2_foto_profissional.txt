@@ -1,0 +1,67 @@
+**Explicação do Diagrama Relacional Conceitual (leitura acessível para tela)**
+
+**Início da descrição do diagrama.**
+
+O diagrama é composto por quatro entidades retangulares conectadas por relacionamentos representados por losangos. As cardinalidades estão indicadas entre parênteses nas arestas de conexão. A leitura segue a ordem hierárquica de cima para baixo.
+
+**Entidade 1: GRUPO**  
+- Retângulo posicionado no topo.  
+- Atributos:  
+  - código (chave primária, indicada por círculo preto à esquerda).  
+  - nome (círculo branco à direita).  
+- Relacionamento descendente: losango com cardinalidade (1,1) partindo de GRUPO.
+
+**Relacionamento 1: (1,1) entre GRUPO e EMPRESA**  
+- Conecta GRUPO (lado superior) a EMPRESA (lado inferior).  
+- Indica que cada grupo possui exatamente uma empresa associada.
+
+**Entidade 2: EMPRESA**  
+- Retângulo abaixo do losango anterior.  
+- Atributos:  
+  - número da empresa (chave primária, círculo preto à esquerda).  
+  - nome (círculo branco à direita).  
+- Dois relacionamentos descendentes:  
+  - Losango superior com cardinalidade (0,n) → indica zero ou mais empregados.  
+  - Losango inferior com cardinalidade (1,1) → indica exatamente um empregado (possivelmente gerente ou representante).
+
+**Relacionamento 2: (0,n) entre EMPRESA e EMPREGADO**  
+- Conecta EMPRESA (lado esquerdo) a EMPREGADO (lado direito).  
+- Cada empresa pode ter zero ou mais empregados.
+
+**Entidade 3: EMPREGADO**  
+- Retângulo à esquerda, abaixo da empresa.  
+- Atributos:  
+  - número do empregado (chave primária, círculo preto à esquerda).  
+  - nome (círculo branco à direita).  
+- Relacionamento descendente: losango com cardinalidade (1,1) partindo de EMPREGADO.
+
+**Relacionamento 3: (1,1) entre EMPRESA e EMPREGADO (segundo losango)**  
+- Conecta EMPRESA (lado superior) a EMPREGADO (lado inferior).  
+- Indica que cada empresa possui exatamente um empregado em papel especial (exemplo: gerente).
+
+**Relacionamento 4: (1,1) entre EMPREGADO e DEPENDENTE**  
+- Losango saindo à direita de EMPREGADO com cardinalidade (1,1).  
+- Conecta EMPREGADO a DEPENDENTE.  
+- Cada empregado possui exatamente um dependente.
+
+**Entidade 4: DEPENDENTE**  
+- Retângulo à direita extrema.  
+- Atributos:  
+  - número de sequência (círculo preto à esquerda, provavelmente parte da chave composta).  
+  - nome (círculo branco à direita).  
+- Relacionamento de entrada: (0,n) vindo de EMPREGADO.  
+- Indica que um dependente está associado a zero ou mais empregados (mas pelo losango anterior, na prática é 1:1 no sentido inverso).
+
+**Resumo das cardinalidades (leitura em sequência):**  
+1. GRUPO (1,1) → EMPRESA  
+2. EMPRESA (0,n) → EMPREGADO  
+3. EMPRESA (1,1) → EMPREGADO (instância especial)  
+4. EMPREGADO (1,1) → DEPENDENTE  
+5. DEPENDENTE (0,n) ← EMPREGADO (reflexo do anterior)
+
+**Observações estruturais:**  
+- Chaves primárias: código (GRUPO), número da empresa (EMPRESA), número do empregado (EMPREGADO), número de sequência (DEPENDENTE, possivelmente com número do empregado como chave estrangeira composta).  
+- Relacionamento (1,1) entre EMPRESA e EMPREGADO aparece duas vezes com propósitos distintos: um para vínculo geral (0,n) e outro para vínculo obrigatório único (1,1).  
+- DEPENDENTE tem cardinalidade (0,n) no sentido de leitura, mas é restrito a (1,1) no sentido oposto por meio do losango.
+
+**Fim da descrição do diagrama.**

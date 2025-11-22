@@ -1,0 +1,112 @@
+**Diagrama Conceitual de Banco de Dados – Explicação Completa e Acessível**
+
+---
+
+**Título da seção: Visão geral do diagrama**  
+O diagrama mostra como os dados de uma empresa são organizados. Ele usa caixas para representar grupos de informações (chamadas **entidades**) e linhas para mostrar como esses grupos se conectam (chamados **relacionamentos**). Cada caixa tem um nome no topo e, dentro dela, palavras que são os **atributos** (detalhes que guardamos sobre aquele grupo). Pequenos símbolos nas linhas indicam quantas vezes cada grupo pode se conectar ao outro.
+
+---
+
+**Título da seção: Entidades principais (caixas) e seus atributos**  
+Vou ler de cima para baixo e da esquerda para a direita, como se fosse uma árvore.
+
+1. **Caixa: EMPREGADO**  
+   - Tem um círculo vazio no topo esquerdo com a palavra “nome”.  
+   - Tem um círculo preto (bolinha cheia) com a palavra “CPF”.  
+   - Tem uma linha saindo de baixo com a letra “P”.  
+   *Explicação:* Todo empregado tem um nome (círculo vazio = pode ser comum a várias pessoas) e um CPF único (bolinha cheia = chave primária, identifica unicamente cada empregado).
+
+2. **Caixa: LOTAÇÃO**  
+   - Tem um losango vazio com “(0,n)” de cada lado.  
+   *Explicação:* Esta caixa é um relacionamento (losango), não uma entidade com atributos. Ela conecta empregados a departamentos.
+
+3. **Caixa: DEPARTAMENTO**  
+   - Tem um círculo vazio com “nome”.  
+   - Tem uma bolinha cheia com “código”.  
+   *Explicação:* Cada departamento tem um nome e um código único.
+
+4. **Caixa: SECRETÁRIA**  
+   - Tem um círculo vazio com “DOMÍNIO”.  
+   - Tem um losango “(1,n)” à esquerda e “(0,n)” à direita.  
+   *Explicação:* Uma secretária tem um domínio (área de conhecimento). Ela pode estar ligada a zero ou mais empregados, e cada empregado pode ter uma ou mais secretárias.
+
+5. **Caixa: MOTORISTA**  
+   - Tem um círculo vazio com “carteira de habilitação”.  
+   - Tem um losango “(0,n)” à esquerda e “(1,1)” à direita.  
+   *Explicação:* Um motorista tem uma carteira de habilitação. Cada motorista está ligado exatamente a um empregado, mas um empregado pode ter zero ou mais motoristas.
+
+6. **Caixa: GRADUAÇÃO**  
+   - Tem um losango “(0,n)” à esquerda e “(1,1)” à direita.  
+   *Explicação:* Relacionamento que liga engenheiros a suas graduações.
+
+7. **Caixa: ENGENHEIRO**  
+   - Tem uma bolinha cheia com “código”.  
+   - Tem um círculo vazio com “nome”.  
+   *Explicação:* Cada engenheiro tem um código único e um nome.
+
+8. **Caixa: PARTICIPAÇÃO**  
+   - Tem um losango “(0,n)” à esquerda e “(0,n)” à direita.  
+   *Explicação:* Relacionamento que liga engenheiros a projetos.
+
+9. **Caixa: PROJETO**  
+   - Tem um círculo vazio com “nome”.  
+   - Tem uma bolinha cheia com “código”.  
+   *Explicação:* Cada projeto tem um nome e um código único.
+
+10. **Caixa: PROCESSADOR DE TEXTOS**  
+    - Tem um círculo vazio com “nome”.  
+    - Tem uma bolinha cheia com “código”.  
+    - Tem um losango “(0,n)” à esquerda.  
+    *Explicação:* Cada processador de textos tem nome e código único. Pode estar ligado a zero ou mais secretárias.
+
+---
+
+**Título da seção: Relacionamentos (linhas e losangos) – o que significam os números**  
+Os números entre parênteses mostram **cardinalidade** (quantos de um lado podem se conectar ao outro):
+
+- **(0,n)** → zero ou muitos  
+- **(1,n)** → um ou muitos  
+- **(1,1)** → exatamente um  
+- **(0,1)** → zero ou um (não aparece, mas é comum)
+
+**Exemplos práticos:**
+
+- **Empregado → LOTAÇÃO → Departamento**  
+  - Um empregado pode estar lotado em **zero ou muitos** departamentos (0,n).  
+  - Um departamento pode ter **um ou muitos** empregados (1,n).
+
+- **Secretária → (1,n) ← Empregado**  
+  - Uma secretária atende **um ou muitos** empregados.  
+  - Um empregado pode ter **uma ou mais** secretárias.
+
+- **Motorista → (1,1) ← Empregado**  
+  - Um motorista está ligado a **exatamente um** empregado.  
+  - Um empregado pode ter **zero ou muitos** motoristas.
+
+- **Engenheiro → GRADUAÇÃO → (1,1)**  
+  - Cada engenheiro tem **exatamente uma** graduação registrada.
+
+- **Engenheiro → PARTICIPAÇÃO → Projeto**  
+  - Um engenheiro pode participar de **zero ou muitos** projetos.  
+  - Um projeto pode ter **zero ou muitos** engenheiros.
+
+- **Processador de Textos → (0,n) ← Secretária**  
+  - Uma secretária pode usar **zero ou muitos** processadores de texto.
+
+---
+
+**Título da seção: Resumo em forma de história simples**  
+Imagine uma empresa:
+
+- Cada **empregado** tem um CPF único e um nome.  
+- Ele é **lotado** em um ou mais **departamentos** (ex: TI, RH).  
+- Alguns empregados são **secretárias** (usam processador de texto e têm domínio).  
+- Outros são **motoristas** (têm carteira de habilitação).  
+- Há **engenheiros** que têm código, nome, uma graduação e participam de projetos.  
+- Os **projetos** têm código e nome.  
+- Tudo é conectado por linhas que dizem “quem pode ter quantos do outro lado”.
+
+---
+
+**Fim da explicação.**  
+Este diagrama organiza pessoas, cargos, departamentos e projetos de forma que o computador saiba exatamente como guardar e buscar cada informação.
