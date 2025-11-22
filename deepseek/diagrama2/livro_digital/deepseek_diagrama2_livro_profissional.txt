@@ -1,0 +1,37 @@
+Este é um diagrama entidade-relacionamento (DER) que descreve um modelo conceitual envolvendo quatro entidades e três relacionamentos.
+
+**Descrição das Entidades:**
+
+1.  **EMPRESA:** Representada por um retângulo. Possui os atributos:
+    *   `código` (atributo identificador, provavelmente a chave primária).
+    *   `nome`.
+2.  **EMPREGADO:** Representada por um retângulo. Possui os atributos:
+    *   `número do empregado` (atributo identificador, provavelmente a chave primária).
+    *   `nome`.
+3.  **GRUPO:** Representada por um retângulo. Não são listados atributos visíveis nesta visualização.
+4.  **DEPENDENTE:** Representada por um retângulo. Possui o atributo:
+    *   `número de seqüência` (atributo identificador, provavelmente um componente da chave primária).
+
+**Descrição dos Relacionamentos e Cardinalidades:**
+
+Os relacionamentos são representados por losangos conectando as entidades. A cardinalidade, indicada pela notação `(min, max)` ao lado de cada entidade participante, descreve as regras de negócio.
+
+1.  **Relacionamento entre EMPRESA e EMPREGADO (Relacionamento: EMPREGA):**
+    *   Uma **EMPRESA** está do lado `(1,1)`. Isso significa que um empregado deve estar vinculado a **exatamente uma** empresa (mínimo 1, máximo 1). É uma relação obrigatória.
+    *   Um **EMPREGADO** está do lado `(0,n)`. Isso significa que uma empresa pode empregar **zero ou muitos** empregados.
+
+2.  **Relacionamento entre GRUPO e EMPREGADO:**
+    *   Um **GRUPO** está do lado `(1,1)`. Isso significa que um empregado deve pertencer a **exatamente um** grupo.
+    *   Um **EMPREGADO** está do lado `(0,n)`. Isso significa que um grupo pode conter **zero ou muitos** empregados.
+
+3.  **Relacionamento entre EMPREGADO e DEPENDENTE:**
+    *   Um **EMPREGADO** está do lado `(1,1)`. Isso significa que um dependente deve estar associado a **exatamente um** empregado.
+    *   Um **DEPENDENTE** está do lado `(0,n)`. Isso significa que um empregado pode ter **zero ou muitos** dependentes.
+
+**Resumo das Regras de Negócio Conforme o Diagrama:**
+
+*   Todo **Empregado** é obrigatoriamente contratado por uma **Empresa** e pertence a um **Grupo**.
+*   Uma **Empresa** pode ter vários **Empregados** ou nenhum.
+*   Um **Grupo** pode ter vários **Empregados** ou nenhum.
+*   Um **Empregado** pode ter vários **Dependentes** ou nenhum.
+*   Todo **Dependente** deve estar obrigatoriamente vinculado a um **Empregado**.

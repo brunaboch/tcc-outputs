@@ -1,0 +1,18 @@
+Texto descritivo do diagrama conceitual de banco de dados para leitores de tela:
+
+Olá! Vou descrever para você um diagrama que representa a estrutura de um banco de dados. Pense nele como um mapa que mostra como as informações de um sistema estão organizadas e conectadas.
+
+No centro do diagrama, temos um elemento principal chamado "Produto". Você pode imaginar o "Produto" como uma ficha técnica completa de um item que seria vendido em uma loja. Esta ficha tem três informações principais: uma "descrição" que explica o que é o produto, um "código" único que serve como sua identificação, e um atributo chamado "n" cujo significado específico não está detalhado, mas que provavelmente representa um número, como uma quantidade ou uma classificação interna.
+
+Logo abaixo do "Produto", e diretamente ligado a ele, está o "preço". Esta ligação é muito forte e direta, indicando que cada produto tem um, e apenas um, preço associado. É uma relação de dependência, onde o preço não existe sozinho; ele existe porque existe um produto.
+
+À direita do "Produto", temos outra entidade chamada "Tipo de produto". Esta é como uma categoria que agrupa produtos semelhantes. Por exemplo, em uma loja, você poderia ter tipos como "Eletrônicos", "Roupas" ou "Livros". O "Tipo de produto" também possui uma "descrição" (que diz o nome da categoria) e um "código" único para identificá-la.
+
+Existe uma seta ou uma linha saindo do "Tipo de produto" e apontando para o "Produto". Esta seta representa um relacionamento entre eles. Ela nos diz que cada produto pertence a um tipo de produto. É uma relação do tipo "um para muitos", o que significa que um mesmo tipo de produto (por exemplo, "Eletrônicos") pode ser compartilhado por vários produtos diferentes (como um celular, um tablet e um fone de ouvido).
+
+Resumindo a organização:
+- O coração do sistema é o **Produto**, que tem descrição, código e um número (n).
+- Cada Produto tem um **Preço** específico.
+- Cada Produto está classificada em uma categoria, chamada de **Tipo de Produto**, que também tem sua própria descrição e código.
+
+Esta estrutura garante que todas as informações fiquem bem organizadas: sabemos o que cada produto é, qual o seu preço, e a que categoria ele pertence.

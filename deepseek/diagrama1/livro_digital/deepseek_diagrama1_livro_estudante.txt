@@ -1,0 +1,38 @@
+Este é um diagrama que mostra como as informações de um sistema de produtos estão organizadas. Vou explicar cada parte dele de forma clara.
+
+Imagine que este diagrama é um mapa que mostra dois tipos principais de informação e como elas se conectam.
+
+**As Duas Entidades Principais (Os Blocos de Informação):**
+
+1.  **Produto:** Esta é a primeira caixa de informações. Ela representa um item que está à venda ou cadastrado no sistema. Dentro desta caixa, temos três detalhes específicos, que chamamos de "atributos":
+    *   **preço:** O valor do produto.
+    *   **descrição:** Um texto explicando o que é o produto.
+    *   **código:** Um número único para identificar esse produto, como uma identidade.
+
+2.  **Tipo de produto:** Esta é a segunda caixa de informações. Ela representa a categoria à qual um produto pertence. Por exemplo: "Eletrônico", "Vestuário" ou "Alimentício". Ela também tem seus próprios detalhes (atributos):
+    *   **descrição:** O nome da categoria (como "Eletrônico").
+    *   **código:** Um número único para identificar esse tipo de produto.
+
+**O Relacionamento (Como as Caixas se Conectam):**
+
+No centro do diagrama, entre as duas caixas, há uma linha com os símbolos `n` e `1`. Esta linha explica como "Produto" e "Tipo de produto" se relacionam.
+
+*   O símbolo `1` (perto da caixa "Tipo de produto") significa: **Um único** tipo de produto.
+*   O símbolo `n` (perto da caixa "Produto") significa: **Muitos** produtos.
+
+Juntando tudo, o relacionamento é lido da seguinte forma:
+
+**"Um único Tipo de produto pode estar associado a Muitos Produtos diferentes."**
+
+Em outras palavras, é uma relação de **UM para MUITOS**.
+
+**Exemplo Prático para Facilitar:**
+
+Pense em uma categoria chamada "Eletrônico" (que é um *Tipo de produto*).
+
+*   O Tipo de produto "Eletrônico" (UM) pode ter ligado a ele vários produtos (MUITOS), como: um smartphone, um fone de ouvido, um tablet.
+*   Cada um desses produtos (smartphone, fone, tablet) terá seu próprio preço, descrição e código, mas todos compartilharão o mesmo *Tipo de produto*: "Eletrônico".
+
+**Resumo Final:**
+
+Este diagrama nos diz que o sistema armazena informações sobre **Produtos** (com preço, descrição e código) e os organiza em categorias chamadas **Tipos de produto** (com uma descrição e um código). A regra é que uma categoria pode conter vários produtos, mas um produto individual pertence a apenas uma categoria.

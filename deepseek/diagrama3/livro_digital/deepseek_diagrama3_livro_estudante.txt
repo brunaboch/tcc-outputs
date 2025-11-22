@@ -1,0 +1,67 @@
+Claro, aqui está a descrição do diagrama, feita para ser clara e acessível, inclusive para pessoas com deficiência visual que utilizam leitores de tela.
+
+---
+
+### Explicação do Diagrama do Banco de Dados
+
+Vou descrever este diagrama como se estivéssemos falando sobre os personagens e os lugares de uma empresa, e como eles se conectam. Imagine que cada "entidade" (que são os retângulos no desenho) é um tipo de pessoa, um lugar ou uma coisa importante dentro da empresa.
+
+**As Entidades Principais (Os Personagens e Lugares):**
+
+1.  **EMPREGADO:** Esta é a entidade principal, representa qualquer pessoa que trabalha na empresa. Cada empregado tem as seguintes informações (atributos):
+    *   `tipo de empregado`
+    *   `nome`
+    *   `CIC` (um documento de identificação)
+    *   `código` (um número único para cada empregado)
+
+2.  **DEPARTAMENTO:** Representa as diferentes áreas ou setores da empresa, como "Vendas", "Engenharia" ou "Recursos Humanos". Seus atributos são:
+    *   `código` (um número único para cada departamento)
+    *   `nome`
+
+3.  **PROJETO:** São as tarefas ou iniciativas especiais em que os empregados trabalham. Por exemplo, "Construir um Novo Site" ou "Lançar um Novo Produto". Seus atributos são:
+    *   `código` (um número único para cada projeto)
+    *   `nome`
+
+**Os Tipos Especiais de Empregados:**
+
+O diagrama mostra que existem três tipos específicos de empregados: Secretária, Motorista e Engenheiro. Eles são "tipos" do Empregado geral e herdam suas informações (como nome e CIC), mas cada um tem suas próprias características:
+
+*   **SECRETÁRIA:** Tem um relacionamento com uma entidade chamada **PROCESSADOR DE TEXTOS**, que poderia ser um software ou sistema que ela usa. O Processador de Textos tem `código` e `nome`.
+*   **MOTORISTA:** Tem uma informação extra específica para ele, que é a `carteira de habilitação`. Ele também está ligado a um **VEÍCULO** (que tem `código` e `nome`).
+*   **ENGENHEIRO:** Tem um número de registro profissional, o `CREA`. Ele também está ligado a um **RAMO DA ENGENHARIA** (como "Civil" ou "Elétrica"), que tem `código` e `nome`.
+
+**Como Tudo Se Conecta (Os Relacionamentos):**
+
+Agora, vamos ver como essas entidades se ligam umas às outras. As linhas e os números entre parênteses `( )` explicam essas conexões.
+
+1.  **LOTACAO (Entre EMPREGADO e DEPARTAMENTO):**
+    *   Esta linha nos diz que todo **Empregado** trabalha em um **Departamento**.
+    *   A seta aponta para o Departamento e os números `(1,1)` significam que **cada empregado está lotado em um e apenas um departamento**.
+    *   Do lado do Departamento, os números `(0,n)` significam que **um departamento pode ter desde zero até muitos ( 'n' ) empregados** lotados nele. Um departamento pode existir mesmo que não tenha ninguém lotado no momento.
+
+2.  **PARTICIPACAO (Entre EMPREGADO e PROJETO):**
+    *   Esta linha mostra que os **Empregados** podem trabalhar em **Projetos**.
+    *   Os números `(0,n)` dos dois lados significam que: **Um empregado pode participar de zero ou vários projetos**, e **um projeto pode ter desde zero até muitos empregados** participando dele. É um relacionamento opcional para ambos os lados.
+
+3.  **DOMINIO (Entre SECRETÁRIA e PROCESSADOR DE TEXTOS):**
+    *   Esta conexão específica diz que uma **Secretária** tem domínio sobre um **Processador de Textos**.
+    *   Os números `(1,n)` do lado da Secretária significam que **uma secretária domina pelo menos um ou vários processadores de texto**.
+    *   Do lado do Processador de Textos, `(0,n)` significa que **um mesmo processador de texto pode ser dominado por desde zero até muitas secretárias**.
+
+4.  **POSSUI (Entre MOTORISTA e VEÍCULO):**
+    *   Mostra que um **Motorista** pode dirigir um **Veículo**.
+    *   `(0,n)` do lado do Motorista significa que **um motorista pode estar habilitado para dirigir zero ou vários veículos**.
+    *   `(1,1)` do lado do Veículo significa que **cada veículo é dirigido por um e apenas um motorista**.
+
+5.  **ESPECIALIZACAO (Entre ENGENHEIRO e RAMO DA ENGENHARIA):**
+    *   Indica a área de atuação do **Engenheiro**.
+    *   `(0,n)` do lado do Engenheiro significa que **um engenheiro pode ser especializado em zero ou vários ramos**.
+    *   `(1,1)` do lado do Ramo da Engenharia significa que **cada ramo da engenharia é a especialização de um e apenas um engenheiro**.
+
+---
+
+**Resumo Geral em Palavras Simples:**
+
+Este diagrama descreve o sistema de uma empresa. Ele guarda informações sobre **todos os empregados**, mostrando em **qual departamento** cada um trabalha e em **quais projetos** eles estão envolvidos. Além disso, ele detalha informações específicas para **secretárias** (que programas elas usam), **motoristas** (qual sua carteira e quais veículos dirigem) e **engenheiros** (seu registro profissional e sua especialidade).
+
+Espero que esta explicação tenha tornado o diagrama claro e compreensível

@@ -1,0 +1,23 @@
+Texto descritivo do diagrama conceitual para leitores de tela:
+
+O diagrama mostra três conceitos principais, que são representados por retângulos. Vamos chamar esses retângulos de "entidades", que são como as coisas mais importantes sobre as quais o banco de dados vai guardar informação.
+
+A primeira entidade, no topo do diagrama, se chama **"O preço"**. Dentro do seu retângulo, não estão listados nenhuns detalhes específicos (atributos), o que pode significar que o seu foco principal é a sua conexão com as outras entidades.
+
+Logo abaixo, temos a segunda entidade, chamada **"Produto"**. O retângulo do Produto está dividido em duas partes. A parte de cima, com o nome "Produto", é o identificador principal. A parte de baixo contém os detalhes que serão armazenados sobre cada produto, que são:
+*   descrição
+*   código
+*   n
+*   1
+
+Abaixo do "Produto", está a terceira entidade, chamada **"Tipo de produto"**. O retângulo do "Tipo de produto" também está dividido em duas partes. A parte de cima tem o seu nome, e a parte de baixo lista os detalhes que serão guardados sobre cada tipo, que são:
+*   descrição
+*   código
+
+Agora, sobre as conexões, que chamamos de "relacionamentos":
+
+Existe uma linha ligando a entidade **"Produto"** à entidade **"Tipo de produto"**. Na ponta da linha que toca o "Tipo de produto", há um símbolo que se parece com três perninhas. Esse símbolo significa **"um para muitos"**. Isso quer dizer que um único Tipo de Produto pode estar associado a *muitos* Produtos diferentes. Por exemplo, um tipo de produto chamado "Eletrônico" pode ter muitos produtos associados, como "Smartphone", "Tablet" e "Notebook". Cada produto, no entanto, está ligado a apenas um tipo.
+
+Também existe uma linha ligando a entidade **"Produto"** à entidade **"O preço"**. Na ponta da linha que toca "O preço", há o mesmo símbolo de três perninhas. Isso indica outro relacionamento **"um para muitos"**. Neste caso, significa que um Preço específico (por exemplo, uma promoção) pode ser aplicado a *muitos* Produtos diferentes. Por outro lado, cada produto individual tem um preço específico associado a ele.
+
+Em resumo, o diagrama ilustra que guardaremos informações sobre Produtos e seus Tipos. Um Tipo pode classificar vários Produtos, e um Preço pode ser compartilhado por vários Produtos.

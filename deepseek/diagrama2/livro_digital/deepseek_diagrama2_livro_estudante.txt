@@ -1,0 +1,56 @@
+Claro, aqui está a descrição do diagrama, elaborada para ser clara e acessível, inclusive para pessoas com deficiência visual ou pouco conhecimento em bancos de dados.
+
+---
+
+### Explicação do Diagrama do Banco de Dados
+
+Vou descrever o diagrama como se estivéssemos montando um quebra-cabeça com quatro peças principais. Essas peças são os grupos de informações, que chamamos de "Entidades". Cada entidade é como uma tabela que guarda um tipo específico de informação.
+
+Vamos conhecer cada uma das quatro entidades:
+
+1.  **EMPRESA**
+    *   **O que é:** Representa uma empresa.
+    *   **Suas informações (atributos):** Ela guarda um `código` único para identificar cada empresa e o `nome` da empresa.
+
+2.  **GRUPO**
+    *   **O que é:** Representa um departamento ou setor dentro de uma empresa.
+    *   **Suas informações (atributos):** Ela guarda o `nome` do grupo ou departamento.
+
+3.  **EMPREGADO**
+    *   **O que é:** Representa uma pessoa que trabalha em uma empresa.
+    *   **Suas informações (atributos):** Ela guarda um `número do empregado` único para identificar cada funcionário e o `nome` do empregado.
+
+4.  **DEPENDENTE**
+    *   **O que é:** Representa um familiar que depende de um empregado, como um filho ou cônjuge.
+    *   **Suas informações (atributos):** Ela guarda um `número de seqüência`, que é como um código para identificar cada dependente de um mesmo empregado.
+
+Agora, a parte mais importante: como essas entidades se conectam? As linhas entre elas mostram os **relacionamentos**, que explicam como as informações de uma tabela se ligam às da outra. Os números entre parênteses `(1,1)` e `(0,n)` definem quantas vezes uma coisa se relaciona com a outra.
+
+Vamos aos relacionamentos:
+
+1.  **A EMPRESA EMPREGA o EMPREGADO.**
+    *   **Leitura:** Uma `EMPRESA` (1,1) pode empregar vários `EMPREGADOS` (0,n).
+    *   **O que isso significa:**
+        *   `(1,1)` do lado da EMPRESA significa que **um empregado sempre está vinculado a uma e apenas uma empresa**. Ele não pode ser funcionário de nenhuma empresa ou de várias ao mesmo tempo neste sistema.
+        *   `(0,n)` do lado do EMPREGADO significa que **uma empresa pode ter zero, um ou muitos empregados**. O "zero" permite que a empresa exista no sistema mesmo antes de ter funcionários registrados.
+
+2.  **O EMPREGADO trabalha em um GRUPO.**
+    *   **Leitura:** Um `EMPREGADO` (1,1) trabalha em um `GRUPO` (0,n).
+    *   **O que isso significa:**
+        *   `(1,1)` do lado do EMPREGADO significa que **um empregado deve estar alocado em um, e apenas um, grupo** (como o departamento de Vendas ou de TI).
+        *   `(0,n)` do lado do GRUPO significa que **um grupo pode ter zero, um ou muitos empregados** trabalhando nele. Um grupo pode existir (como um novo departamento) mesmo que ainda não tenha ninguém alocado.
+
+3.  **O EMPREGADO tem DEPENDENTES.**
+    *   **Leitura:** Um `EMPREGADO` (1,1) pode ter vários `DEPENDENTES` (0,n).
+    *   **O que isso significa:**
+        *   `(1,1)` do lado do EMPREGADO significa que **um dependente sempre está vinculado a um, e apenas um, empregado**. Ele não pode ser dependente de mais de uma pessoa no sistema.
+        *   `(0,n)` do lado do DEPENDENTE significa que **um empregado pode ter zero, um ou muitos dependentes**. Isso permite cadastrar um funcionário que ainda não possui dependentes.
+
+### Resumo da Estrutura
+
+Pense neste diagrama como a planta baixa de um sistema para gerenciar funcionários. Ele organiza as informações para que saibamos:
+
+*   Em qual **Empresa** e em qual **Grupo** (departamento) cada **Empregado** trabalha.
+*   Quais são os **Dependentes** de cada **Empregado**.
+
+As regras de relacionamento garantem que os dados sejam organizados de forma lógica e sem conflitos, como, por exemplo, impedir que um dependente "flutue" no sistema sem estar ligado a um funcionário.

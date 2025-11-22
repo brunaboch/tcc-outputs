@@ -1,0 +1,47 @@
+Explicação técnica do diagrama conceitual de banco de dados:
+
+O diagrama representa um modelo Entidade-Relacionamento (ER) com especialização/generalização, descrevendo a estrutura de um sistema de gestão de empregados com diferentes categorias profissionais.
+
+**Entidades Principais:**
+
+1. **EMPREGADO** (Entidade Raiz/Superclasse)
+   - Atributos: tipo_de_empregado, nome, CPF, código
+   - Esta entidade serve como classe pai na hierarquia de especialização
+
+2. **DEPARTAMENTO**
+   - Atributos: código, nome
+   - Relacionamento com EMPREGADO: LOTAÇÃO (1,1) para (0,n)
+   - Significado: Cada empregado pertence a exatamente um departamento, e um departamento pode ter zero ou muitos empregados lotados
+
+**Especializações do EMPREGADO:**
+
+3. **SECRETÁRIA** (Subclasse)
+   - Relacionamento com PROCESSADOR_DE_TEXTOS: DOMÍNIO (1,n) para (0,n)
+   - Significado: Uma secretária domina de 1 a muitos processadores de texto, e um processador de texto pode ser dominado por zero ou muitas secretárias
+
+4. **ENGENHEIRO** (Subclasse)
+   - Atributo: CREA
+   - Relacionamento com RAMO_DA_ENGENHARIA: (0,n) para (1,1)
+   - Significado: Um engenheiro pode pertencer a zero ou muitos ramos da engenharia, e cada ramo da enharia pertence a exatamente um engenheiro
+
+5. **MOTORISTA** (Subclasse)
+   - Atributo: carteira_de_habilitacao
+
+**Outras Entidades:**
+
+6. **PROCESSADOR_DE_TEXTOS**
+   - Atributos: código, nome
+
+7. **RAMO_DA_ENGENHARIA**
+   - Atributos: código, nome
+
+8. **PROJETO**
+   - Atributos: código, nome
+   - Relacionamento com ENGENHEIRO: PARTICIPAÇÃO (0,n) para (0,n)
+   - Significado: Relacionamento muitos-para-muitos onde um engenheiro pode participar de zero ou muitos projetos, e um projeto pode ter zero ou muitos engenheiros participantes
+
+**Características da Especialização:**
+- A especialização do EMPREGADO parece ser do tipo sobreposição (overlapping), pois um empregado pode pertencer a mais de uma subclasse simultaneamente
+- A cardinalidade (0,n) nas especializações indica que um empregado pode ou não pertencer a cada subclasse específica
+
+O modelo apresenta uma estrutura hierárquica bem definida com relacionamentos apropriados para capturar as diferentes características e associações de cada tipo de empregado no sistema.

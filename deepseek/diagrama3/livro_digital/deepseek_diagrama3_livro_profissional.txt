@@ -1,0 +1,36 @@
+Com base na descrição textual do diagrama conceitual, segue a explicação técnica do modelo.
+
+O diagrama representa um modelo Entidade-Relacionamento (ER) que descreve a estrutura de um domínio empresarial envolvendo empregados, departamentos e projetos.
+
+**Entidades Principais e seus Atributos:**
+
+1.  **EMPREGADO:** Entidade central do modelo, com os atributos: `nome`, `CIC` e `código`.
+2.  **DEPARTAMENTO:** Possui os atributos: `código` e `nome`.
+3.  **PROJETO:** Possui os atributos: `código` e `nome`.
+4.  **PROCESSADOR DE TEXTOS:** Entidade especializada, com os atributos: `código` e `nome`.
+
+**Especializações da Entidade EMPREGADO:**
+
+A entidade `EMPREGADO` é especializada em três subtipos, caracterizando uma especialização total (indicada pela seta dupla para `tipo de empregado`).
+
+*   **SECRETÁRIA:** Subtipo especializado de `EMPREGADO`.
+*   **MOTORISTA:** Subtipo especializado que possui o atributo próprio `carteira de habilitação`.
+*   **ENGENHEIRO:** Subtipo especializado de `EMPREGADO`.
+
+**Relacionamentos e suas Cardinalidades:**
+
+*   **LOTAÇÃO:** Relacionamento entre `EMPREGADO (1,1)` e `DEPARTAMENTO (0,n)`. Isso significa que um empregado está lotado em exatamente um departamento, e um departamento pode ter de zero a N empregados lotados.
+
+*   **PARTICIPAÇÃO:** Relacionamento entre `EMPREGADO (0,n)` e `PROJETO (0,n)`. Isso define que um empregado pode participar de zero a N projetos, e um projeto pode ter de zero a N empregados participantes. Este é um relacionamento do tipo M para N (M:N).
+
+*   **DOMÍNIO:** Relacionamento entre `SECRETÁRIA (1,n)` e `PROCESSADOR DE TEXTOS (0,n)`. Isso indica que uma secretária deve dominar de um a N processadores de texto, e um processador de texto pode ser dominado por zero a N secretárias. Este é outro relacionamento M:N.
+
+**Entidades Associativas e Relacionamentos com Entidades Fracas:**
+
+*   **RAMO DA ENGENHARIA:** Esta é uma entidade associativa (ou entidade de relacionamento) conectada ao relacionamento `PARTICIPAÇÃO` com o `ENGENHEIRO`. Ela possui os atributos `código` e `nome`. Este modelo sugere que a participação de um engenheiro em um projeto está associada a um ramo específico da engenharia. A cardinalidade `(0,n)` em ambos os lados da conexão com `PARTICIPAÇÃO` indica que uma instância de participação (um engenheiro em um projeto) pode estar ligada a zero ou a um ramo da engenharia, e um ramo pode estar ligado a zero ou a várias participações.
+
+*   **CREA:** Esta é uma entidade fraca, identificada de forma dependente da entidade `ENGENHEIRO`. Ela está associada ao engenheiro com uma cardinalidade `(1,1)`, significando que cada engenheiro possui exatamente um CREA, e cada CREA pertence a exatamente um engenheiro.
+
+**Resumo da Estrutura:**
+
+Em síntese, o modelo descreve um sistema onde os empregados, classificados em diferentes tipos (Secretária, Motorista, Engenheiro), são lotados em departamentos e podem participar de projetos. As secretárias possuem uma relação de domínio com processadores de texto. A participação de engenheiros em projetos é qualificada por um ramo da engenharia específico, e cada engenheiro possui um registro único no CREA.

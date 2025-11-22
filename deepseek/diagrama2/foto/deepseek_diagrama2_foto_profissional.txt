@@ -1,0 +1,33 @@
+Este diagrama conceitual representa um modelo de entidades e relacionamentos (MER) simples, descrevendo três entidades e seus atributos.
+
+Abaixo está a descrição detalhada da estrutura:
+
+**1. Entidade: GRUPO**
+*   **Descrição:** Representa um grupo empresarial ao qual as empresas podem pertencer.
+*   **Atributos e Identificadores:**
+    *   `código`: Este é o atributo principal, posicionado no topo da entidade. Ele atua como a **chave primária** da entidade GRUPO, identificando cada instância de forma única.
+    *   `nome`: Um atributo descritivo que armazena o nome do grupo.
+
+**2. Entidade: EMPRESA**
+*   **Descrição:** Representa uma empresa específica.
+*   **Atributos e Identificadores:**
+    *   `número da empresa`: Este é o atributo principal, posicionado no topo da entidade. Ele atua como a **chave primária** da entidade EMPRESA.
+    *   `nome`: Um atributo descritivo para o nome da empresa.
+
+**3. Entidade: EMPREGADO**
+*   **Descrição:** Representa um indivíduo empregado.
+*   **Atributos e Identificadores:**
+    *   `número do empregado`: Este é o atributo principal, posicionado no topo da entidade. Ele atua como a **chave primária** da entidade EMPREGADO.
+    *   `número de sequência`: Um segundo identificador ou atributo numérico. No contexto, pode ser interpretado como uma chave primária composta (junto com `número do empregado`) ou, mais provavelmente, como um atributo simples para ordenação ou sequenciamento.
+    *   `nome`: Um atributo descritivo para o nome do empregado.
+
+**4. Relacionamentos:**
+O diagrama não utiliza os símbolos tradicionais de relacionamento (losangos) de um MER completo. Em vez disso, a conexão entre as entidades é implícita pela estrutura visual de ligação direta. A interpretação lógica da conexão é a seguinte:
+
+*   **GRUPO com EMPRESA:** Existe um relacionamento de **"possuir"** ou **"estar contido em"**. Um GRUPO pode conter uma ou mais EMPRESAS, e uma EMPRESA pertence a um GRUPO. Isso caracteriza um relacionamento **1:N** (um-para-muitos) da entidade GRUPO para a entidade EMPRESA. A chave primária `código` da entidade GRUPO deve ser migrada como **chave estrangeira** para a entidade EMPRESA.
+
+*   **EMPRESA com EMPREGADO:** Existe um relacionamento de **"empregar"**. Uma EMPRESA emprega um ou mais EMPREGADOs, e um EMPREGADO está vinculado a uma EMPRESA. Isso caracteriza um relacionamento **1:N** (um-para-muitos) da entidade EMPRESA para a entidade EMPREGADO. A chave primária `número da empresa` da entidade EMPRESA deve ser migrada como **chave estrangeira** para a entidade EMPREGADO.
+
+**Resumo Técnico:**
+
+O modelo descreve uma hierarquia ou estrutura de composição: um **GRUPO** é composto por **EMPRESAs**, que por sua vez são compostas por **EMPREGADOs**. As cardinalidades implícitas são **1:N** em ambos os relacionamentos. Todas as entidades possuem um atributo identificador (chave primária) claro, e a estrutura sugere a necessidade de inclusão de chaves estrangeiras para implementar os relacionamentos em um modelo lógico.

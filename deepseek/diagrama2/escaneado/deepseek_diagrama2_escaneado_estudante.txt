@@ -1,0 +1,48 @@
+Este é um diagrama que mostra como as informações de um sistema serão organizadas. Vou descrevê-lo para você de forma clara e sequencial, como se estivesse lendo uma história.
+
+Imagine que este diagrama representa quatro "coisas" principais, que chamamos de entidades: **GRUPO**, **EMPRESA**, **EMPREGADO** e **DEPENDENTE**. Cada uma dessas entidades é uma categoria de informação, como uma pasta que agrupa dados sobre um assunto.
+
+Vamos conhecer cada uma delas e como elas se conectam:
+
+### 1. GRUPO
+*   **O que é:** Representa um grupo de empresas.
+*   **Suas informações (atributos):**
+    *   `código`: Um número único para identificar cada grupo. É a informação principal que o diferencia dos outros.
+    *   `nome`: O nome do grupo.
+
+### 2. EMPRESA
+*   **O que é:** Representa uma empresa específica.
+*   **Suas informações (atributos):**
+    *   `número da empresa`: Um número único para identificar cada empresa.
+    *   `nome`: O nome da empresa.
+*   **Seu relacionamento:**
+    *   A empresa **pertence a um Grupo**. A seta `(1,1)` apontando de EMPRESA para GRUPO nos diz que **toda empresa deve estar vinculada a um, e apenas um, grupo**. Não existe empresa sem grupo.
+
+### 3. EMPREGADO
+*   **O que é:** Representa uma pessoa que trabalha em uma empresa.
+*   **Suas informações (atributos):**
+    *   `número do empregado`: Um número único para identificar cada empregado.
+    *   `nome`: O nome do empregado.
+*   **Seu relacionamento:**
+    *   O empregado **trabalha em uma Empresa**. A seta `(1,1)` apontando de EMPREGADO para EMPRESA nos diz que **todo empregado deve estar vinculado a uma, e apenas uma, empresa**. Não existe empregado sem empresa.
+
+### 4. DEPENDENTE
+*   **O que é:** Representa um familiar ou outra pessoa que depende de um empregado (como um filho ou cônjuge).
+*   **Suas informações (atributos):**
+    *   `número de seqüência`: Como um empregado pode ter vários dependentes, esse número serve para organizá-los em sequência (ex.: 1, 2, 3).
+    *   `nome`: O nome do dependente.
+*   **Seu relacionamento:**
+    *   O dependente **está ligado a um Empregado**. A seta `(1,1)` apontando de DEPENDENTE para EMPREGADO nos diz que **todo dependente deve estar vinculado a um, e apenas um, empregado**. Não existe dependente sem um empregado responsável.
+
+---
+
+### Resumo da História que o Diagrama Conta:
+
+Para resumir, este diagrama nos conta a seguinte história:
+
+1.  Existem **Grupos**.
+2.  Cada **Empresa** pertence a um **Grupo**.
+3.  Cada **Empregado** trabalha para uma **Empresa**.
+4.  Cada **Dependente** está associado a um **Empregado**.
+
+É uma estrutura hierárquica e organizada, onde uma informação leva à outra, garantindo que todos os dados tenham um lugar certo e uma relação clara.
