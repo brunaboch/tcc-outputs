@@ -1,0 +1,84 @@
+**Descrição Acessível do Diagrama Conceitual de Banco de Dados**
+
+Este diagrama representa a estrutura de informações sobre funcionários, seus departamentos e as especializações (secretária, motorista, engenheiro).
+
+O diagrama usa representações visuais específicas:
+* **Retângulos** representam as **Entidades**, que são os principais "objetos" ou "conceitos" sobre os quais guardamos informação (como EMPREGADO, DEPARTAMENTO).
+* **Círculos (Elipses)** representam os **Atributos**, que são as características ou informações que descrevem uma Entidade (como nome, código).
+* **Losangos (Rombos)** representam os **Relacionamentos**, que são as ligações entre as Entidades (como LOTAÇÃO, DOMÍNIO).
+* **Linhas** conectam os Atributos às Entidades e as Entidades aos Relacionamentos.
+* **Símbolo de bola preta (círculo preenchido)** abaixo de um atributo indica que ele é a **Chave Primária**, ou seja, é a informação que identifica de forma única cada ocorrência da Entidade (ex: o `código` do EMPREGADO).
+
+---
+
+### **1. Entidades Principais e Seus Atributos**
+
+#### **Entidade: EMPREGADO**
+* **O que é:** Representa um funcionário da empresa.
+* **Atributos (Informações sobre o Empregado):**
+    * `código` (Chave Primária, sublinhado com a bola preta): Identificador único do funcionário.
+    * `nome`: O nome do funcionário.
+    * `CIC`: Um tipo de documento de identificação (provavelmente CPF ou equivalente).
+    * `tipo de empregado`: Uma característica que descreve o tipo de contrato ou função geral (atributo multivalorado, tem um círculo duplo).
+
+#### **Entidade: DEPARTAMENTO**
+* **O que é:** Representa uma área ou setor da empresa.
+* **Atributos (Informações sobre o Departamento):**
+    * `código` (Chave Primária): Identificador único do departamento.
+    * `nome`: O nome do departamento.
+
+#### **Entidades Especializadas (Subtipos de EMPREGADO):**
+Abaixo da Entidade EMPREGADO, há um triângulo com a letra 'p' (que indica uma **especialização** ou **subtipo** com participação total e disjunta). Isso significa que todo EMPREGADO deve ser, obrigatoriamente, de **apenas um** dos seguintes tipos:
+1.  **SECRETÁRIA**
+2.  **MOTORISTA**
+3.  **ENGENHEIRO**
+
+* **SECRETÁRIA** e **MOTORISTA** não têm atributos próprios adicionais visíveis no diagrama, além dos herdados de EMPREGADO.
+* **ENGENHEIRO** tem um atributo próprio:
+    * `CREA`: O registro profissional do engenheiro.
+
+---
+
+### **2. Relacionamentos e Cardinalidade (Regras de Ligação)**
+
+A cardinalidade define quantos registros de uma entidade podem se conectar a quantos registros de outra entidade através de um relacionamento. Ela é mostrada entre parênteses, na forma **(Mínimo, Máximo)**, em cada lado do relacionamento.
+
+#### **Relacionamento 1: LOTAÇÃO (Entre EMPREGADO e DEPARTAMENTO)**
+* **O que significa:** Onde o empregado trabalha.
+* **Regras (Cardinalidade):**
+    * **Do lado do EMPREGADO (0, n):** Um empregado pode estar lotado em **zero (0)** ou **muitos (n)** departamentos (no máximo 'n', que significa "vários").
+    * **Do lado do DEPARTAMENTO (1, 1):** Um departamento deve ter **exatamente um (1)** empregado lotado.
+    * **Conclusão:** É uma relação de "um para muitos" (1:N), onde um departamento tem um único empregado (no máximo) e um empregado pode trabalhar em vários departamentos. *Nota: Esta cardinalidade (1,1) no lado do DEPARTAMENTO é incomum para "lotação", onde normalmente se espera que um departamento tenha muitos empregados. No entanto, o diagrama deve ser interpretado exatamente como desenhado.*
+
+#### **Relacionamento 2: DOMÍNIO (Entre SECRETÁRIA e PROCESSADOR DE TEXTOS)**
+* **O que significa:** O tipo de software de texto que a secretária sabe usar.
+* **Entidades Envolvidas:**
+    * **SECRETÁRIA** (Subtipo de EMPREGADO).
+    * **PROCESSADOR DE TEXTOS** (Entidade).
+        * **Atributos:** `código` (Chave Primária) e `nome`.
+* **Regras (Cardinalidade):**
+    * **Do lado da SECRETÁRIA (1, n):** Uma secretária deve dominar **pelo menos um (1)** e pode dominar **muitos (n)** processadores de texto.
+    * **Do lado do PROCESSADOR DE TEXTOS (0, n):** Um processador de texto pode ser dominado por **zero (0)** ou **muitas (n)** secretárias.
+    * **Conclusão:** É uma relação de "muitos para muitos" (N:M).
+
+#### **Relacionamento 3: Entre ENGENHEIRO e RAMO DA ENGENHARIA**
+* **O que significa:** A área de especialização do engenheiro.
+* **Entidades Envolvidas:**
+    * **ENGENHEIRO** (Subtipo de EMPREGADO).
+    * **RAMO DA ENGENHARIA** (Entidade).
+        * **Atributos:** `código` (Chave Primária) e `nome`.
+* **Regras (Cardinalidade):**
+    * **Do lado do ENGENHEIRO (0, n):** Um engenheiro pode atuar em **zero (0)** ou **muitos (n)** ramos da engenharia.
+    * **Do lado do RAMO DA ENGENHARIA (1, 1):** Um ramo da engenharia deve ser a especialidade de **exatamente um (1)** engenheiro.
+    * **Conclusão:** É uma relação de "um para muitos" (1:N), onde um ramo está ligado a um único engenheiro (no máximo) e um engenheiro pode ter vários ramos.
+
+#### **Relacionamento 4: PARTICIPAÇÃO (Entre ENGENHEIRO e PROJETO)**
+* **O que significa:** O envolvimento do engenheiro em um projeto.
+* **Entidades Envolvidas:**
+    * **ENGENHEIRO** (Subtipo de EMPREGADO).
+    * **PROJETO** (Entidade).
+        * **Atributos:** `código` (Chave Primária) e `nome`.
+* **Regras (Cardinalidade):**
+    * **Do lado do ENGENHEIRO (0, n):** Um engenheiro pode participar de **zero (0)** ou **muitos (n)** projetos.
+    * **Do lado do PROJETO (0, n):** Um projeto pode ter a participação de **zero (0)** ou **muitos (n)** engenheiros.
+    * **Conclusão:** É uma relação de "muitos para muitos" (N:M).

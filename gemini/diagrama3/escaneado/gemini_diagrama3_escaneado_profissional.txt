@@ -1,0 +1,83 @@
+## 👁️‍🗨️ Descrição e Interpretação do Diagrama Conceitual de Banco de Dados
+
+Este diagrama Entidade-Relacionamento (ER) representa a estrutura de um banco de dados focado no gerenciamento de **EMPREGADOS** e suas relações com **DEPARTAMENTOS**, além da especialização dos empregados em diferentes categorias.
+
+---
+
+### **1. Entidades, Atributos e Chaves**
+
+O diagrama apresenta as seguintes entidades:
+
+* **EMPREGADO:**
+    * **Atributos:** `nome`, `tipo de empregado`, e `CPF`.
+    * **Chave Primária:** `código` (atributo com preenchimento sólido).
+* **DEPARTAMENTO:**
+    * **Atributos:** `nome`.
+    * **Chave Primária:** `código` (atributo com preenchimento sólido).
+* **SECRETÁRIA:**
+    * Não possui atributos próprios no nível da especialização. Herda de **EMPREGADO**.
+* **MOTORISTA:**
+    * **Atributos:** `carteira de habilitação`.
+    * Herda de **EMPREGADO**.
+* **ENGENHEIRO:**
+    * **Atributos:** `CREA`.
+    * Herda de **EMPREGADO**.
+* **PROCESSADOR DE TEXTOS:**
+    * **Atributos:** `nome`.
+    * **Chave Primária:** `código` (atributo com preenchimento sólido).
+* **RAMO DA ENGENHARIA:**
+    * **Atributos:** `nome`.
+    * **Chave Primária:** `código` (atributo com preenchimento sólido).
+* **PROJETO:**
+    * **Atributos:** `nome`.
+    * **Chave Primária:** `código` (atributo com preenchimento sólido).
+
+---
+
+### **2. Relacionamentos e Cardinalidades**
+
+#### **2.1. Alocação de Empregado em Departamento**
+
+* **Relacionamento:** **LOTAÇÃO** entre **EMPREGADO** e **DEPARTAMENTO**.
+* **Cardinalidade:**
+    * **EMPREGADO** participa com $(0, n)$ – Zero ou muitos empregados podem estar lotados em um departamento.
+    * **DEPARTAMENTO** participa com $(1, 1)$ – Um departamento deve ter no mínimo e no máximo um lote de alocação, garantindo que todo departamento tenha alocação, mas a cardinalidade de empregados é no lado da entidade **EMPREGADO**. **A interpretação mais comum é a seguinte:**
+        * Cada **EMPREGADO** está lotado em **$(0, n)$** (zero ou muitos) **DEPARTAMENTOS** (o que é pouco usual, mas está desenhado).
+        * Cada **DEPARTAMENTO** está relacionado a **$(1, 1)$** (um e somente um) **EMPREGADO** nesta relação **LOTAÇÃO**, o que sugere um papel específico do empregado na lotação do departamento (como o responsável pela lotação), ou que o desenho está representando algo específico e limitado para esta relação.
+
+#### **2.2. Generalização/Especialização (Herança)**
+
+* **Estrutura:** Um triângulo com a letra 'p' (possivelmente indicando **parcial** e **disjunta** - *partial* e *disjoint* - no sentido de que um empregado pode não ser de nenhuma das especializações, mas se for, só pode ser de uma).
+* **Entidades Participantes:** **EMPREGADO** (Entidade Pai/Generalizada) e **SECRETÁRIA**, **MOTORISTA**, **ENGENHEIRO** (Entidades Filhas/Especializadas).
+* **Interpretação:** Todo empregado é do tipo base **EMPREGADO** e pode se especializar em uma ou nenhuma das subentidades (**SECRETÁRIA**, **MOTORISTA**, **ENGENHEIRO**).
+
+#### **2.3. Habilidade da Secretária**
+
+* **Relacionamento:** **DOMÍNIO** entre **SECRETÁRIA** e **PROCESSADOR DE TEXTOS**.
+* **Cardinalidade:**
+    * **SECRETÁRIA** participa com $(1, n)$ – Toda secretária **deve dominar** pelo menos um e pode dominar muitos processadores de texto.
+    * **PROCESSADOR DE TEXTOS** participa com $(0, n)$ – Um processador de texto pode ser dominado por zero ou muitas secretárias.
+
+#### **2.4. Atuação do Engenheiro**
+
+* **Relacionamento Implícito:** **ENGENHEIRO** e **RAMO DA ENGENHARIA** (sem rótulo, mas ligando as duas entidades).
+* **Cardinalidade:**
+    * **ENGENHEIRO** participa com $(0, n)$ – Um engenheiro pode atuar em zero ou muitos ramos da engenharia.
+    * **RAMO DA ENGENHARIA** participa com $(1, 1)$ – Cada ramo da engenharia está relacionado a um e somente um engenheiro nesta relação, o que é uma cardinalidade restritiva para a entidade **RAMO DA ENGENHARIA**.
+
+* **Relacionamento:** **PARTICIPAÇÃO** entre **ENGENHEIRO** e **PROJETO**.
+* **Cardinalidade:**
+    * **ENGENHEIRO** participa com $(0, n)$ – Um engenheiro pode participar de zero ou muitos projetos.
+    * **PROJETO** participa com $(0, n)$ – Um projeto pode ter zero ou muitos engenheiros participantes.
+
+---
+
+### **3. Observações Técnicas Adicionais**
+
+* **Chaves Candidatas:** Os atributos sublinhados (atributo `código` em `EMPREGADO`, `DEPARTAMENTO`, `PROCESSADOR DE TEXTOS`, `RAMO DA ENGENHARIA` e `PROJETO`) representam as **chaves primárias** dessas entidades.
+* **Integridade Referencial:** A especialização indica que as chaves primárias de **SECRETÁRIA**, **MOTORISTA** e **ENGENHEIRO** são herdadas de **EMPREGADO**, garantindo a integridade dos dados e a ligação com a entidade pai.
+* **Atributos Opcionais:** Atributos sem preenchimento sólido no círculo (como `tipo de empregado` ou `carteira de habilitação`) são atributos não-chave.
+
+---
+
+**Gostaria de uma explicação sobre como seria o mapeamento deste diagrama conceitual para o modelo relacional (esquema de tabelas)?**

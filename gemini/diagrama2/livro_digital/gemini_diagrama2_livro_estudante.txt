@@ -1,0 +1,64 @@
+Este é um diagrama que representa a estrutura de um banco de dados, mostrando como as informações estão organizadas e relacionadas. Ele descreve quatro tipos principais de informação, chamados de **Entidades**: GRUPO, EMPRESA, EMPREGADO e DEPENDENTE.
+
+Abaixo, descrevo cada parte do diagrama:
+
+### 1. Entidades (Tipos de Informação)
+
+As entidades são representadas por retângulos e contêm as informações principais:
+
+* **GRUPO:** Representa um conjunto ou categoria maior.
+    * **Atributos (Características da Entidade):**
+        * **código:** Identificador único do grupo (chave primária - representado pelo círculo escuro).
+        * **nome:** Nome do grupo (círculo claro).
+* **EMPRESA:** Representa uma companhia ou organização.
+    * **Atributos:**
+        * **número da empresa:** Identificador único da empresa (chave primária).
+        * **nome:** Nome da empresa (círculo claro).
+* **EMPREGADO:** Representa uma pessoa que trabalha na empresa.
+    * **Atributos:**
+        * **número do empregado:** Identificador único do empregado (chave primária).
+        * **nome:** Nome do empregado (círculo claro).
+* **DEPENDENTE:** Representa uma pessoa que é dependente de um empregado (como um filho ou cônjuge).
+    * **Atributos:**
+        * **número de sequência:** Identificador do dependente dentro do contexto do empregado (chave primária).
+        * **nome:** Nome do dependente (círculo claro).
+
+### 2. Relacionamentos (Como as Informações se Conectam)
+
+Os relacionamentos são representados por losangos e indicam como as entidades se ligam, juntamente com as regras de participação:
+
+#### A. Relacionamento entre GRUPO e EMPRESA
+
+* **Nome do Relacionamento:** O losango entre GRUPO e EMPRESA.
+* **Significado:** Mostra que uma EMPRESA pertence a um GRUPO.
+* **Regras de Participação (Cardinalidade):** Indicam quantos de um tipo se ligam a quantos do outro:
+    * **Lado do GRUPO (1, 1):** Significa que **cada EMPRESA** deve estar ligada a **exatamente um GRUPO**. Uma empresa é obrigada a pertencer a um grupo e não pode pertencer a mais de um.
+    * **Lado da EMPRESA (0, n):** Significa que **cada GRUPO** pode ter **zero ou muitas EMPRESAS**. Um grupo pode existir sem nenhuma empresa ou pode conter muitas empresas.
+
+#### B. Relacionamento entre EMPRESA e EMPREGADO
+
+* **Nome do Relacionamento:** O losango entre EMPRESA e EMPREGADO.
+* **Significado:** Mostra que um EMPREGADO trabalha em uma EMPRESA.
+* **Regras de Participação (Cardinalidade):**
+    * **Lado da EMPRESA (1, 1):** Significa que **cada EMPREGADO** deve estar ligado a **exatamente uma EMPRESA**. Um empregado é obrigatório ter uma empresa onde trabalha e não pode trabalhar em mais de uma.
+    * **Lado do EMPREGADO (0, n):** Significa que **cada EMPRESA** pode ter **zero ou muitos EMPREGADOS**. Uma empresa pode existir sem empregados (se acabou de ser criada, por exemplo) ou pode ter muitos empregados.
+
+#### C. Relacionamento entre EMPREGADO e DEPENDENTE
+
+* **Nome do Relacionamento:** O losango entre EMPREGADO e DEPENDENTE.
+* **Significado:** Mostra que um DEPENDENTE está ligado a um EMPREGADO.
+* **Regras de Participação (Cardinalidade):**
+    * **Lado do EMPREGADO (1, 1):** Significa que **cada DEPENDENTE** deve estar ligado a **exatamente um EMPREGADO**. Um dependente só pode ser dependente de uma pessoa (um empregado).
+    * **Lado do DEPENDENTE (0, n):** Significa que **cada EMPREGADO** pode ter **zero ou muitos DEPENDENTES**. Um empregado pode não ter nenhum dependente ou pode ter muitos dependentes.
+
+### 3. Representações Visuais Especiais (Notações)
+
+* **Retângulos:** Entidades (tipos de informação).
+* **Círculos:** Atributos (características).
+    * **Círculo Preto:** Atributo que é **identificador único** (chave primária), como *código* para GRUPO.
+    * **Círculo Branco (Vazio):** Atributo comum, como *nome*.
+* **Losangos:** Relacionamentos (ligações entre entidades).
+* **Linhas Grossas:** Indicam que a participação na relação é **obrigatória** (como em todos os exemplos deste diagrama, exceto na extremidade 'n').
+* **Notação de Cardinalidade (Exemplo: (1, n)):**
+    * O primeiro número (mínimo) indica a participação **mínima** (0 para opcional, 1 para obrigatória).
+    * O segundo número (máximo) indica a participação **máxima** (1 para único, n para muitos).

@@ -1,0 +1,73 @@
+## 👁️ Descrição e Explicação do Diagrama Conceitual de Banco de Dados
+
+Este diagrama é um **Modelo Entidade-Relacionamento (MER)** que representa as entidades e seus relacionamentos em um domínio de negócio específico.
+
+---
+
+### 1. Entidades e Atributos Chave
+
+O diagrama apresenta quatro entidades principais:
+
+* **GRUPO**:
+    * **Atributo Chave Primária**: `código` (indicado pelo círculo preto ligado à entidade).
+    * **Atributo Descritivo**: `nome` (indicado pelo círculo branco ligado à entidade).
+* **EMPRESA**:
+    * **Atributo Chave Primária**: `número da empresa` (indicado pelo círculo preto).
+    * **Atributo Descritivo**: `nome` (indicado pelo círculo branco).
+* **EMPREGADO**:
+    * **Atributo Chave Primária**: `número do empregado` (indicado pelo círculo preto).
+    * **Atributo Descritivo**: `nome` (indicado pelo círculo branco).
+* **DEPENDENTE**:
+    * **Atributo Chave Primária**: `número de sequência` (indicado pelo círculo preto).
+    * **Atributo Descritivo**: `nome` (indicado pelo círculo branco).
+
+---
+
+### 2. Relacionamentos e Cardinalidades
+
+O diagrama ilustra três relacionamentos:
+
+#### A. Relacionamento entre GRUPO e EMPRESA
+
+* **Nome do Relacionamento**: Não nomeado explicitamente, mas representa a associação entre um grupo e as empresas que o compõem.
+* **Cardinalidade**:
+    * **De GRUPO para EMPRESA**: $(1,1)$
+        * **Interpretação**: Cada **EMPRESA** deve estar associada a exatamente **um** **GRUPO**. A participação é **obrigatória** (mínimo 1) e **unitária** (máximo 1).
+    * **De EMPRESA para GRUPO**: $(0,n)$
+        * **Interpretação**: Cada **GRUPO** pode estar associado a **zero** ou **muitas** **EMPRESAS**. A participação é **opcional** (mínimo 0) e **múltipla** (máximo $n$).
+* **Tipo de Relacionamento**: De **1:N** (Um para Muitos), onde GRUPO está no lado "Um" e EMPRESA no lado "Muitos".
+
+#### B. Relacionamento entre EMPRESA e EMPREGADO
+
+* **Nome do Relacionamento**: Não nomeado, representa o vínculo empregatício.
+* **Cardinalidade**:
+    * **De EMPRESA para EMPREGADO**: $(1,1)$
+        * **Interpretação**: Cada **EMPREGADO** deve trabalhar para exatamente **uma** **EMPRESA**. A participação é **obrigatória** (mínimo 1) e **unitária** (máximo 1).
+    * **De EMPREGADO para EMPRESA**: $(0,n)$
+        * **Interpretação**: Cada **EMPRESA** pode ter **zero** ou **muitos** **EMPREGADOS**. A participação é **opcional** (mínimo 0) e **múltipla** (máximo $n$).
+* **Tipo de Relacionamento**: De **1:N** (Um para Muitos), onde EMPRESA está no lado "Um" e EMPREGADO no lado "Muitos".
+
+#### C. Relacionamento entre EMPREGADO e DEPENDENTE
+
+* **Nome do Relacionamento**: Não nomeado, representa a filiação de dependentes a um empregado.
+* **Cardinalidade**:
+    * **De EMPREGADO para DEPENDENTE**: $(1,1)$
+        * **Interpretação**: Cada **DEPENDENTE** deve estar associado a exatamente **um** **EMPREGADO** (seu responsável). A participação é **obrigatória** (mínimo 1) e **unitária** (máximo 1).
+    * **De DEPENDENTE para EMPREGADO**: $(0,n)$
+        * **Interpretação**: Cada **EMPREGADO** pode ter **zero** ou **muitos** **DEPENDENTES**. A participação é **opcional** (mínimo 0) e **múltipla** (máximo $n$).
+* **Tipo de Relacionamento**: De **1:N** (Um para Muitos), onde EMPREGADO está no lado "Um" e DEPENDENTE no lado "Muitos".
+
+---
+
+### 3. Observações sobre Identificação
+
+Note que a entidade **DEPENDENTE** possui uma linha espessa (dupla) ligando-a ao losango do relacionamento com **EMPREGADO**, indicando que **DEPENDENTE** é uma **entidade fraca** (ou dependente de identificação).
+
+* **Entidade Fraca**: A chave primária de **DEPENDENTE** (`número de sequência`) é uma **chave parcial** (ou discriminador). Para identificar univocamente um DEPENDENTE, é necessário concatenar sua chave parcial com a chave primária da entidade forte (**EMPREGADO**) da qual ele depende.
+* **Chave Primária de DEPENDENTE**: Será a composição de (`número do empregado`, `número de sequência`).
+
+A linha espessa (dupla) do relacionamento também se estende para as entidades **EMPRESA** e **EMPREGADO** nos relacionamentos anteriores, embora a natureza de "entidade fraca" seja mais comumente e claramente indicada com o retângulo duplo. Na representação utilizada, o traço espesso no lado 'N' do relacionamento costuma apenas indicar a cardinalidade 'Muitos' de forma proeminente, mas a combinação do traço espesso na linha e no losango é um indicador de que a entidade está no lado da dependência. Assumindo a notação padrão de MER, a entidade **DEPENDENTE** é, de fato, a única entidade fraca neste diagrama, identificada pela dupla linha no losango e na ligação com o retângulo.
+
+---
+
+Gostaria que eu gerasse o esquema relacional (tabelas e chaves) correspondente a este diagrama conceitual?
